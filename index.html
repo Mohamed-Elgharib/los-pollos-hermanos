@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="pollos.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Raleway:wght@200;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" type="image/x-icon" href="images/logo.png" />
+    <link rel="shortcut icon" href="logo%20dark.jpeg" type="image/x-icon">
+    <title>Los Pollos Hermanos</title>
+    <style>
+      /* Add this new CSS for the meth lab theme */
+      .meth-theme {
+        background-color: #1a1a1a;
+        color: #fff;
+      }
+      .meth-theme .nav {
+        background-color: #333 !important;
+        border-bottom: 2px solid #00ff00;
+      }
+      .meth-theme header {
+        background-color: #121212 !important;
+      }
+      .meth-theme section {
+        background-color: #2a2a2a !important;
+      }
+      .meth-theme .testimony {
+        background-color: #330000 !important;
+      }
+      .meth-theme .contact {
+        background-color: #1a2a1a !important;
+      }
+      .meth-theme .links {
+        color: #00ff00 !important;
+      }
+      .meth-theme .meth-glow {
+        box-shadow: 0 0 15px #00ff00;
+      }
+      .meth-theme .meth-text {
+        color: #00ff00;
+        text-shadow: 0 0 10px #00ff00;
+      }
+
+      /* Meth vial animation */
+      .meth-vial {
+        width: 30px;
+        height: 40px;
+        background: #1f4e6a;
+        border-radius: 3px 3px 15px 15px;
+        position: relative;
+        overflow: hidden;
+      }
+      .liquid {
+        width: 100%;
+        height: 70%;
+        background: #4a9bdc;
+        position: absolute;
+        bottom: 0;
+        animation: shimmer 2s infinite;
+      }
+      @keyframes shimmer {
+        0%, 100% { opacity: 0.7; }
+        50% { opacity: 1; }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="nav">
+      <button class="hamburger">
+        <!-- BUN TOP -->
+        <div class="bun-top">
+          <div class="seeds"></div>
+        </div>
+        <!-- PATTY -->
+        <div class="patty"></div>
+        <!-- LETTUCE (because why not) -->
+        <div class="lettuce"></div>
+        <!-- BUN BOTTOM -->
+        <div class="bun-bottom"></div>
+        <!-- CHEESE (melty) -->
+        <div class="cheese"></div>
+      </button>
+      <a href="#"
+        ><img class="logo" src="logo.png" alt="logo-picture"
+      /></a>
+      <div>
+        <ul>
+          <li><a class="links" href="#header"><span>About</span></a></li>
+          <li><a class="links" href="#sec2"><span>Dishes</span></a></li>
+          <li><a class="links" href="#tes"><span>Testimonials</span></a></li>
+          <li><a class="links contacts" href="#con"><span>Contact</span></a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="container">
+      <header id="header">
+        <div class="text">
+          <p class="hero">
+            Los Pollos Hermanos, where something delicious is always cooking!
+          </p>
+          <p class="desc">
+            It's the best ingredients. The spiciest spices. All prepared with
+            loving care! And always delivered with a friendly smile. That's the
+            Los Pollos Hermanos promise.
+          </p>
+          <button><a class="butts" href="#">Order now!</a></button>
+        </div>
+        <img class="gus" src="lsp3.jpg" alt="picture-of-gustavo-fring" />
+      </header>
+      <section id="sec2">
+        <br />
+        <p class="dishes">Our Top Dishes.</p>
+        <div class="top">
+          <div class="cards">
+            <img
+              class="card"
+              src="pollos-tenders-menu.png"
+              alt="pollos-tenders"
+            />
+            <div class="info">
+              <p class="price">Pollos Chicken Tenders</p>
+              <p>$18</p>
+            </div>
+          </div>
+          <div class="cards">
+            <img
+              class="card"
+              src="abq-sandwich-menu.png"
+              alt="pollos-burger"
+            />
+            <div class="info">
+              <p class="price">ABQ Sandwich</p>
+              <p>$36</p>
+            </div>
+          </div>
+          <div class="cards">
+            <img
+              class="card"
+              src="Fring-Fries-menu.png"
+              alt="fring-fries"
+            />
+            <div class="info">
+              <p class="price">Fring Fries</p>
+              <p>$9</p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <div class="testimony" id="tes">
+        <br />
+        <p class="rev">
+          "Loved the food and Hospitality! Especially the owner Mr. Gus. He kind
+          of gives the vibes of a drug-lord but is such a sweet person in
+          reality."
+        </p>
+        <strong class="name">-gharib, Customer</strong>
+      </div>
+
+      <div class="contact" id="con">
+        <div class="box">
+          <div class="para">
+            <p>Call us now, We will send you food and love!</p>
+          </div>
+          <button class="butt"><a class="butts" href="">Click here</a></button>
+        </div>
+      </div>
+      <footer>
+        <p>Copyright &#169; gharib 2025</p>
+        <!-- Add this somewhere subtle (like the footer) -->
+<!--        <input-->
+<!--                type="text"-->
+<!--                id="secretCode"-->
+<!--                style="opacity: 0; position: absolute; width: 1px; height: 1px;"-->
+<!--                autocomplete="off"-->
+<!--        >-->
+<!--        &lt;!&ndash; Tiny hint &ndash;&gt;-->
+<!--        <p style="font-size: 8px; color: #ccc; text-align: center;">-->
+<!--          (Psst... try typing.)-->
+<!--        </p>-->
+      </footer>
+    </div>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        // Fix hamburger menu functionality
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('.nav ul');
+
+        if (hamburger && navMenu) {
+          hamburger.addEventListener('click', function() {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+          });
+        }
+
+        // Setup Easter egg sequence
+        const foodItems = document.querySelectorAll('.cards img');
+
+        if (foodItems.length >= 3) {
+          const tenders = Array.from(foodItems).find(img => img.alt === "pollos-tenders");
+          const burger = Array.from(foodItems).find(img => img.alt === "pollos-burger");
+          const fries = Array.from(foodItems).find(img => img.alt === "fring-fries");
+
+          if (tenders && burger && fries) {
+            const secretCode = ['tenders', 'burger', 'fries'];
+            let clickSequence = [];
+
+            tenders.addEventListener('click', () => processClick('tenders'));
+            burger.addEventListener('click', () => processClick('burger'));
+            fries.addEventListener('click', () => processClick('fries'));
+
+            function processClick(item) {
+              clickSequence.push(item);
+
+              // Check sequence validity
+              for (let i = 0; i < clickSequence.length; i++) {
+                if (clickSequence[i] !== secretCode[i]) {
+                  clickSequence = [];
+                  return;
+                }
+              }
+
+              // Activate if complete
+              if (clickSequence.length === secretCode.length) {
+                applyBreakingBadTheme();
+              }
+            }
+          }
+        }
+
+        // Create enhanced Breaking Bad theme style
+        const bbStyle = document.createElement('style');
+        bbStyle.textContent = `
+    body.meth-theme {
+      background-color: #0a0e11;
+      color: #e0e0e0;
+    }
+
+    body.meth-theme .nav {
+      background-color: #111418 !important;
+      border-bottom: 2px solid #1d8348 !important;
+    }
+
+    body.meth-theme .nav a {
+      color: #58d68d !important;
+    }
+
+    body.meth-theme header {
+      background-color: #0d1215 !important;
+      border-bottom: 1px solid #1d8348;
+    }
+
+    body.meth-theme section {
+      background-color: #0d1215 !important;
+    }
+
+    body.meth-theme .testimony {
+      background-color: #121712 !important;
+      position: relative;
+    }
+
+    body.meth-theme .testimony::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 8px;
+      background: repeating-linear-gradient(45deg, #1d8348, #1d8348 10px, #121712 10px, #121712 20px);
+    }
+
+    body.meth-theme .contact {
+      background-color: #0d1215 !important;
+    }
+
+    body.meth-theme footer {
+      background-color: #111418 !important;
+      border-top: 1px solid #1d8348;
+      color: #58d68d;
+    }
+
+    body.meth-theme .hero {
+      color: #fff !important;
+      text-shadow: 0 0 10px rgba(46,204,113,0.5);
+      border-bottom: 2px solid #1d8348;
+      padding-bottom: 10px;
+    }
+
+    body.meth-theme .desc {
+      color: #58d68d !important;
+    }
+
+    body.meth-theme .cards {
+      background-color: #121712 !important;
+      border: 1px solid #1d8348 !important;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.4), 0 0 10px rgba(46,204,113,0.2) !important;
+      animation: none !important;
+    }
+
+    body.meth-theme .cards:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 16px rgba(0,0,0,0.5), 0 0 15px rgba(46,204,113,0.3) !important;
+    }
+
+    body.meth-theme .info {
+      background-color: #121712 !important;
+    }
+
+    body.meth-theme .info p {
+      color: #58d68d !important;
+    }
+
+    body.meth-theme .info p:first-child {
+      position: relative;
+      padding-left: 38px;
+    }
+
+    body.meth-theme .info p:first-child::before {
+      content: attr(data-element);
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 30px;
+      height: 30px;
+      background-color: #1d8348;
+      border: 1px solid #2ecc71;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+    }
+
+    body.meth-theme .rev {
+      background-color: #121712 !important;
+      color: #58d68d !important;
+      border: 2px solid #1d8348 !important;
+    }
+
+    body.meth-theme .name {
+      background-color: #1d8348 !important;
+      color: #fff !important;
+      border: none !important;
+    }
+
+    body.meth-theme .box {
+      background-color: #121712 !important;
+      border: 2px solid #1d8348 !important;
+    }
+
+    body.meth-theme .para p {
+      color: #58d68d !important;
+    }
+
+    body.meth-theme button,
+    body.meth-theme .butts {
+      background-color: #1d8348 !important;
+      color: #fff !important;
+      border: none;
+    }
+
+    body.meth-theme button:hover,
+    body.meth-theme .butts:hover {
+      background-color: #2ecc71 !important;
+    }
+
+    body.meth-theme .meth-vial {
+      width: 35px;
+      height: 45px;
+      background: #121712;
+      border: 2px solid #1d8348;
+      border-radius: 5px 5px 15px 15px;
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    body.meth-theme .liquid {
+      width: 100%;
+      height: 70%;
+      background: linear-gradient(135deg, #1d8348, #2ecc71, #1d8348);
+      background-size: 200% 200%;
+      position: absolute;
+      bottom: 0;
+      animation: gradientMove 3s ease infinite;
+    }
+
+    @keyframes gradientMove {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    body.meth-theme .bubbles::before,
+    body.meth-theme .bubbles::after {
+      content: '';
+      position: absolute;
+      background: rgba(255,255,255,0.8);
+      border-radius: 50%;
+    }
+
+    body.meth-theme .bubbles::before {
+      width: 6px; height: 6px;
+      left: 8px; top: 12px;
+      animation: bubble 2s infinite;
+    }
+
+    body.meth-theme .bubbles::after {
+      width: 4px; height: 4px;
+      right: 10px; top: 20px;
+      animation: bubble 1.4s infinite 0.5s;
+    }
+
+    @keyframes bubble {
+      0% { transform: translateY(0); opacity: 0; }
+      50% { opacity: 1; }
+      100% { transform: translateY(-20px); opacity: 0; }
+    }
+  `;
+        document.head.appendChild(bbStyle);
+
+        function applyBreakingBadTheme() {
+          document.body.classList.add('meth-theme');
+
+          // Replace hamburger with vial
+          if (hamburger) {
+            const originalHTML = hamburger.innerHTML;
+            hamburger.innerHTML = `
+        <div class="meth-vial">
+          <div class="liquid"></div>
+          <div class="bubbles"></div>
+        </div>
+      `;
+
+            // Re-attach click event for hamburger menu
+            hamburger.addEventListener('click', function() {
+              navMenu.classList.toggle('active');
+            });
+          }
+
+          // Change logo image
+          const logo = document.querySelector('.logo');
+          if (logo) {
+            tryLoadImage(logo, [
+              'logo dark.jpeg',
+              'heisenberg-logo.png',
+              'https://i.imgur.com/VsfiSu3.png' // Fallback to hosted image
+            ]);
+          }
+
+          // Change menu item images
+          const tenders = document.querySelector('img[alt="pollos-tenders"]');
+          if (tenders) {
+            tryLoadImage(tenders, [
+              'chemical-barrel.jpg',
+              'blue-crystal.jpg',
+              'https://i.imgur.com/JWLKGlL.jpg'
+            ]);
+          }
+
+          const burger = document.querySelector('img[alt="pollos-burger"]');
+          if (burger) {
+            tryLoadImage(burger, [
+              'lab2.svg',
+              'chemical-barrel.jpg',
+              'https://i.imgur.com/8vHxXm4.jpg'
+            ]);
+          }
+
+          const fries = document.querySelector('img[alt="fring-fries"]');
+          if (fries) {
+            tryLoadImage(fries, [
+              'lab3.webp',
+              'crystal-fulminate.jpg',
+              'https://i.imgur.com/mZ1PxdQ.jpg'
+            ]);
+          }
+
+          // Change Gus to Heisenberg
+          const gus = document.querySelector('.gus');
+          if (gus) {
+            tryLoadImage(gus, [
+              'lab4.avif',
+              'walter-white.jpg',
+              'https://i.imgur.com/iBkLM9i.jpg'
+            ]);
+          }
+
+          // Change text content
+          const textChanges = {
+            '.hero': "Heisenberg's Lab, where something BLUE is always cooking!",
+            '.desc': "It's the purest product. The finest chemicals. All prepared with scientific precision! 99.1% pure.",
+            '.rev': "\"I am the one who knocks! The product speaks for itself. No half measures.\"",
+            '.name': "-Heisenberg, Cook"
+          };
+
+          for (const [selector, text] of Object.entries(textChanges)) {
+            const el = document.querySelector(selector);
+            if (el) el.textContent = text;
+          }
+
+          // Add periodic table elements to menu items
+          document.querySelectorAll('.info p:first-child').forEach((el, idx) => {
+            const elements = ["Br", "Me", "Cr"];
+            const newNames = ["Blue Crystal", "Methylamine", "Crystal Fulminate"];
+
+            el.setAttribute('data-element', elements[idx % elements.length]);
+            el.textContent = newNames[idx % newNames.length];
+          });
+
+          // Show notification
+          const notification = document.createElement('div');
+          notification.textContent = "Say my name.";
+          notification.style.cssText = `
+      position: fixed;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #121212;
+      color: #2ecc71;
+      padding: 15px 25px;
+      font-family: monospace;
+      font-weight: bold;
+      z-index: 9999;
+      border: 2px solid #1d8348;
+      border-radius: 5px;
+      box-shadow: 0 0 20px rgba(46,204,113,0.4);
+    `;
+          document.body.appendChild(notification);
+
+          setTimeout(() => notification.remove(), 3000);
+        }
+
+        function tryLoadImage(imgElement, paths) {
+          if (!paths.length) return;
+
+          const testImg = new Image();
+          testImg.onload = function() {
+            imgElement.src = this.src;
+          };
+          testImg.onerror = function() {
+            paths.shift(); // Remove failed path
+            if (paths.length) {
+              tryLoadImage(imgElement, paths);
+            }
+          };
+          testImg.src = paths[0];
+        }
+      });
+
+    </script>
+  </body>
+</html>
