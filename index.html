@@ -11,7 +11,7 @@
       href="https://fonts.googleapis.com/css2?family=Raleway:wght@200;400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
-    <link rel="shortcut icon" href="logo%20dark.jpeg" type="image/x-icon">
+    <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
     <title>Los Pollos Hermanos</title>
   </head>
   <body>
@@ -139,17 +139,29 @@
       </div>
       <footer>
         <p>Copyright &#169; gharib 2025</p>
-        <!-- Add this somewhere subtle (like the footer) -->
-<!--        <input-->
-<!--                type="text"-->
-<!--                id="secretCode"-->
-<!--                style="opacity: 0; position: absolute; width: 1px; height: 1px;"-->
-<!--                autocomplete="off"-->
-<!--        >-->
-<!--        &lt;!&ndash; Tiny hint &ndash;&gt;-->
-<!--        <p style="font-size: 8px; color: #ccc; text-align: center;">-->
-<!--          (Psst... try typing.)-->
-<!--        </p>-->
+        <div class="notebook-content">
+          <div id="gales-notebook" class="hidden">
+            <div class="notebook-cover">
+              <h3>Gale's Lab Notes</h3>
+              <button class="close-notebook">×</button>
+            </div>
+            <div class="notebook-content">
+              <img src="gale.webp" alt="Gale's Chemistry Formulas">
+              <p>"The stoichiometry is impeccable. 99.1% purity achievable via reductive amination..."</p>
+            </div>
+            <h4>Methylamine Synthesis</h4>
+            <pre>
+    CH₃Cl + NH₃ → CH₃NH₂ + HCl
+    Yield: 92% @ 150°C
+  </pre>
+            <h4>Crystallization Notes</h4>
+            <pre>
+    - Use aluminum amalgam
+    - Maintain pH 7.2-7.4
+    - Slow evaporation yields larger crystals
+  </pre>
+          </div>
+          </div>
       </footer>
     </div>
     <script>
@@ -594,6 +606,22 @@
         document.head.appendChild(bbStyle);
       });
 
+      // Add event listener for secret code input
+      document.addEventListener('keydown', function(event) {
+        if (event.key === 'ArrowUp') {
+          const secretCodeInput = document.getElementById('secretCode');
+          secretCodeInput.style.opacity = '1';
+          secretCodeInput.focus();
+        }
+      });
+
+      // Remove the hidden input after a few seconds
+      setTimeout(() => {
+        const secretCodeInput = document.getElementById('secretCode');
+        if (secretCodeInput) {
+          secretCodeInput.remove();
+        }
+      }, 5000);
 
       // Create theme switching functions
       window.applyBreakingBadTheme = function() {
@@ -896,6 +924,51 @@
         addLoadingScreen();
         // Run the rest of your existing initialization code
       });
+      // Add this to your existing script
+      const konamiCode = [
+        'ArrowUp', 'ArrowUp',
+        'ArrowDown', 'ArrowDown',
+        'ArrowLeft', 'ArrowRight',
+        'ArrowLeft', 'ArrowRight',
+        'b', 'a'
+      ];
+      let konamiIndex = 0;
+
+      document.addEventListener('keydown', (e) => {
+        // Check if the next key in the sequence was pressed
+        if (e.key === konamiCode[konamiIndex]) {
+          konamiIndex++;
+
+          // If complete, show notebook
+          if (konamiIndex === konamiCode.length) {
+            showGalesNotebook();
+            konamiIndex = 0;
+          }
+        } else {
+          konamiIndex = 0; // Reset if wrong key
+        }
+      });
+
+      function showGalesNotebook() {
+        document.body.classList.add('notebook-open');
+        const notebook = document.getElementById('gales-notebook');
+        notebook.classList.add('visible');
+
+
+
+        // Play sound effect
+        const sound = new Audio('https://assets.mixkit.co/sfx/preview/mixkit-unlock-game-notification-253.mp3');
+        sound.volume = 0.3;
+        sound.play();
+
+        // Close button functionality
+        document.querySelector('.close-notebook').addEventListener('click', () => {
+          notebook.classList.remove('visible');
+        });
+        document.querySelector('.close-notebook').addEventListener('click', () => {
+          document.body.classList.remove('notebook-open');
+        });
+      }
 
 
     </script>
