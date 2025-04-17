@@ -162,13 +162,8 @@
   </pre>
           </div>
           </div>
+
       </footer>
-      <div id="purchase-confirmation" class="confirmation-overlay">
-        <div class="confirmation-box">
-          <p>Thank you for your order! Total: $<span id="confirmation-total">0</span></p>
-          <button id="close-confirmation">Close</button>
-        </div>
-      </div>
     </div>
     <script>
 
@@ -177,12 +172,13 @@
         original: {
           'tenders': 'Pollos Chicken Tenders',
           'burger': 'Pollos Burger',
-          'fries': 'Fring Fries'
+          'fries': 'Fring Fries',
+
         },
         themed: {
           'tenders': 'Blue Crystal',
           'burger': 'Methylamine',
-          'fries': 'Crystal Fulminate'
+          'fries': 'Crystal Fulminate',
         }
       };
 
@@ -376,12 +372,69 @@
             return;
           }
 
-          alert('Thank you for your order! Total: $' + window.cart.total);
+          // Show the overlay with theme-specific styling
+          const overlay = document.getElementById('purchase-confirmation');
+          const totalElement = document.getElementById('confirmation-total');
+
+          // Update total amount
+          totalElement.textContent = window.cart.total;
+
+          // Apply theme styling if needed
+          if (document.body.classList.contains('meth-theme')) {
+            overlay.classList.add('meth-theme');
+          } else {
+            overlay.classList.remove('meth-theme');
+          }
+
+          // Display with animation
+          overlay.style.display = 'flex';
+          setTimeout(() => overlay.classList.add('active'), 10);
+
+          // Add confetti effect
+          createConfetti();
+
+          // Clear cart
           window.cart.items = [];
           window.cart.updateTotal();
           window.cart.render();
           closeCartSidebar();
         });
+
+// Close confirmation when button is clicked
+        document.getElementById('close-confirmation').addEventListener('click', () => {
+          const overlay = document.getElementById('purchase-confirmation');
+          overlay.classList.remove('active');
+          setTimeout(() => overlay.style.display = 'none', 300);
+        });
+
+// Confetti effect function
+        function createConfetti() {
+          const confettiContainer = document.createElement('div');
+          confettiContainer.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:10001;';
+          document.body.appendChild(confettiContainer);
+
+          const colors = document.body.classList.contains('meth-theme')
+                  ? ['#1d8348', '#2ecc71', '#58d68d', '#a9dfbf', '#eafaf1']
+                  : ['#ffc72c', '#ffb700', '#ffa500', '#ff8c00', '#ff7600'];
+
+          for (let i = 0; i < 100; i++) {
+            const confetti = document.createElement('div');
+            confetti.style.cssText = `
+      position: absolute;
+      width: ${Math.random() * 10 + 5}px;
+      height: ${Math.random() * 5 + 5}px;
+      background-color: ${colors[Math.floor(Math.random() * colors.length)]};
+      top: -10px;
+      left: ${Math.random() * 100}vw;
+      opacity: ${Math.random() * 0.5 + 0.5};
+      animation: confetti ${Math.random() * 2 + 1}s linear forwards;
+      animation-delay: ${Math.random() * 2}s;
+    `;
+            confettiContainer.appendChild(confetti);
+          }
+
+          setTimeout(() => confettiContainer.remove(), 4000);
+        }
 
         // Setup Easter egg sequence
         const foodItems = document.querySelectorAll('.cards img');
@@ -704,7 +757,8 @@
           '.hero': "Heisenberg's Lab, where something BLUE is always cooking!",
           '.desc': "It's the purest product. The finest chemicals. All prepared with scientific precision! 99.1% pure.",
           '.rev': "\"I am the one who knocks! The product speaks for itself. No half measures.\"",
-          '.name': "-Heisenberg, Cook"
+          '.name': "-Heisenberg, Cook",
+          '.dishes':"our top crystals"
         };
 
         for (const [selector, text] of Object.entries(textChanges)) {
@@ -932,11 +986,7 @@
       });
       // Add this to your existing script
       const konamiCode = [
-        'ArrowUp', 'ArrowUp',
-        'ArrowDown', 'ArrowDown',
-        'ArrowLeft', 'ArrowRight',
-        'ArrowLeft', 'ArrowRight',
-        'b', 'a'
+        'g','a','l','e'
       ];
       let konamiIndex = 0;
 
@@ -975,8 +1025,126 @@
           document.body.classList.remove('notebook-open');
         });
       }
+      const confirmStyle = document.createElement('style');
+      confirmStyle.textContent = `
+  .confirmation-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.8);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .confirmation-overlay.active {
+    opacity: 1;
+  }
+
+  .confirmation-box {
+    background: #fff;
+    padding: 30px;
+    border-radius: 15px;
+    text-align: center;
+    max-width: 400px;
+    width: 90%;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    transform: scale(0.7);
+    transition: transform 0.4s cubic-bezier(0.18, 1.25, 0.6, 1.25);
+  }
+
+  .confirmation-overlay.active .confirmation-box {
+    transform: scale(1);
+  }
+
+  .confirmation-icon {
+    background: #ffc72c;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto 20px;
+  }
+
+  .confirmation-icon svg {
+    fill: white;
+  }
+
+  .confirmation-box h3 {
+    margin: 0 0 15px;
+    font-size: 24px;
+  }
+
+  .confirmation-box p {
+    font-size: 18px;
+    margin: 10px 0;
+  }
+
+  #close-confirmation {
+    background: #ffc72c;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 30px;
+    font-weight: bold;
+    font-size: 16px;
+    margin-top: 20px;
+    cursor: pointer;
+    transition: transform 0.2s, background 0.2s;
+  }
+
+  #close-confirmation:hover {
+    transform: scale(1.05);
+    background: #ffb700;
+  }
+
+  /* Breaking Bad theme styling */
+  .meth-theme .confirmation-box {
+    background: #121712;
+    color: white;
+    border: 2px solid #1d8348;
+  }
+
+  .meth-theme .confirmation-icon {
+    background: #1d8348;
+  }
+
+  .meth-theme #close-confirmation {
+    background: #1d8348;
+    color: white;
+  }
+
+  .meth-theme #close-confirmation:hover {
+    background: #2ecc71;
+  }
+
+  @keyframes confetti {
+    0% { transform: translateY(0) rotate(0); opacity: 1; }
+    100% { transform: translateY(100px) rotate(720deg); opacity: 0; }
+  }
+`;
+      document.head.appendChild(confirmStyle);
 
 
     </script>
+    <div id="purchase-confirmation" class="confirmation-overlay">
+      <div class="confirmation-box">
+        <div class="confirmation-icon">
+          <svg viewBox="0 0 24 24" width="40" height="40">
+            <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/>
+          </svg>
+        </div>
+        <h3>Order Confirmed!</h3>
+        <p>Thank you for your purchase!</p>
+        <p>Total: $<span id="confirmation-total">0</span></p>
+        <button id="close-confirmation">Done</button>
+      </div>
+    </div>
   </body>
 </html>
