@@ -13,6 +13,7 @@
   background-color: #d9f8c4;
   padding: 1rem;
   position: relative;
+  z-index: 1001;
 }
 
 /* Hide regular nav items on mobile */
