@@ -697,21 +697,69 @@
           ]);
         }
 
-        // Replace hamburger with vial
+// Complete replacement for the vial menu
         const hamburger = document.querySelector('.hamburger');
         const navMenu = document.querySelector('.nav ul');
         if (hamburger) {
-          hamburger.innerHTML = `
-        <div class="meth-vial">
-          <div class="liquid"></div>
-          <div class="bubbles"></div>
-        </div>
-      `;
+          // Clear any existing event listeners
+          const oldHamburger = hamburger.cloneNode(true);
+          hamburger.parentNode.replaceChild(oldHamburger, hamburger);
 
-          // Re-attach click event for hamburger menu
-          hamburger.addEventListener('click', function() {
+          // Replace with vial HTML
+          oldHamburger.innerHTML = `
+    <div class="meth-vial">
+      <div class="liquid"></div>
+      <div class="bubbles"></div>
+    </div>
+  `;
+
+          // Add proper event listener with visual feedback
+          oldHamburger.addEventListener('click', function() {
+            this.classList.toggle('active');
             navMenu.classList.toggle('active');
           });
+
+          // Add clear styles with better specificity
+          const vialStyle = document.createElement('style');
+          vialStyle.textContent = `
+    body.meth-theme .hamburger {
+      width: 40px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: visible;
+    }
+
+    body.meth-theme .meth-vial {
+      width: 28px;
+      height: 40px;
+      background: #121712;
+      border: 2px solid #1d8348;
+      border-radius: 5px 5px 15px 15px;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.3s ease;
+    }
+
+    body.meth-theme .liquid {
+      width: 100%;
+      height: 70%;
+      background: linear-gradient(135deg, #1d8348, #2ecc71, #1d8348);
+      position: absolute;
+      bottom: 0;
+      transition: height 0.3s ease;
+    }
+
+    body.meth-theme .hamburger.active .meth-vial {
+      transform: rotate(15deg) scale(0.95);
+    }
+
+    body.meth-theme .hamburger.active .liquid {
+      height: 40%;
+    }
+  `;
+          document.head.appendChild(vialStyle);
         }
         // Update this section in the applyBreakingBadTheme function
         // Replace your current applyBreakingBadTheme function with this corrected version
@@ -1498,6 +1546,734 @@
 
       // Call this function to add the game to your website
       addFlySwatterGame();
+      // Add Crystal Cook Game
+      function addCrystalCookGame() {
+        const trigger = document.createElement('div');
+        trigger.id = 'crystal-game-trigger';
+        trigger.className = 'easter-egg-trigger';
+        trigger.innerHTML = `<span class="crystal-icon">🧪</span>`;
+        trigger.style.bottom = '80px'; // Position below fly game
+
+        const style = document.createElement('style');
+        style.textContent = `
+    #crystal-game-trigger {
+      background: #137cbd;
+      display: none; /* Only show in meth theme */
+    }
+    body.meth-theme #crystal-game-trigger {
+      display: flex;
+    }
+    .crystal-game-area {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      overflow: hidden;
+      background: #0a1f14;
+    }
+    .ingredient {
+      position: absolute;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 30px;
+      cursor: pointer;
+      animation: float 3s infinite alternate ease-in-out;
+      box-shadow: 0 0 10px rgba(46, 204, 113, 0.5);
+    }
+    .beaker {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100px;
+      height: 120px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 0 0 15px 15px;
+      border: 3px solid #2ecc71;
+      box-shadow: 0 0 15px #2ecc71;
+    }
+    .beaker-liquid {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 0%;
+      background: #2ecc71;
+      border-radius: 0 0 12px 12px;
+      transition: height 0.3s;
+    }
+    @keyframes float {
+      0% { transform: translateY(0) rotate(0deg); }
+      100% { transform: translateY(-10px) rotate(5deg); }
+    }
+    .recipe-list {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: rgba(0,0,0,0.7);
+      padding: 10px;
+      border-radius: 5px;
+      border: 1px solid #2ecc71;
+    }
+    .recipe-item {
+      margin: 5px 0;
+      color: #fff;
+      font-size: 14px;
+    }
+    .recipe-item.done {
+      color: #2ecc71;
+      text-decoration: line-through;
+    }
+    .reaction {
+      position: absolute;
+      font-size: 24px;
+      color: #2ecc71;
+      animation: rise 1.5s forwards;
+    }
+    @keyframes rise {
+      0% { transform: translateY(0); opacity: 1; }
+      100% { transform: translateY(-100px); opacity: 0; }
+    }
+  `;
+
+        document.head.appendChild(style);
+        document.body.appendChild(trigger);
+
+        trigger.addEventListener('click', function() {
+          createCrystalCookGame();
+          trigger.style.display = 'none';
+        });
+      }
+
+      function createCrystalCookGame() {
+        const gameContainer = document.createElement('div');
+        gameContainer.className = 'game-container';
+        gameContainer.style.cssText = `
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.9);
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+  `;
+
+        gameContainer.innerHTML = `
+    <div class="game-header">
+      <h2>Crystal Cook</h2>
+      <div class="game-stats">
+        <span>Purity: <span id="crystal-purity">0</span>%</span>
+        <span>Time: <span id="crystal-time">60</span>s</span>
+      </div>
+      <button id="close-crystal-game">×</button>
+    </div>
+    <div class="crystal-game-area">
+      <div class="beaker">
+        <div class="beaker-liquid"></div>
+      </div>
+      <div class="recipe-list">
+        <h4>Recipe:</h4>
+        <div id="recipe-items"></div>
+      </div>
+    </div>
+  `;
+
+        document.body.appendChild(gameContainer);
+
+        const gameStyle = document.createElement('style');
+        gameStyle.textContent = `
+    .game-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+      background: #000;
+      color: white;
+    }
+    .game-stats {
+      display: flex;
+      gap: 20px;
+    }
+    #close-crystal-game {
+      background: none;
+      border: none;
+      color: white;
+      font-size: 24px;
+      cursor: pointer;
+    }
+    body.meth-theme #close-crystal-game:hover {
+      color: #2ecc71;
+    }
+  `;
+        document.head.appendChild(gameStyle);
+
+        // Game variables
+        let purity = 0;
+        let timeLeft = 60;
+        let gameActive = true;
+        let gameInterval;
+        let recipe = [];
+        let currentStep = 0;
+
+        const ingredients = [
+          { emoji: '🧪', name: 'Methylamine' },
+          { emoji: '💊', name: 'Pseudoephedrine' },
+          { emoji: '🧫', name: 'Phenylacetic acid' },
+          { emoji: '🧼', name: 'Red Phosphorus' },
+          { emoji: '🔥', name: 'Heat' },
+          { emoji: '❄️', name: 'Cool' }
+        ];
+
+        const purityElement = document.getElementById('crystal-purity');
+        const timeElement = document.getElementById('crystal-time');
+        const gameArea = document.querySelector('.crystal-game-area');
+        const beakerLiquid = document.querySelector('.beaker-liquid');
+        const recipeItems = document.getElementById('recipe-items');
+
+        // Generate recipe
+        function generateRecipe() {
+          recipe = [];
+          for (let i = 0; i < 8; i++) {
+            const ingredient = ingredients[Math.floor(Math.random() * ingredients.length)];
+            recipe.push(ingredient);
+          }
+
+          // Display recipe
+          recipeItems.innerHTML = '';
+          recipe.forEach((item, index) => {
+            recipeItems.innerHTML += `<div class="recipe-item" id="recipe-${index}">${item.emoji} ${item.name}</div>`;
+          });
+        }
+
+        // Spawn ingredients
+        function spawnIngredients() {
+          ingredients.forEach((ingredient, index) => {
+            const element = document.createElement('div');
+            element.className = 'ingredient';
+            element.innerHTML = ingredient.emoji;
+            element.dataset.name = ingredient.name;
+
+            const x = 50 + (index % 3) * 120;
+            const y = 100 + Math.floor(index / 3) * 120;
+
+            element.style.left = x + 'px';
+            element.style.top = y + 'px';
+
+            element.addEventListener('click', function() {
+              if (!gameActive) return;
+
+              if (currentStep < recipe.length && recipe[currentStep].name === ingredient.name) {
+                // Correct ingredient
+                document.getElementById(`recipe-${currentStep}`).classList.add('done');
+
+                // Show reaction
+                const reaction = document.createElement('div');
+                reaction.className = 'reaction';
+                reaction.innerHTML = '✓';
+                reaction.style.left = x + 'px';
+                reaction.style.top = y + 'px';
+                gameArea.appendChild(reaction);
+
+                setTimeout(() => reaction.remove(), 1500);
+
+                // Update beaker
+                purity += 12.5; // 100 / 8 steps
+                purityElement.textContent = Math.round(purity);
+                beakerLiquid.style.height = `${purity}%`;
+                beakerLiquid.style.backgroundColor = purity >= 99 ? '#00a8ff' : `hsl(145, ${purity}%, 45%)`;
+
+                currentStep++;
+
+                if (currentStep >= recipe.length) {
+                  endGame(true);
+                }
+              } else {
+                // Wrong ingredient
+                purity = Math.max(0, purity - 5);
+                purityElement.textContent = Math.round(purity);
+                beakerLiquid.style.height = `${purity}%`;
+
+                // Show reaction
+                const reaction = document.createElement('div');
+                reaction.className = 'reaction';
+                reaction.innerHTML = '✗';
+                reaction.style.color = 'red';
+                reaction.style.left = x + 'px';
+                reaction.style.top = y + 'px';
+                gameArea.appendChild(reaction);
+
+                setTimeout(() => reaction.remove(), 1500);
+              }
+            });
+
+            gameArea.appendChild(element);
+          });
+        }
+
+        // Start game
+        generateRecipe();
+        spawnIngredients();
+
+        // Start timer
+        gameInterval = setInterval(() => {
+          timeLeft--;
+          timeElement.textContent = timeLeft;
+
+          if (timeLeft <= 0) {
+            endGame(false);
+          }
+        }, 1000);
+
+        // End game function
+        function endGame(success) {
+          gameActive = false;
+          clearInterval(gameInterval);
+
+          // Show game over message
+          const gameOver = document.createElement('div');
+          gameOver.className = 'fly-game-over';
+          gameOver.innerHTML = `
+      <h2>${success ? 'Success!' : 'Game Over!'}</h2>
+      <p>Final Purity: ${Math.round(purity)}%</p>
+      <p>${getPurityMessage(purity)}</p>
+      <button id="restart-crystal-game">Cook Again</button>
+    `;
+
+          gameArea.appendChild(gameOver);
+
+          // Restart game button
+          document.getElementById('restart-crystal-game').addEventListener('click', function() {
+            gameOver.remove();
+
+            // Remove all ingredients
+            document.querySelectorAll('.ingredient').forEach(el => el.remove());
+
+            // Reset game variables
+            purity = 0;
+            timeLeft = 60;
+            gameActive = true;
+            currentStep = 0;
+
+            // Update display
+            purityElement.textContent = purity;
+            timeElement.textContent = timeLeft;
+            beakerLiquid.style.height = '0%';
+
+            // Restart game
+            generateRecipe();
+            spawnIngredients();
+
+            // Restart timer
+            gameInterval = setInterval(() => {
+              timeLeft--;
+              timeElement.textContent = timeLeft;
+
+              if (timeLeft <= 0) {
+                endGame(false);
+              }
+            }, 1000);
+          });
+        }
+
+        function getPurityMessage(purity) {
+          if (purity < 30) return "Not even close. Gus would be disappointed.";
+          if (purity < 60) return "Amateur work. Not street-worthy.";
+          if (purity < 85) return "Decent product, but not Heisenberg level.";
+          if (purity < 99) return "Almost there! Very clean cook.";
+          return "99.1% Pure! You are the one who knocks!";
+        }
+
+        // Close game button
+        document.getElementById('close-crystal-game').addEventListener('click', function() {
+          clearInterval(gameInterval);
+          gameContainer.remove();
+          document.getElementById('crystal-game-trigger').style.display = 'flex';
+        });
+      }
+
+      // Add Money Counter Game
+      function addMoneyCounterGame() {
+        const trigger = document.createElement('div');
+        trigger.id = 'money-game-trigger';
+        trigger.className = 'easter-egg-trigger';
+        trigger.innerHTML = `<span class="money-icon">💵</span>`;
+        trigger.style.bottom = '140px'; // Position below other games
+
+        const style = document.createElement('style');
+        style.textContent = `
+    #money-game-trigger {
+      background: #4a8522;
+      display: none; /* Only show in meth theme */
+    }
+    body.meth-theme #money-game-trigger {
+      display: flex;
+    }
+    .money-game-area {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      background: #103a1d;
+      overflow: hidden;
+    }
+    .money-pile {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 300px;
+      height: 200px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-end;
+    }
+    .money-bill {
+      width: 200px;
+      height: 80px;
+      background: linear-gradient(to bottom, #94c840 0%, #4a8522 100%);
+      border-radius: 5px;
+      margin-top: -60px;
+      position: relative;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.5);
+      cursor: pointer;
+      transition: transform 0.1s;
+    }
+    .money-bill:hover {
+      transform: scale(1.05);
+    }
+    .money-bill::before {
+      content: "$";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 36px;
+      color: rgba(0,0,0,0.5);
+    }
+    .bill-count {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: rgba(0,0,0,0.7);
+      color: white;
+      padding: 10px;
+      border-radius: 5px;
+      border: 1px solid #4a8522;
+    }
+    .target-display {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      background: rgba(0,0,0,0.7);
+      color: white;
+      padding: 10px;
+      border-radius: 5px;
+      border: 1px solid #4a8522;
+    }
+    .money-flying {
+      position: absolute;
+      width: 200px;
+      height: 80px;
+      background: linear-gradient(to bottom, #94c840 0%, #4a8522 100%);
+      border-radius: 5px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.5);
+      animation: flyAway 0.5s forwards;
+    }
+    @keyframes flyAway {
+      0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+      100% { transform: translateY(-300px) rotate(30deg); opacity: 0; }
+    }
+  `;
+
+        document.head.appendChild(style);
+        document.body.appendChild(trigger);
+
+        trigger.addEventListener('click', function() {
+          createMoneyCounterGame();
+          trigger.style.display = 'none';
+        });
+      }
+
+      function createMoneyCounterGame() {
+        const gameContainer = document.createElement('div');
+        gameContainer.className = 'game-container';
+        gameContainer.style.cssText = `
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.9);
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+  `;
+
+        gameContainer.innerHTML = `
+    <div class="game-header">
+      <h2>Money Counter</h2>
+      <div class="game-stats">
+        <span>Counted: $<span id="money-counted">0</span></span>
+        <span>Time: <span id="money-time">45</span>s</span>
+      </div>
+      <button id="close-money-game">×</button>
+    </div>
+    <div class="money-game-area">
+      <div class="target-display">
+        <p>Target: $<span id="target-amount">0</span></p>
+        <p>Current batch: <span id="current-batch">0</span>/<span id="batch-size">0</span></p>
+      </div>
+      <div class="bill-count">
+        <p>Accuracy: <span id="counting-accuracy">100</span>%</p>
+        <p>Batches: <span id="completed-batches">0</span></p>
+      </div>
+      <div class="money-pile" id="money-pile"></div>
+    </div>
+  `;
+
+        document.body.appendChild(gameContainer);
+
+        const gameStyle = document.createElement('style');
+        gameStyle.textContent = `
+    .game-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+      background: #000;
+      color: white;
+    }
+    .game-stats {
+      display: flex;
+      gap: 20px;
+    }
+    #close-money-game {
+      background: none;
+      border: none;
+      color: white;
+      font-size: 24px;
+      cursor: pointer;
+    }
+    body.meth-theme #close-money-game:hover {
+      color: #2ecc71;
+    }
+  `;
+        document.head.appendChild(gameStyle);
+
+        // Game variables
+        let moneyCount = 0;
+        let timeLeft = 45;
+        let gameActive = true;
+        let gameInterval;
+        let currentBatchCount = 0;
+        let batchSize = 10;
+        let targetAmount = 5000;
+        let completedBatches = 0;
+        let accuracy = 100;
+
+        const countedElement = document.getElementById('money-counted');
+        const timeElement = document.getElementById('money-time');
+        const targetElement = document.getElementById('target-amount');
+        const currentBatchElement = document.getElementById('current-batch');
+        const batchSizeElement = document.getElementById('batch-size');
+        const accuracyElement = document.getElementById('counting-accuracy');
+        const batchesElement = document.getElementById('completed-batches');
+        const moneyPile = document.getElementById('money-pile');
+
+        // Update display
+        targetElement.textContent = targetAmount;
+        batchSizeElement.textContent = batchSize;
+        currentBatchElement.textContent = currentBatchCount;
+
+        // Create initial money pile
+        createMoneyPile();
+
+        // Start timer
+        gameInterval = setInterval(() => {
+          timeLeft--;
+          timeElement.textContent = timeLeft;
+
+          if (timeLeft <= 0) {
+            endGame();
+          }
+        }, 1000);
+
+        // Create money pile function
+        function createMoneyPile() {
+          moneyPile.innerHTML = '';
+
+          for (let i = 0; i < 5; i++) {
+            const bill = document.createElement('div');
+            bill.className = 'money-bill';
+
+            bill.addEventListener('click', function() {
+              if (!gameActive) return;
+
+              // Count bill
+              moneyCount += 1000;
+              currentBatchCount++;
+              countedElement.textContent = moneyCount;
+              currentBatchElement.textContent = currentBatchCount;
+
+              // Remove bill with animation
+              const rect = bill.getBoundingClientRect();
+              const flyingBill = document.createElement('div');
+              flyingBill.className = 'money-flying';
+              flyingBill.style.left = rect.left + 'px';
+              flyingBill.style.top = rect.top + 'px';
+              document.body.appendChild(flyingBill);
+
+              // Play sound
+              const countSound = new Audio('https://assets.mixkit.co/sfx/preview/mixkit-coins-handling-1939.mp3');
+              countSound.volume = 0.3;
+              countSound.play();
+
+              setTimeout(() => {
+                if (flyingBill.parentNode) {
+                  flyingBill.parentNode.removeChild(flyingBill);
+                }
+              }, 500);
+
+              // Check if batch complete
+              if (currentBatchCount >= batchSize) {
+                completeBatch();
+              } else {
+                bill.remove();
+                createMoneyPile();
+              }
+            });
+
+            moneyPile.appendChild(bill);
+          }
+        }
+
+        // Complete batch function
+        function completeBatch() {
+          const difference = Math.abs(currentBatchCount - batchSize);
+          const batchAccuracy = Math.max(0, 100 - (difference * 10));
+
+          accuracy = Math.round((accuracy + batchAccuracy) / 2);
+          accuracyElement.textContent = accuracy;
+
+          completedBatches++;
+          batchesElement.textContent = completedBatches;
+
+          // Reset batch
+          currentBatchCount = 0;
+          currentBatchElement.textContent = currentBatchCount;
+
+          // Increase difficulty
+          batchSize += 2;
+          batchSizeElement.textContent = batchSize;
+
+          // Add time bonus
+          timeLeft = Math.min(60, timeLeft + 5);
+          timeElement.textContent = timeLeft;
+
+          // Clear and recreate money pile
+          moneyPile.innerHTML = '';
+          createMoneyPile();
+
+          // Show success message
+          const successMsg = document.createElement('div');
+          successMsg.style.cssText = `
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: #4a8522;
+      font-size: 36px;
+      font-weight: bold;
+      text-shadow: 0 0 10px rgba(0,0,0,0.5);
+    `;
+          successMsg.textContent = 'Batch Complete!';
+          document.querySelector('.money-game-area').appendChild(successMsg);
+
+          setTimeout(() => successMsg.remove(), 1500);
+        }
+
+        // End game function
+        function endGame() {
+          gameActive = false;
+          clearInterval(gameInterval);
+
+          // Show game over message
+          const gameOver = document.createElement('div');
+          gameOver.className = 'fly-game-over';
+          gameOver.innerHTML = `
+      <h2>Counting Complete!</h2>
+      <p>Total Money: $${moneyCount}</p>
+      <p>Batches Completed: ${completedBatches}</p>
+      <p>Accuracy: ${accuracy}%</p>
+      <p>${getMoneyMessage(moneyCount, accuracy)}</p>
+      <button id="restart-money-game">Count Again</button>
+    `;
+
+          document.querySelector('.money-game-area').appendChild(gameOver);
+
+          // Restart game button
+          document.getElementById('restart-money-game').addEventListener('click', function() {
+            gameOver.remove();
+
+            // Reset game variables
+            moneyCount = 0;
+            timeLeft = 45;
+            gameActive = true;
+            currentBatchCount = 0;
+            batchSize = 10;
+            completedBatches = 0;
+            accuracy = 100;
+
+            // Update display
+            countedElement.textContent = moneyCount;
+            timeElement.textContent = timeLeft;
+            targetElement.textContent = targetAmount;
+            batchSizeElement.textContent = batchSize;
+            currentBatchElement.textContent = currentBatchCount;
+            accuracyElement.textContent = accuracy;
+            batchesElement.textContent = completedBatches;
+
+            // Recreate money pile
+            createMoneyPile();
+
+            // Restart timer
+            gameInterval = setInterval(() => {
+              timeLeft--;
+              timeElement.textContent = timeLeft;
+
+              if (timeLeft <= 0) {
+                endGame();
+              }
+            }, 1000);
+          });
+        }
+
+        function getMoneyMessage(count, accuracy) {
+          if (count < 10000) return "Barely enough for a used RV. Keep practicing.";
+          if (count < 30000) return "Decent haul, but Gus expects more.";
+          if (count < 50000) return "Good work, would impress Mike.";
+          if (count < 100000) return "Very impressive! Worthy of Heisenberg.";
+          return "You could buy your own car wash with this haul!";
+        }
+
+        // Close game button
+        document.getElementById('close-money-game').addEventListener('click', function() {
+          clearInterval(gameInterval);
+          gameContainer.remove();
+          document.getElementById('money-game-trigger').style.display = 'flex';
+        });
+      }
+
+      // Initialize new games in meth theme
+      document.addEventListener('DOMContentLoaded', function() {
+        addCrystalCookGame();
+        addMoneyCounterGame();
+      });
 
 
     </script>

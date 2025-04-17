@@ -969,6 +969,7 @@ footer {
   max-width: 100%;
   border: 1px solid #ddd;
   margin-bottom: 15px;
+  ;
 }
 
 .close-notebook {
@@ -992,4 +993,109 @@ body.notebook-open::before {
   height: 100%;
   background: rgba(0,0,0,0.7);
   z-index: 9998;
+}
+/* No-scroll fixed size for Gale's notebook */
+#gales-notebook {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 500px;
+  max-width: 90vw;
+  max-height: 80vh;
+  background: #f0e6d2;
+  border: 3px solid #8B4513;
+  border-radius: 5px;
+  box-shadow: 0 0 30px rgba(0,0,0,0.5);
+  z-index: 9999;
+  overflow: hidden;
+  padding: 0;
+}
+
+.notebook-content {
+  padding: 15px;
+  overflow: hidden;
+}
+
+.notebook-content img {
+  max-width: 100%;
+  height: auto;
+  max-height: 30vh;
+  object-fit: contain;
+}
+
+.notebook-content pre {
+  font-size: 14px;
+  max-height: none;
+  overflow: hidden;
+}
+
+@media (max-width: 768px) {
+  #gales-notebook {
+    width: 400px;
+    max-height: 70vh;
+  }
+
+  .notebook-content img {
+    max-height: 25vh;
+  }
+}
+
+@media (max-width: 480px) {
+  #gales-notebook {
+    width: 300px;
+    max-height: 60vh;
+  }
+
+  .notebook-content pre {
+    font-size: 12px;
+  }
+}
+/* Black dropdown menu with proper display rules */
+.meth-theme .nav ul {
+  display: none !important; /* Hidden by default on mobile */
+}
+
+/* Show navigation on desktop screens (standard horizontal menu) */
+@media (min-width: 769px) {
+  .meth-theme .nav ul {
+    display: flex !important;
+    flex-direction: row;
+    position: static;
+    background-color: transparent !important;
+    padding: 0;
+  }
+
+  .meth-theme .hamburger {
+    display: none !important;
+  }
+}
+
+/* Only show dropdown on small screens when active */
+@media (max-width: 768px) {
+  .meth-theme .hamburger {
+    display: flex !important; /* Ensure hamburger/vial is visible */
+  }
+
+  .meth-theme .nav ul.active {
+    display: block !important;
+    background-color: #000000 !important;
+    border: 1px solid #1d8348;
+    border-top: none;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    padding: 10px 0;
+  }
+
+  .meth-theme .nav ul.active a {
+    color: #2ecc71 !important;
+    padding: 10px 15px;
+    display: block;
+    border-left: 2px solid transparent;
+    transition: all 0.2s ease;
+  }
+
+  .meth-theme .nav ul.active a:hover {
+    border-left: 2px solid #2ecc71;
+    background: rgba(29, 131, 72, 0.15);
+  }
 }
