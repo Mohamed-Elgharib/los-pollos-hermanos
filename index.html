@@ -879,153 +879,373 @@
         testImg.src = path;
       }
       // Add this to your existing script
-      function addLoadingScreen() {
-        // Create loading screen element
+      function createLoadingScreen() {
         const loader = document.createElement('div');
-        loader.className = 'page-loader';
+        loader.className = 'loading-screen';
 
-        // Different loaders based on theme
         const isThemedMode = document.body.classList.contains('meth-theme');
 
-        loader.innerHTML = isThemedMode ?
-                `<div class="loader-content">
-      <div class="flask-loader">
-        <div class="flask">
-          <div class="liquid"></div>
-          <div class="bubbles"></div>
+        loader.innerHTML = `
+    <div class="loading-landscape">
+      <div class="desert-ground"></div>
+      <div class="rv-container">
+        <div class="rv">
+          <div class="rv-body">
+            <div class="rv-roof"></div>
+            <div class="rv-window rv-windshield"></div>
+            <div class="rv-window rv-side-window-1"></div>
+            <div class="rv-window rv-side-window-2"></div>
+            <div class="rv-window rv-side-window-3"></div>
+            <div class="rv-door"></div>
+            <div class="rv-grill"></div>
+            <div class="rv-headlight rv-headlight-1"></div>
+            <div class="rv-headlight rv-headlight-2"></div>
+            <div class="rv-stripe"></div>
+          </div>
+          <div class="rv-wheel rv-wheel-front"></div>
+          <div class="rv-wheel rv-wheel-back"></div>
+          <div class="smoke-container"></div>
+          <div class="dust-container"></div>
         </div>
-        <p>Cooking...</p>
       </div>
-    </div>` :
-                `<div class="loader-content">
-      <div class="chicken-loader">
-        <div class="rotisserie">
-          <div class="chicken"></div>
-        </div>
-        <p>Frying Chicken...</p>
-      </div>
-    </div>`;
+    </div>
+    <div class="loading-text">${isThemedMode ? 'Cooking on the road...' : 'Taking a road trip...'}</div>
+  `;
 
-        // Add to page
         document.body.appendChild(loader);
 
-        // Hide loader after content loads
-        setTimeout(() => {
-          loader.style.opacity = '0';
-          setTimeout(() => loader.remove(), 500);
-        }, 1500);
+        // Generate smoke dynamically
+        const smokeContainer = loader.querySelector('.smoke-container');
+        for (let i = 0; i < 6; i++) {
+          const smoke = document.createElement('div');
+          smoke.className = 'rv-smoke';
+          smoke.style.animationDelay = `${Math.random() * 2}s`;
+          smokeContainer.appendChild(smoke);
+        }
+
+        // Generate dust particles
+        const dustContainer = loader.querySelector('.dust-container');
+        for (let i = 0; i < 12; i++) {
+          const dust = document.createElement('div');
+          dust.className = 'dust-particle';
+          dust.style.left = `${Math.random() * 100}%`;
+          dust.style.animationDelay = `${Math.random() * 3}s`;
+          dustContainer.appendChild(dust);
+        }
+
+        const style = document.createElement('style');
+        style.textContent = `
+    .loading-screen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: ${isThemedMode ?
+                'linear-gradient(to bottom, #1a237e 0%, #0a0e11 70%)' :
+                'linear-gradient(to bottom, #87CEEB 0%, #f9f9c5 70%)'};
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      transition: opacity 0.5s;
+    }
+
+    .loading-landscape {
+      position: relative;
+      width: 100%;
+      height: 200px;
+      margin-bottom: 40px;
+      overflow: hidden;
+    }
+
+    .desert-ground {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      height: 40%;
+      background: ${isThemedMode ? '#2c2c1e' : '#e2c081'};
+      border-top: ${isThemedMode ? '2px solid #3e3e2d' : '2px solid #d1a05a'};
+    }
+
+    .rv-container {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      animation: drive 8s linear infinite;
+    }
+
+    @keyframes drive {
+      0% { transform: translateX(-150px); }
+      50% { transform: translateX(calc(50% - 100px)); }
+      100% { transform: translateX(calc(100% + 150px)); }
+    }
+
+    .rv {
+      position: absolute;
+      bottom: 22%;
+      left: 0;
+      width: 200px;
+      height: 90px;
+      animation: bounce 0.5s infinite ease-in-out alternate;
+    }
+
+    @keyframes bounce {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(2px); }
+    }
+
+    .rv-body {
+      position: absolute;
+      bottom: 0;
+      width: 200px;
+      height: 70px;
+      background: ${isThemedMode ? '#d1d1d1' : '#F5F5F5'};
+      border-radius: 8px 25px 0 0;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    }
+
+    .rv-roof {
+      position: absolute;
+      top: -10px;
+      left: 40px;
+      width: 110px;
+      height: 10px;
+      background: ${isThemedMode ? '#b8b8b8' : '#dddddd'};
+      border-radius: 3px 3px 0 0;
+    }
+
+    .rv-windshield {
+      position: absolute;
+      top: 5px;
+      left: 170px;
+      width: 20px;
+      height: 25px;
+      background: ${isThemedMode ? '#98c9e3' : '#add8e6'};
+      border-radius: 2px 8px 0 0;
+      border: 2px solid #888;
+    }
+
+    .rv-side-window-1 {
+      position: absolute;
+      top: 15px;
+      left: 140px;
+      width: 20px;
+      height: 18px;
+      background: ${isThemedMode ? '#98c9e3' : '#add8e6'};
+      border: 2px solid #888;
+    }
+
+    .rv-side-window-2 {
+      position: absolute;
+      top: 15px;
+      left: 110px;
+      width: 20px;
+      height: 18px;
+      background: ${isThemedMode ? '#98c9e3' : '#add8e6'};
+      border: 2px solid #888;
+    }
+
+    .rv-side-window-3 {
+      position: absolute;
+      top: 15px;
+      left: 80px;
+      width: 20px;
+      height: 18px;
+      background: ${isThemedMode ? '#98c9e3' : '#add8e6'};
+      border: 2px solid #888;
+    }
+
+    .rv-door {
+      position: absolute;
+      top: 20px;
+      left: 50px;
+      width: 20px;
+      height: 40px;
+      background: ${isThemedMode ? '#9e9e9e' : '#cccccc'};
+      border: 2px solid #888;
+    }
+
+    .rv-grill {
+      position: absolute;
+      bottom: 15px;
+      left: 185px;
+      width: 15px;
+      height: 10px;
+      background: #444;
+      border-radius: 3px;
+    }
+
+    .rv-headlight {
+      position: absolute;
+      bottom: 25px;
+      width: 8px;
+      height: 8px;
+      background: ${isThemedMode ? '#ffeb3b' : '#ffffa0'};
+      border-radius: 50%;
+      box-shadow: 0 0 10px ${isThemedMode ? '#ffeb3b' : '#ffffa0'};
+      animation: flicker 0.5s infinite alternate;
+    }
+
+    .rv-headlight-1 {
+      left: 195px;
+    }
+
+    .rv-headlight-2 {
+      left: 195px;
+      bottom: 40px;
+    }
+
+    @keyframes flicker {
+      0% { opacity: 0.7; }
+      100% { opacity: 1; }
+    }
+
+    .rv-stripe {
+      position: absolute;
+      top: 45px;
+      left: 10px;
+      width: 180px;
+      height: 5px;
+      background: ${isThemedMode ? '#2ecc71' : '#e66000'};
+      border-radius: 5px;
+    }
+
+    .rv-wheel {
+      position: absolute;
+      bottom: -18px;
+      width: 28px;
+      height: 28px;
+      background: #1a1a1a;
+      border-radius: 50%;
+      border: 4px solid #444;
+      animation: spin 1s linear infinite;
+      z-index: 2;
+    }
+
+    .rv-wheel::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 12px;
+      height: 12px;
+      background: #666;
+      border-radius: 50%;
+    }
+
+    .rv-wheel-front {
+      left: 155px;
+    }
+
+    .rv-wheel-back {
+      left: 40px;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .smoke-container {
+      position: absolute;
+      top: -15px;
+      left: 50px;
+      width: 30px;
+      height: 30px;
+    }
+
+    .rv-smoke {
+      position: absolute;
+      width: 15px;
+      height: 15px;
+      background: ${isThemedMode ? 'rgba(46, 204, 113, 0.4)' : 'rgba(200, 200, 200, 0.7)'};
+      border-radius: 50%;
+      filter: blur(5px);
+      animation: smoke 2s ease-out infinite;
+    }
+
+    @keyframes smoke {
+      0% { transform: translateY(0) scale(0.5); opacity: 0; }
+      10% { opacity: 1; }
+      100% { transform: translateY(-50px) scale(3); opacity: 0; }
+    }
+
+    .dust-container {
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 100%;
+      height: 20px;
+    }
+
+    .dust-particle {
+      position: absolute;
+      bottom: 0;
+      width: 8px;
+      height: 8px;
+      background: ${isThemedMode ? '#3d3d2d' : '#d1b78a'};
+      border-radius: 50%;
+      opacity: 0.6;
+      animation: dust 2s ease-out infinite;
+    }
+
+    @keyframes dust {
+      0% { transform: translate(0, 0) scale(0.2); opacity: 0; }
+      20% { opacity: 0.6; }
+      100% { transform: translate(-20px, -30px) scale(1); opacity: 0; }
+    }
+
+    .loading-text {
+      font-family: 'Raleway', sans-serif;
+      font-size: 24px;
+      font-weight: bold;
+      color: ${isThemedMode ? '#2ecc71' : '#5a3800'};
+      text-shadow: ${isThemedMode ? '0 0 10px rgba(46, 204, 113, 0.5)' : '0 0 8px rgba(255, 199, 44, 0.4)'};
+      letter-spacing: 1px;
+    }
+
+    .loading-text::after {
+      content: '.';
+      animation: dots 1.5s infinite;
+      display: inline-block;
+      width: 20px;
+      text-align: left;
+    }
+
+    @keyframes dots {
+      0% { content: '.'; }
+      33% { content: '..'; }
+      66% { content: '...'; }
+    }
+  `;
+
+        document.head.appendChild(style);
+
+        return loader;
       }
 
-      // Add loading screen CSS
-      const loaderStyle = document.createElement('style');
-      loaderStyle.textContent = `
-  .page-loader {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: #f9f9c5;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 9999;
-    transition: opacity 0.5s;
-  }
+      function hideLoadingScreen(loader) {
+        loader.style.opacity = '0';
+        setTimeout(() => loader.remove(), 500);
+      }
 
-  body.meth-theme .page-loader {
-    background: #0a0e11;
-  }
+      // Add loading screen on page load
+      document.addEventListener('DOMContentLoaded', function() {
+        const loader = createLoadingScreen();
+        setTimeout(() => hideLoadingScreen(loader), 3000);
+      });
 
-  .loader-content {
-    text-align: center;
-  }
+      // For theme transitions
+      window.themeTransition = function() {
+        const loader = createLoadingScreen();
+        setTimeout(() => hideLoadingScreen(loader), 2000);
+      };
 
-  .loader-content p {
-    margin-top: 20px;
-    font-size: 18px;
-    font-weight: bold;
-    color: #5a3800;
-  }
-
-  body.meth-theme .loader-content p {
-    color: #58d68d;
-  }
-
-  /* Chicken loader */
-  .chicken-loader .rotisserie {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    border: 5px solid #ffc72c;
-    border-top-color: transparent;
-    animation: spin 1s linear infinite;
-    margin: 0 auto;
-  }
-
-  .chicken-loader .chicken {
-    width: 40px;
-    height: 40px;
-    background: #ffc72c;
-    border-radius: 50% 50% 50% 10%;
-    transform: rotate(45deg);
-    position: relative;
-    margin: 20px auto;
-  }
-
-  /* Flask loader */
-  .flask-loader .flask {
-    width: 60px;
-    height: 80px;
-    background: transparent;
-    border: 3px solid #1d8348;
-    border-radius: 5px 5px 30px 30px;
-    position: relative;
-    overflow: hidden;
-    margin: 0 auto;
-  }
-
-  .flask-loader .liquid {
-    width: 100%;
-    height: 60%;
-    background: linear-gradient(135deg, #1d8348, #2ecc71, #1d8348);
-    background-size: 200% 200%;
-    position: absolute;
-    bottom: 0;
-    animation: gradientMove 2s ease infinite;
-  }
-
-  .flask-loader .bubbles:before,
-  .flask-loader .bubbles:after {
-    content: '';
-    position: absolute;
-    background: rgba(255,255,255,0.8);
-    border-radius: 50%;
-    animation: bubble 1.5s infinite;
-  }
-
-  .flask-loader .bubbles:before {
-    width: 8px;
-    height: 8px;
-    left: 10px;
-    bottom: 15px;
-  }
-
-  .flask-loader .bubbles:after {
-    width: 5px;
-    height: 5px;
-    right: 15px;
-    bottom: 25px;
-    animation-delay: 0.5s;
-  }
-
-  @keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-  }
-`;
-
-      document.head.appendChild(loaderStyle);
+      // Removed the problematic line
+      // document.head.appendChild(loaderStyle);
 
       // Call this on page load
       document.addEventListener('DOMContentLoaded', function() {
