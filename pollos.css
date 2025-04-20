@@ -1605,10 +1605,7 @@ body.meth-theme .newsletter-form button:hover {
     max-width: 100px;
   }
 }
-// Add inside the bbStyle.textContent template literal
-   body.meth-theme p {
-     color: #e0e0e0 !important;
-   }
+
 
 body.meth-theme h1,
 body.meth-theme h2,
@@ -1739,4 +1736,42 @@ body.meth-theme .footer-nav a:hover::before {
   0% { transform: translateY(-50%) scale(1); }
   50% { transform: translateY(-50%) scale(1.15); }
   100% { transform: translateY(-50%) scale(1); }
+}
+/* Footer responsiveness */
+@media (max-width: 768px) {
+  footer {
+    padding: 20px 10px !important;
+    flex-direction: column !important;
+  }
+
+  footer > div {
+    width: 100% !important;
+    margin-bottom: 15px !important;
+    text-align: center !important;
+  }
+
+  .footer-logo {
+    margin: 0 auto 15px auto !important;
+  }
+
+  .gus-glasses {
+    margin: 0 auto 15px auto !important;
+  }
+
+  footer p, footer .copyright {
+    text-align: center !important;
+    margin: 5px 0 !important;
+  }
+}
+
+/* Additional fixes for meth theme */
+@media (max-width: 768px) {
+  body.meth-theme footer {
+    padding: 20px 10px !important;
+  }
+
+  body.meth-theme footer p,
+  body.meth-theme footer .copyright {
+    color: #58d68d !important;
+  }
 }
