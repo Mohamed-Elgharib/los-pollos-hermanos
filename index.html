@@ -726,6 +726,56 @@
       window.applyBreakingBadTheme = function() {
         document.body.classList.add('meth-theme');
 
+        document.addEventListener('DOMContentLoaded', function() {
+          const footerLogo = document.querySelector('.footer-logo img');
+          if (footerLogo) {
+            // Create glasses container that wraps the SVG
+            const glassesContainer = document.createElement('div');
+            glassesContainer.className = 'gus-glasses';
+
+            // Add SVG glasses
+            glassesContainer.innerHTML = `
+      <svg viewBox="0 0 100 40" width="80" height="32">
+        <g class="glasses" fill="none" stroke="#333" stroke-width="2">
+          <!-- Left lens -->
+          <circle cx="25" cy="20" r="15"/>
+          <!-- Right lens -->
+          <circle cx="75" cy="20" r="15"/>
+          <!-- Bridge -->
+          <path d="M40 20 L60 20"/>
+          <!-- Temple arms -->
+          <path d="M10 20 L2 15"/>
+          <path d="M90 20 L98 15"/>
+          <!-- Reflection highlights -->
+          <path class="reflection" d="M20 15 A6 6 0 0 1 30 15" stroke-width="1" stroke-opacity="0.6"/>
+          <path class="reflection" d="M70 15 A6 6 0 0 1 80 15" stroke-width="1" stroke-opacity="0.6"/>
+        </g>
+      </svg>
+    `;
+
+            // Replace the image with our glasses
+            footerLogo.replaceWith(glassesContainer);
+          }
+        });
+        // Add this after the replacement code
+        document.addEventListener('click', function(e) {
+          if (e.target.closest('.gus-glasses')) {
+            const glasses = document.querySelector('.gus-glasses');
+            glasses.classList.add('flash');
+
+            // Optional: Toggle theme when clicking glasses
+            if (document.body.classList.contains('meth-theme')) {
+              window.applyNormalTheme();
+            } else {
+              window.applyBreakingBadTheme();
+            }
+
+            setTimeout(() => {
+              glasses.classList.remove('flash');
+            }, 500);
+          }
+        });
+
         // Change logo to Heisenberg logo - ADD THIS FIRST
         const logo = document.querySelector('.logo');
         if (logo) {
@@ -1683,6 +1733,41 @@
         const scoreElement = document.getElementById('fly-score');
         const timeElement = document.getElementById('fly-time');
         const gameArea = document.querySelector('.fly-game-area');
+// Regular beach flip flop cursor - taller and more curved
+        const defaultSlipperCursor = 'url(\'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50" width="40" height="40"><path d="M15,12 C15,10 20,8 25,8 C30,8 35,10 35,12 C38,15 40,20 38,30 C36,40 32,42 25,42 C18,42 14,40 12,30 C10,20 12,15 15,12 Z" fill="%23f5d6ba" stroke="%23d9a066" stroke-width="1.5"/><path d="M25,9 L25,18 M25,18 L18,30 M25,18 L32,30" stroke="%23d9a066" stroke-width="2.5" stroke-linecap="round"/><path d="M15,15 C18,16 32,16 35,15 M14,22 C18,23 32,23 36,22 M13,29 C17,30 33,30 37,29 M15,36 C19,37 31,37 35,36" stroke="%23d9a066" stroke-width="0.7"/></svg>\') 20 20, auto';
+
+// Active rotation flip flop cursor - taller and more curved
+        const activeSlipperCursor = 'url(\'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50" width="40" height="40"><g transform="rotate(45, 25, 25) scale(1.1) translate(-2, -2)"><path d="M15,12 C15,10 20,8 25,8 C30,8 35,10 35,12 C38,15 40,20 38,30 C36,40 32,42 25,42 C18,42 14,40 12,30 C10,20 12,15 15,12 Z" fill="%23f5d6ba" stroke="%23d9a066" stroke-width="1.5"/><path d="M25,9 L25,18 M25,18 L18,30 M25,18 L32,30" stroke="%23d9a066" stroke-width="2.5" stroke-linecap="round"/><path d="M15,15 C18,16 32,16 35,15 M14,22 C18,23 32,23 36,22 M13,29 C17,30 33,30 37,29 M15,36 C19,37 31,37 35,36" stroke="%23d9a066" stroke-width="0.7"/><path d="M5,5 L8,8 M8,5 L5,8" stroke="%23d9a066" stroke-width="1" opacity="0.6"/><path d="M42,5 L45,8 M45,5 L42,8" stroke="%23d9a066" stroke-width="1" opacity="0.6"/><path d="M43,30 L46,33 M46,30 L43,33" stroke="%23d9a066" stroke-width="1" opacity="0.6"/></g></svg>\') 20 20, auto';
+
+// Breaking Bad theme flip flop cursor - taller and more curved
+        const methSlipperCursor = 'url(\'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50" width="40" height="40"><path d="M15,12 C15,10 20,8 25,8 C30,8 35,10 35,12 C38,15 40,20 38,30 C36,40 32,42 25,42 C18,42 14,40 12,30 C10,20 12,15 15,12 Z" fill="%232ecc71" stroke="%231d8348" stroke-width="1.5"/><path d="M25,9 L25,18 M25,18 L18,30 M25,18 L32,30" stroke="%231d8348" stroke-width="2.5" stroke-linecap="round"/><path d="M15,15 C18,16 32,16 35,15 M14,22 C18,23 32,23 36,22 M13,29 C17,30 33,30 37,29 M15,36 C19,37 31,37 35,36" stroke="%231d8348" stroke-width="0.7"/></svg>\') 20 20, auto';
+
+// Breaking Bad theme active flip flop cursor - taller and more curved
+        const activeMethSlipperCursor = 'url(\'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50" width="40" height="40"><g transform="rotate(45, 25, 25) scale(1.1) translate(-2, -2)"><path d="M15,12 C15,10 20,8 25,8 C30,8 35,10 35,12 C38,15 40,20 38,30 C36,40 32,42 25,42 C18,42 14,40 12,30 C10,20 12,15 15,12 Z" fill="%232ecc71" stroke="%231d8348" stroke-width="1.5"/><path d="M25,9 L25,18 M25,18 L18,30 M25,18 L32,30" stroke="%231d8348" stroke-width="2.5" stroke-linecap="round"/><path d="M15,15 C18,16 32,16 35,15 M14,22 C18,23 32,23 36,22 M13,29 C17,30 33,30 37,29 M15,36 C19,37 31,37 35,36" stroke="%231d8348" stroke-width="0.7"/><path d="M5,5 L8,8 M8,5 L5,8" stroke="%231d8348" stroke-width="1" opacity="0.6"/><path d="M42,5 L45,8 M45,5 L42,8" stroke="%231d8348" stroke-width="1" opacity="0.6"/><path d="M43,30 L46,33 M46,30 L43,33" stroke="%231d8348" stroke-width="1" opacity="0.6"/></g></svg>\') 20 20, auto';
+// Set appropriate cursor based on theme
+        if (document.body.classList.contains('meth-theme')) {
+          gameArea.style.cursor = methSlipperCursor;
+        } else {
+          gameArea.style.cursor = defaultSlipperCursor;
+        }
+
+// Add event listeners for cursor change on mouse actions
+        gameArea.addEventListener('mousedown', () => {
+          if (document.body.classList.contains('meth-theme')) {
+            gameArea.style.cursor = activeMethSlipperCursor;
+          } else {
+            gameArea.style.cursor = activeSlipperCursor;
+          }
+        });
+
+        gameArea.addEventListener('mouseup', () => {
+          if (document.body.classList.contains('meth-theme')) {
+            gameArea.style.cursor = methSlipperCursor;
+          } else {
+            gameArea.style.cursor = defaultSlipperCursor;
+          }
+        });
+
 
         // Initialize fly position
         moveFly();
@@ -1879,6 +1964,57 @@
 
       // Call this function to add the game to your website
       addFlySwatterGame();
+      // Replace the logo with Gus's glasses
+      document.addEventListener('DOMContentLoaded', function() {
+        const footerLogo = document.querySelector('.footer-logo img');
+        if (footerLogo) {
+          // Create glasses container that wraps the SVG
+          const glassesContainer = document.createElement('div');
+          glassesContainer.className = 'gus-glasses';
+
+          // Add SVG glasses
+          glassesContainer.innerHTML = `
+      <svg viewBox="0 0 100 40" width="80" height="32">
+        <g class="glasses" fill="none" stroke="#333" stroke-width="2">
+          <!-- Left lens -->
+          <circle cx="25" cy="20" r="15"/>
+          <!-- Right lens -->
+          <circle cx="75" cy="20" r="15"/>
+          <!-- Bridge -->
+          <path d="M40 20 L60 20"/>
+          <!-- Temple arms -->
+          <path d="M10 20 L2 15"/>
+          <path d="M90 20 L98 15"/>
+          <!-- Reflection highlights -->
+          <path class="reflection" d="M20 15 A6 6 0 0 1 30 15" stroke-width="1" stroke-opacity="0.6"/>
+          <path class="reflection" d="M70 15 A6 6 0 0 1 80 15" stroke-width="1" stroke-opacity="0.6"/>
+        </g>
+      </svg>
+    `;
+
+          // Replace the image with our glasses
+          footerLogo.replaceWith(glassesContainer);
+        }
+      });
+      // Add this after the replacement code
+      document.addEventListener('click', function(e) {
+        if (e.target.closest('.gus-glasses')) {
+          const glasses = document.querySelector('.gus-glasses');
+          glasses.classList.add('flash');
+
+          // Optional: Toggle theme when clicking glasses
+          if (document.body.classList.contains('meth-theme')) {
+            window.applyNormalTheme();
+          } else {
+            window.applyBreakingBadTheme();
+          }
+
+          setTimeout(() => {
+            glasses.classList.remove('flash');
+          }, 500);
+        }
+      });
+
 
 
 
