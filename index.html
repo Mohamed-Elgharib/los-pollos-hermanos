@@ -205,6 +205,16 @@
 
       </footer>
     </div>
+    <div id="empty-cart-modal" class="gus-overlay">
+      <div class="gus-modal">
+        <div class="gus-portrait">
+          <img src="empty-alert.png" alt="Gus Fring" width="120" height="auto">
+        </div>
+        <h3>I cannot proceed</h3>
+        <p>Your cart appears to be empty. Please add some of our fine products before checking out.</p>
+        <button id="close-empty-cart" class="close-gus-button">Understood</button>
+      </div>
+    </div>
     <script>
 
       // Create a global product name mapping
@@ -408,7 +418,7 @@
         // Checkout button
         document.querySelector('.checkout-btn').addEventListener('click', () => {
           if (window.cart.items.length === 0) {
-            alert('Your cart is empty!');
+            showEmptyCartWarning()
             return;
           }
 
@@ -521,7 +531,7 @@
       }
 
       body.meth-theme .nav {
-        background-color: #111418 !important;
+        background-color: #0a0c10 !important;
         border-bottom: 2px solid #1d8348 !important;
       }
 
@@ -649,10 +659,11 @@
         background-color: #2ecc71 !important;
       }
 
+
       body.meth-theme .meth-vial {
         width: 35px;
         height: 45px;
-        background: #121712;
+        background: #0a0c10 !important;
         border: 2px solid #1d8348;
         border-radius: 5px 5px 15px 15px;
         position: relative;
@@ -2014,6 +2025,39 @@
           }, 500);
         }
       });
+      function updateCartBadge() {
+        const badge = document.querySelector('.cart-badge');
+        const cartItems = getCartItems(); // Your existing function to get cart items
+
+        // Set the count as both text content and data attribute
+        const itemCount = cartItems.length;
+        badge.textContent = itemCount;
+        badge.dataset.count = itemCount;
+
+        // The CSS will automatically hide/show based on count
+      }
+      function showEmptyCartWarning() {
+        const modal = document.getElementById('empty-cart-modal');
+        modal.style.display = 'flex';
+        setTimeout(() => modal.classList.add('active'), 10);
+        document.body.style.overflow = 'hidden';
+      }
+
+      document.getElementById('close-empty-cart').addEventListener('click', function() {
+        const modal = document.getElementById('empty-cart-modal');
+        modal.classList.remove('active');
+        setTimeout(() => {
+          modal.style.display = 'none';
+          document.body.style.overflow = '';
+        }, 300);
+      });
+
+      // Replace your existing empty cart alert with this function
+      // For example, in your checkout button event listener:
+      // if (cartItems.length === 0) {
+      //   showEmptyCartWarning();
+      //   return;
+      // }
 
 
 
