@@ -1,0 +1,2152 @@
+* {
+  padding: 0;
+  margin: 0;
+  font-family: raleway;
+  scroll-behavior: smooth;
+  box-sizing: border-box;
+}
+/* Navigation styles */
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #d9f8c4;
+  padding: 1rem;
+  position: relative;
+  z-index: 1001;
+}
+
+/* Hide regular nav items on mobile */
+.nav ul {
+  display: none;
+  list-style: none;
+  gap: 1rem;
+  color: darkgoldenrod;
+}
+
+/* Show nav items when menu is open */
+.nav ul.active {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background-color: #d9f8c4;
+  padding: 1rem;
+  z-index: 1000;
+}
+
+/* HAMBURGER MENU - ACTUAL BURGER STYLE */
+.hamburger {
+  width: 60px;
+  height: 45px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 10px;
+  position: relative;
+  z-index: 1001;
+}
+
+/* BUN TOP (with sesame seeds!) */
+.bun-top {
+  width: 100%;
+  height: 10px;
+  background: #f5e0a3;
+  border-radius: 15px 15px 3px 3px;
+  position: relative;
+}
+
+.seeds {
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  background: #f5e0a3;
+  border-radius: 50%;
+  box-shadow:
+          15px 3px 0 #f5e0a3,
+          25px 3px 0 #f5e0a3,
+          10px 6px 0 #f5e0a3,
+          20px 6px 0 #f5e0a3;
+}
+
+/* PATTY */
+.patty {
+  width: 100%;
+  height: 8px;
+  background: #8B4513;
+  border-radius: 5px;
+}
+
+/* LETTUCE (wavy) */
+.lettuce {
+  width: 100%;
+  height: 5px;
+  background: #7CFC00;
+  border-radius: 8px;
+  clip-path: polygon(
+          0% 0%, 100% 0%, 100% 100%,
+          80% 70%, 60% 100%, 40% 70%,
+          20% 100%, 0% 70%
+  );
+}
+
+/* CHEESE (melty drip) */
+.cheese {
+  width: 100%;
+  height: 4px;
+  background: #FFA500;
+  border-radius: 0 0 10px 10px;
+  clip-path: polygon(
+          0% 0%, 100% 0%, 100% 100%,
+          90% 50%, 80% 100%, 70% 50%,
+          60% 100%, 50% 50%, 40% 100%,
+          30% 50%, 20% 100%, 10% 50%,
+          0% 100%
+  );
+}
+
+/* BUN BOTTOM */
+.bun-bottom {
+  width: 100%;
+  height: 8px;
+  background: #f5e0a3;
+  border-radius: 3px 3px 15px 15px;
+}
+
+/* ANIMATION: Squish the burger when clicked */
+.hamburger.active .bun-top,
+.hamburger.active .bun-bottom {
+  transform: scaleX(0.9);
+}
+
+.hamburger.active .patty {
+  transform: scaleY(0.7);
+}
+
+.hamburger.active .lettuce,
+.hamburger.active .cheese {
+  transform: scaleY(0.5);
+  opacity: 0.8;
+}
+
+/* Desktop: Hide the burger */
+@media (min-width: 768px) {
+  .hamburger {
+    display: none;
+  }
+}
+/* Desktop styles - show regular nav */
+@media (min-width: 768px) {
+  .hamburger {
+    display: none;
+  }
+
+  .nav ul {
+    display: flex;
+    flex-direction: row;
+    position: static;
+    background-color: transparent;
+    padding: 0;
+  }
+}
+
+.logo {
+  height: 80px;
+  width: auto;
+}
+
+a {
+  text-decoration: none;
+}
+
+header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 70px;
+  background-color: #f9f9c5;
+  height: auto;
+  font-family: raleway, sans-serif;
+  font-weight: 700;
+  padding: 50px 20px;
+  flex-wrap: wrap;
+}
+
+.gus {
+  width: 100%;
+  max-width: 450px;
+  height: auto;
+  border-radius: 50px;
+  border: 2px solid darkgray;
+}
+
+.text {
+  width: 100%;
+  max-width: 750px;
+  padding: 0 20px;
+}
+
+.hero {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+}
+
+.desc {
+  font-size: 1.25rem;
+  margin-bottom: 20px;
+  font-weight: 500;
+}
+
+button {
+  font-size: 20px;
+  font-weight: 600;
+  border-radius: 50px;
+  padding: 10px;
+  background-color: lightsalmon;
+  cursor: pointer;
+}
+
+section {
+  background-color: #fad9a1;
+  height: auto;
+  padding: 50px 20px;
+}
+
+.dishes {
+  text-align: center;
+  font-weight: 700;
+  font-size: 2.5rem;
+  margin-top: 30px;
+  margin-bottom: 50px;
+}
+
+.top {
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.card {
+  height: auto;
+  width: 100%;
+  max-width: 500px;
+}
+
+.info {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.cards {
+  padding: 15px;
+  background-color: whitesmoke;
+  margin-bottom: 20px;
+}
+
+.cards:hover {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+
+.testimony {
+  background-color: #f37878;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 50px 20px;
+}
+
+.rev {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: wheat;
+  width: 100%;
+  max-width: 1200px;
+  height: auto;
+  padding: 30px;
+  background-color: black;
+  border-radius: 50px;
+  border: 3px solid whitesmoke;
+  margin-bottom: 20px;
+}
+
+.name {
+  margin-left: 0;
+  margin-top: 20px;
+  font-size: 1.5rem;
+  color: wheat;
+  background-color: black;
+  border-radius: 50px;
+  padding: 15px;
+  border: 3px solid whitesmoke;
+  align-self: flex-end;
+}
+
+.contact {
+  background-color: #febe8c;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: auto;
+  padding: 50px 20px;
+}
+
+.box {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #f5ebe0;
+  height: auto;
+  width: 100%;
+  max-width: 1200px;
+  border: 2px dashed #434242;
+  padding: 30px;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.para {
+  font-size: 1.25rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+footer {
+  background-color: #f9f9c5;
+  display: flex;
+  justify-content: center;
+  padding: 30px;
+  font-size: 1.1rem;
+  font-weight: 500;
+  text-align: center;
+}
+
+.butts:visited,
+.butts:link {
+  font-size: 20px;
+  font-weight: 600;
+  border-radius: 50px;
+  padding: 10px;
+  background-color: lightsalmon;
+  color: black;
+}
+
+/* Media Queries */
+@media (max-width: 1200px) {
+  .rev {
+    font-size: 1.3rem;
+  }
+
+  .name {
+    font-size: 1.3rem;
+  }
+}
+
+@media (max-width: 992px) {
+  header {
+    gap: 40px;
+  }
+
+  .hero {
+    font-size: 2rem;
+  }
+
+  .desc {
+    font-size: 1.1rem;
+  }
+
+  .dishes {
+    font-size: 2rem;
+  }
+
+  .info {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .nav {
+    flex-direction: column;
+    padding: 20px;
+  }
+
+  .logo {
+    margin-bottom: 15px;
+  }
+
+  header {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .text {
+    text-align: center;
+  }
+
+  .hero {
+    font-size: 1.8rem;
+  }
+
+  .rev {
+    font-size: 1.1rem;
+  }
+
+  .name {
+    font-size: 1.1rem;
+  }
+
+  .box {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+@media (max-width: 576px) {
+  .links {
+    font-size: 18px;
+  }
+
+  .hero {
+    font-size: 1.5rem;
+  }
+
+  .desc {
+    font-size: 1rem;
+  }
+
+  .dishes {
+    font-size: 1.5rem;
+  }
+
+  .info {
+    font-size: 1rem;
+  }
+
+  .rev {
+    padding: 20px;
+  }
+
+  .para {
+    font-size: 1rem;
+  }
+
+  footer {
+    font-size: 1rem;
+  }
+}
+/* Meth Vial Hamburger Replacement */
+.meth-vial {
+  width: 30px;
+  height: 40px;
+  background: #1f4e6a;
+  border-radius: 3px 3px 15px 15px;
+  position: relative;
+  overflow: hidden;
+}
+
+.liquid {
+  width: 100%;
+  height: 70%;
+  background: #4a9bdc;
+  position: absolute;
+  bottom: 0;
+  animation: shimmer 2s infinite;
+}
+
+.bubbles {
+  position: absolute;
+  width: 100%;
+  height: 20px;
+  top: 10px;
+}
+
+.bubbles::before {
+  content: '';
+  display: block;
+  width: 5px;
+  height: 5px;
+  background: white;
+  border-radius: 50%;
+  position: absolute;
+  left: 5px;
+  animation: bubble 1.5s infinite;
+}
+
+.bubbles::after {
+  content: '';
+  display: block;
+  width: 3px;
+  height: 3px;
+  background: white;
+  border-radius: 50%;
+  position: absolute;
+  right: 7px;
+  animation: bubble 2s infinite;
+}
+
+@keyframes shimmer {
+  0% { opacity: 0.7; }
+  50% { opacity: 1; }
+  100% { opacity: 0.7; }
+}
+
+@keyframes bubble {
+  0% { transform: translateY(0); opacity: 0; }
+  50% { opacity: 1; }
+  100% { transform: translateY(-15px); opacity: 0; }
+}
+/* Breaking Bad Theme - Improved Colors */
+.meth-theme {
+  background-color: #0a0e11 !important;
+  color: #e0e0e0 !important;
+}
+
+.meth-theme .nav {
+  background-color: #0a0c10 !important;
+  border-bottom: 2px solid #1d8348 !important;
+}
+
+.meth-theme .nav a {
+  color: #58d68d !important;
+}
+
+.meth-theme header,
+.meth-theme section {
+  background-color: #0d1215 !important;
+  border-bottom: 1px solid #1d8348;
+}
+
+.meth-theme .testimony {
+  background-color: #121712 !important;
+  position: relative;
+}
+
+.meth-theme .testimony::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 8px;
+  background: repeating-linear-gradient(45deg, #1d8348, #1d8348 10px, #121712 10px, #121712 20px);
+}
+
+.meth-theme .info p:first-child::before {
+  content: attr(data-element);
+  position: absolute;
+  left: 0; top: 50%;
+  transform: translateY(-50%);
+  width: 30px; height: 30px;
+  background-color: #1d8348;
+  border: 1px solid #2ecc71;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+
+.meth-theme .info p:first-child {
+  position: relative;
+  padding-left: 38px;
+}
+/* Dripping Cheese Navbar Items */
+.links {
+  display: inline-block;
+  background-color: #ffc72c;
+  color: #5a3800 !important;
+  padding: 8px 15px;
+  border-radius: 8px 8px 12px 12px;
+  font-weight: 600;
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.4);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+  position: relative;
+  margin-bottom: 10px;
+  transition: all 0.3s;
+}
+
+/* Cheese drips */
+.links::before,
+.links::after {
+  content: '';
+  position: absolute;
+  background-color: #ffc72c;
+  border-radius: 0 0 10px 10px;
+  bottom: -8px;
+  height: 10px;
+  z-index: -1;
+}
+
+.links::before {
+  width: 12px;
+  left: 30%;
+  animation: drip 3s infinite;
+}
+
+.links::after {
+  width: 8px;
+  right: 25%;
+  animation: drip 2.5s 0.5s infinite;
+}
+
+/* Dripping animation */
+@keyframes drip {
+  0%, 100% { height: 10px; }
+  50% { height: 18px; }
+}
+
+/* Add span wrappers to navbar links for the hole effect */
+.links span {
+  position: relative;
+}
+
+.links span::before,
+.links span::after {
+  content: '';
+  position: absolute;
+  background-color: rgba(255, 200, 150, 0.4);
+  border-radius: 50%;
+  z-index: 1;
+}
+
+.links span::before {
+  width: 6px;
+  height: 6px;
+  left: -10px;
+  top: 3px;
+}
+
+.links span::after {
+  width: 8px;
+  height: 8px;
+  right: -15px;
+  bottom: 2px;
+}
+
+/* Acid theme for Breaking Bad */
+.meth-theme .links {
+  background: linear-gradient(180deg, #1a6e39, #155d30);
+  color: #000 !important;
+  border: 1px solid #538000;
+  box-shadow: 0 0 8px rgba(164, 224, 0, 0.6);
+  text-shadow: none;
+}
+
+.meth-theme .links::before,
+.meth-theme .links::after {
+  background-color: #a4e000;
+  filter: drop-shadow(0 0 4px rgba(164, 224, 0, 0.6));
+  animation: acidDrip 2s infinite;
+}
+
+@keyframes acidDrip {
+  0% { height: 10px; opacity: 1; }
+  80% { height: 25px; opacity: 0.8; }
+  100% { height: 10px; opacity: 0.2; }
+}
+
+.meth-theme .links:hover {
+  background: linear-gradient(180deg, #c3ff00, #9fd800);
+  box-shadow: 0 0 12px rgba(195, 255, 0, 0.8);
+}
+
+.meth-theme .links span::before,
+.meth-theme .links span::after {
+  background: rgba(0, 40, 0, 0.2);
+  box-shadow: 0 0 5px rgba(195, 255, 0, 0.4) inset;
+}
+/* Refined Cheese drips */
+.links::before,
+.links::after {
+  content: '';
+  position: absolute;
+  background-color: #ffc72c;
+  border-radius: 0 0 10px 10px;
+  bottom: -10px;
+  z-index: -1;
+  animation: drip 3s infinite ease-in-out;
+}
+
+.links::before {
+  width: 10px;
+  height: 15px;
+  left: 25%;
+  animation-delay: 0.2s;
+}
+
+.links::after {
+  width: 12px;
+  height: 18px;
+  right: 20%;
+  animation-delay: 0.5s;
+}
+
+/* Additional drips for more variation */
+.links span::before,
+.links span::after {
+  content: '';
+  position: absolute;
+  background-color: #ffc72c;
+  border-radius: 0 0 8px 8px;
+  bottom: -12px;
+  z-index: -1;
+}
+
+.links span::before {
+  width: 8px;
+  height: 12px;
+  left: 10%;
+  animation: drip 2.8s infinite ease-in-out;
+  animation-delay: 0.3s;
+}
+
+.links span::after {
+  width: 6px;
+  height: 10px;
+  right: 15%;
+  animation: drip 3.2s infinite ease-in-out;
+  animation-delay: 0.6s;
+}
+
+/* Enhanced dripping animation */
+@keyframes drip {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(10px);
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+}
+.cart-icon {
+  position: fixed;
+  top: 80px;
+  right: 20px;
+  background: #ffc72c;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  z-index: 100;
+}
+
+.cart-count {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background: #e74c3c;
+  color: white;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.meth-theme .cart-icon {
+  background: #1d8348;
+}
+
+.meth-theme .cart-icon svg {
+  fill: white;
+}
+
+.cart-sidebar {
+  position: fixed;
+  top: 0;
+  right: -300px;
+  width: 300px;
+  height: 100%;
+  background: white;
+  z-index: 1000;
+  box-shadow: -2px 0 5px rgba(0,0,0,0.2);
+  transition: right 0.3s ease;
+}
+
+.cart-sidebar.open {
+  right: 0;
+}
+
+.cart-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+  z-index: 999;
+  display: none;
+}
+
+.cart-overlay.open {
+  display: block;
+}
+
+.cart-header {
+  padding: 15px;
+  background: #ffc72c;
+  color: #5a3800;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.close-cart {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.cart-items {
+  padding: 15px;
+  max-height: calc(100% - 130px);
+  overflow-y: auto;
+}
+
+.cart-item {
+  display: flex;
+  margin-bottom: 15px;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 15px;
+}
+
+.cart-item-img {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+}
+
+.cart-item-details {
+  flex: 1;
+  padding: 0 10px;
+}
+
+.cart-item-title {
+  font-weight: bold;
+}
+
+.cart-item-price {
+  color: #e74c3c;
+}
+
+.cart-item-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.item-qty-btn {
+  background: #eee;
+  border: none;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.item-qty {
+  width: 20px;
+  text-align: center;
+}
+
+.cart-footer {
+  padding: 15px;
+  background: #f9f9f9;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+.cart-total {
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.checkout-btn {
+  width: 100%;
+  padding: 10px;
+  background: #ffc72c;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.add-to-cart {
+  padding: 5px 10px;
+  background: #ffc72c;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+/* Meth theme */
+.meth-theme .cart-header {
+  background: #1d8348;
+  color: white;
+}
+
+.meth-theme .checkout-btn {
+  background: #1d8348;
+  color: white;
+}
+
+.meth-theme .add-to-cart {
+  background: #1d8348;
+  color: white;
+}
+
+.meth-theme .cart-sidebar {
+  background: #121712;
+  color: #e0e0e0;
+}
+
+.meth-theme .cart-footer {
+  background: #0a0e11;
+}
+/* Add to your CSS file */
+#gales-notebook {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  max-width: 600px;
+  background: #f0e6d2;
+  border: 3px solid #8B4513;
+  border-radius: 5px;
+  box-shadow: 0 0 30px rgba(0,0,0,0.5);
+  z-index: 9999;
+  display: none;
+  font-family: 'Courier New', monospace;
+}
+
+#gales-notebook.visible {
+  display: block;
+  animation: fadeIn 0.5s;
+}
+
+.notebook-cover {
+  background: #8B4513;
+  color: white;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.notebook-content {
+  padding: 20px;
+  text-align: center;
+}
+
+.notebook-content img {
+  max-width: 100%;
+  border: 1px solid #ddd;
+  margin-bottom: 15px;
+  ;
+}
+
+.close-notebook {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+body.notebook-open::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.7);
+  z-index: 9998;
+}
+/* No-scroll fixed size for Gale's notebook */
+#gales-notebook {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 500px;
+  max-width: 90vw;
+  max-height: 80vh;
+  background: #f0e6d2;
+  border: 3px solid #8B4513;
+  border-radius: 5px;
+  box-shadow: 0 0 30px rgba(0,0,0,0.5);
+  z-index: 9999;
+  overflow: hidden;
+  padding: 0;
+}
+
+.notebook-content {
+  padding: 15px;
+  overflow: hidden;
+}
+
+.notebook-content img {
+  max-width: 100%;
+  height: auto;
+  max-height: 30vh;
+  object-fit: contain;
+}
+
+.notebook-content pre {
+  font-size: 14px;
+  max-height: none;
+  overflow: hidden;
+}
+
+@media (max-width: 768px) {
+  #gales-notebook {
+    width: 400px;
+    max-height: 70vh;
+  }
+
+  .notebook-content img {
+    max-height: 25vh;
+  }
+}
+
+@media (max-width: 480px) {
+  #gales-notebook {
+    width: 300px;
+    max-height: 60vh;
+  }
+
+  .notebook-content pre {
+    font-size: 12px;
+  }
+}
+/* Black dropdown menu with proper display rules */
+.meth-theme .nav ul {
+  display: none !important; /* Hidden by default on mobile */
+}
+
+/* Show navigation on desktop screens (standard horizontal menu) */
+@media (min-width: 769px) {
+  .meth-theme .nav ul {
+    display: flex !important;
+    flex-direction: row;
+    position: static;
+    background-color: transparent !important;
+    padding: 0;
+  }
+
+  .meth-theme .hamburger {
+    display: none !important;
+  }
+}
+
+/* Only show dropdown on small screens when active */
+@media (max-width: 768px) {
+  .meth-theme .hamburger {
+    display: flex !important; /* Ensure hamburger/vial is visible */
+  }
+
+  .meth-theme .nav ul.active {
+    display: block !important;
+    background-color: #0a0c10 !important;
+    border: 1px solid #1d8348;
+    border-top: none;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    padding: 10px 0;
+  }
+
+  .meth-theme .nav ul.active a {
+    color: #2ecc71 !important;
+    padding: 10px 15px;
+    display: block;
+    border-left: 2px solid transparent;
+    transition: all 0.2s ease;
+  }
+
+  .meth-theme .nav ul.active a:hover {
+    border-left: 2px solid #2ecc71;
+    background: rgba(29, 131, 72, 0.15);
+  }
+}
+
+/* Normal Theme Footer - Enhanced */
+footer {
+  background: #fff8e1;
+  padding: 25px 20px;
+  position: relative;
+  border-top: 3px solid #ffc72c;
+  box-shadow: inset 0 8px 15px -10px rgba(90, 56, 0, 0.2);
+  overflow: hidden;
+}
+
+/* Chicken track pattern background */
+footer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60' opacity='0.07'%3E%3Cpath d='M10 15 Q13 12 16 15 Q19 18 16 21 Q13 24 10 21 Z M35 15 Q38 12 41 15 Q44 18 41 21 Q38 24 35 21 Z M22.5 25 Q25.5 22 28.5 25 Q31.5 28 28.5 31 Q25.5 34 22.5 31 Z'/%3E%3C/svg%3E");
+  pointer-events: none;
+  opacity: 0.15;
+}
+
+/* Content container */
+footer .footer-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+/* Logo and info section */
+footer .footer-logo {
+  flex: 1;
+  min-width: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+footer .footer-logo img {
+  height: 60px;
+  margin-bottom: 10px;
+  transform-origin: left center;
+  transition: transform 0.3s ease;
+}
+
+footer .footer-logo:hover img {
+  transform: scale(1.05);
+}
+
+footer .footer-logo p {
+  color: #5a3800;
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+/* Navigation links */
+footer .footer-nav {
+  flex: 1;
+  min-width: 150px;
+}
+
+footer .footer-nav h4 {
+  color: #5a3800;
+  margin-bottom: 15px;
+  font-weight: 600;
+  position: relative;
+  display: inline-block;
+}
+
+footer .footer-nav h4::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: #ffc72c;
+  border-radius: 2px;
+}
+
+footer .footer-nav ul {
+  list-style: none;
+}
+
+footer .footer-nav li {
+  margin-bottom: 8px;
+}
+
+footer .footer-nav a {
+  color: #7a5800;
+  text-decoration: none;
+  transition: all 0.2s;
+  position: relative;
+  padding-left: 0;
+}
+
+footer .footer-nav a::before {
+  content: '🍗';
+  font-size: 12px;
+  position: absolute;
+  left: -20px;
+  opacity: 0;
+  transition: all 0.2s;
+}
+
+footer .footer-nav a:hover {
+  color: #ff8c00;
+  padding-left: 22px;
+}
+
+footer .footer-nav a:hover::before {
+  left: 0;
+  opacity: 1;
+}
+
+/* Newsletter signup form */
+footer .footer-newsletter {
+  flex: 1;
+  min-width: 250px;
+}
+
+footer .footer-newsletter h4 {
+  color: #5a3800;
+  margin-bottom: 15px;
+  font-weight: 600;
+}
+
+footer .newsletter-form {
+  display: flex;
+  position: relative;
+}
+
+footer .newsletter-form input {
+  flex: 1;
+  padding: 12px 15px;
+  border: 2px solid #ffc72c;
+  border-radius: 30px;
+  background: white;
+  font-family: Raleway, sans-serif;
+  outline: none;
+  transition: all 0.2s;
+}
+
+footer .newsletter-form input:focus {
+  border-color: #ff8c00;
+  box-shadow: 0 0 0 3px rgba(255, 140, 0, 0.1);
+}
+
+footer .newsletter-form button {
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  bottom: 5px;
+  padding: 0 20px;
+  background: #ffc72c;
+  border: none;
+  border-radius: 25px;
+  color: #5a3800;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+footer .newsletter-form button:hover {
+  background: #ff8c00;
+  color: white;
+}
+
+/* Social media icons */
+footer .social-icons {
+  display: flex;
+  gap: 12px;
+  margin-top: 15px;
+}
+
+footer .social-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #ffc72c;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #5a3800;
+  transition: all 0.3s;
+  transform: translateY(0);
+  cursor: pointer;
+}
+
+footer .social-icon:hover {
+  background: #ff8c00;
+  color: white;
+  transform: translateY(-5px);
+}
+
+/* Bottom bar with copyright */
+footer .footer-bottom {
+  margin-top: 30px;
+  padding-top: 15px;
+  border-top: 1px dashed #d9b866;
+  text-align: center;
+  color: #7a5800;
+  font-size: 14px;
+  position: relative;
+}
+
+/* Secret spice blend animation */
+footer .footer-bottom::before {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 20px;
+  background: #fff8e1;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 0 2px #ffc72c;
+  font-size: 12px;
+  white-space: nowrap;
+  color: #5a3800;
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+footer .footer-bottom:hover::before {
+  content: '11 Secret Herbs & Spices';
+  width: 160px;
+}
+
+/* Location pin bounce effect */
+@keyframes pinBounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+/* Animated cook hat */
+footer .cook-hat {
+  position: absolute;
+  bottom: 70px;
+  right: 40px;
+  width: 50px;
+  height: 40px;
+  opacity: 0.2;
+  transition: all 0.5s ease;
+  transform-origin: bottom center;
+  animation: chefHat 10s ease-in-out infinite;
+}
+
+@keyframes chefHat {
+  0%, 100% { transform: rotate(-5deg); }
+  50% { transform: rotate(5deg); }
+}
+
+footer:hover .cook-hat {
+  opacity: 0.8;
+  animation: chefHat 3s ease-in-out infinite;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  footer .footer-content {
+    flex-direction: column;
+  }
+
+  footer .footer-logo img {
+    margin: 0 auto 15px;
+  }
+
+  footer .cook-hat {
+    display: none;
+  }
+}
+/* Responsive Footer Styles - Base Rules */
+footer {
+  padding: 25px 20px;
+  position: relative;
+}
+
+footer .footer-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Base responsive adjustments */
+@media (max-width: 992px) {
+  footer .footer-content {
+    gap: 20px;
+  }
+
+  footer .social-icons {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 768px) {
+  footer .footer-content {
+    grid-template-columns: 1fr;
+  }
+
+  footer .footer-logo,
+  footer .footer-nav,
+  footer .footer-newsletter {
+    text-align: center;
+  }
+
+  footer .footer-nav ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  footer .newsletter-form {
+    max-width: 400px;
+    margin: 0 auto;
+  }
+
+  footer .cook-hat {
+    display: none;
+  }
+}
+
+@media (max-width: 576px) {
+  footer {
+    padding: 20px 15px;
+  }
+
+  footer .footer-bottom {
+    font-size: 13px;
+  }
+
+  footer .footer-nav a {
+    font-size: 14px;
+  }
+}
+
+/* Meth Theme Specific Responsive Styles */
+@media (max-width: 768px) {
+  body.meth-theme .footer-content > div:not(:last-child) {
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid rgba(46, 204, 113, 0.2);
+  }
+
+  body.meth-theme .footer-nav a {
+    display: inline-flex;
+    align-items: center;
+    margin: 5px 0;
+    padding: 5px 0 5px 38px;
+  }
+
+  body.meth-theme .footer-nav ul {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+@media (max-width: 480px) {
+  body.meth-theme .newsletter-form {
+    flex-direction: column;
+  }
+
+  body.meth-theme .newsletter-form input {
+    margin-bottom: 10px;
+    width: 100%;
+    height: 40px;
+    font-size: 16px;
+  }
+
+  body.meth-theme .newsletter-form button {
+    width: 100%;
+    height: 40px;
+    font-size: 16px;
+  }
+
+  body.meth-theme .footer-nav a::before {
+    width: 25px;
+    height: 25px;
+    font-size: 10px;
+  }
+
+  body.meth-theme .footer-nav a {
+    padding-left: 33px;
+    font-size: 14px;
+  }
+
+  body.meth-theme .social-icon {
+    width: 32px;
+    height: 32px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 380px) {
+  footer .footer-content {
+    gap: 15px;
+  }
+
+  body.meth-theme .footer-content {
+    padding: 10px;
+  }
+
+  body.meth-theme .footer-logo img {
+    max-width: 120px;
+  }
+
+  body.meth-theme .footer-nav a {
+    font-size: 13px;
+    padding: 8px 0 8px 30px;
+  }
+
+  body.meth-theme .social-icons {
+    gap: 15px;
+  }
+
+  body.meth-theme .social-icon {
+    width: 28px;
+    height: 28px;
+  }
+
+  body.meth-theme .footer-bottom p {
+    font-size: 12px;
+    line-height: 1.4;
+    padding: 5px 0;
+  }
+
+  body.meth-theme .footer-nav a::before {
+    width: 22px;
+    height: 22px;
+    font-size: 9px;
+  }
+}
+/* Newsletter form button styling */
+.newsletter-form button {
+  padding: 8px 12px;
+  background-color: #ffc72c;
+  color: #5a3800;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s;
+}
+
+.newsletter-form button:hover {
+  background-color: #ffb700;
+}
+
+/* Theme-specific button styling */
+body.meth-theme .newsletter-form button {
+  background-color: #1d8348;
+  color: white;
+}
+
+body.meth-theme .newsletter-form button:hover {
+  background-color: #2ecc71;
+}
+
+/* Responsive design for newsletter form */
+@media screen and (max-width: 768px) {
+  .newsletter-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .newsletter-form input {
+    width: 100%;
+    padding: 8px;
+  }
+
+  .newsletter-form button {
+    width: auto;
+    max-width: 120px;
+    font-size: 14px;
+    padding: 6px 10px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .footer-newsletter {
+    text-align: center;
+  }
+
+  .newsletter-form {
+    align-items: center;
+  }
+
+  .newsletter-form button {
+    max-width: 100px;
+  }
+}
+
+
+body.meth-theme h1,
+body.meth-theme h2,
+body.meth-theme h3,
+body.meth-theme h4 {
+  color: #58d68d !important;
+}
+
+body.meth-theme .nav-links a {
+  color: #58d68d !important;
+}
+
+body.meth-theme .dishes,
+body.meth-theme .hero,
+body.meth-theme .subtitle {
+  color: #fff !important;
+}
+
+body.meth-theme .section-title {
+  color: #2ecc71 !important;
+}
+
+body.meth-theme .footer-content {
+  color: #e0e0e0 !important;
+}
+
+body.meth-theme .footer-nav a {
+  color: #58d68d !important;
+}
+
+body.meth-theme .footer-nav a:hover {
+  color: #2ecc71 !important;
+}
+
+body.meth-theme .footer-bottom p {
+  color: #e0e0e0 !important;
+}
+
+body.meth-theme .card-title,
+body.meth-theme .card-price {
+  color: #58d68d !important;
+}
+/* Add this to your CSS */
+.gus-glasses {
+  display: inline-block;
+  margin-bottom: 10px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.gus-glasses:hover {
+  transform: scale(1.1);
+}
+
+.gus-glasses svg {
+  display: block;
+}
+
+body.meth-theme .gus-glasses svg .glasses {
+  stroke: #2ecc71;
+}
+
+.gus-glasses svg .reflection {
+  stroke: #999;
+}
+
+/* Animation for theme switch */
+@keyframes glassesFlash {
+  0% { transform: scale(1); filter: brightness(1); }
+  50% { transform: scale(1.2); filter: brightness(1.5); }
+  100% { transform: scale(1); filter: brightness(1); }
+}
+
+.gus-glasses.flash {
+  animation: glassesFlash 0.5s ease-out;
+}
+/* Chemical icons for Breaking Bad theme footer nav */
+body.meth-theme .footer-nav a::before {
+  content: "";
+  position: absolute;
+  left: -20px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0;
+  transition: all 0.2s;
+  filter: brightness(0.9);
+}
+
+/* Beaker icon for first nav item */
+body.meth-theme .footer-nav li:nth-child(1) a::before {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%232ecc71' d='M3 3h18v4H3V3zm10 4v2h2v12h-4v-2H9v-3H7v-2h2v-1H7V9h2V7h4z'/%3E%3C/svg%3E");
+}
+
+/* Erlenmeyer flask for second nav item */
+body.meth-theme .footer-nav li:nth-child(2) a::before {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%232ecc71' d='M5 19a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1c0-.21-.07-.41-.18-.57L13 8.35V4h-2v4.35L5.18 18.43c-.11.16-.18.36-.18.57M5 19L9.5 9.5 12 12 15 8l4 11H5zm7-4.5l-1-1-2 3h5.5l-2.5-2z'/%3E%3C/svg%3E");
+}
+
+/* Atom icon for third nav item */
+body.meth-theme .footer-nav li:nth-child(3) a::before {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%232ecc71' d='M12 13C10.9 13 10 12.1 10 11S10.9 9 12 9 14 9.9 14 11 13.1 13 12 13M12 3C7.03 3 3 7.03 3 12S7.03 21 12 21C14 21 15.92 20.34 17.5 19.14L16.06 17.7C14.87 18.54 13.45 19 12 19C8.13 19 5 15.87 5 12S8.13 5 12 5 19 8.13 19 12H21C21 7.03 16.97 3 12 3M15 15H17V17H15V15M17 7H15V13H17V7Z'/%3E%3C/svg%3E");
+}
+
+/* Formula icon for fourth nav item */
+body.meth-theme .footer-nav li:nth-child(4) a::before {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%232ecc71' d='M6 7C6 5.62 7.12 4.5 8.5 4.5S11 5.62 11 7 9.88 9.5 8.5 9.5 6 8.38 6 7M11 15C11 13.62 12.12 12.5 13.5 12.5S16 13.62 16 15 14.88 17.5 13.5 17.5 11 16.38 11 15M18 4V14C16.91 14.68 16.24 15.8 16.06 17H2V15H14.06C14.18 14 14.82 13.15 15.74 12.74L18 11V6H15V4H18Z'/%3E%3C/svg%3E");
+}
+
+/* Enhanced hover effects */
+body.meth-theme .footer-nav a:hover {
+  color: #2ecc71 !important;
+  padding-left: 26px;
+}
+
+body.meth-theme .footer-nav a:hover::before {
+  left: 0;
+  opacity: 1;
+  filter: drop-shadow(0 0 3px rgba(46, 204, 113, 0.7));
+  animation: chemicalPulse 1.5s infinite;
+}
+
+@keyframes chemicalPulse {
+  0% { transform: translateY(-50%) scale(1); }
+  50% { transform: translateY(-50%) scale(1.15); }
+  100% { transform: translateY(-50%) scale(1); }
+}
+/* Footer responsiveness */
+@media (max-width: 768px) {
+  footer {
+    padding: 20px 10px !important;
+    flex-direction: column !important;
+  }
+
+  footer > div {
+    width: 100% !important;
+    margin-bottom: 15px !important;
+    text-align: center !important;
+  }
+
+  .footer-logo {
+    margin: 0 auto 15px auto !important;
+  }
+
+  .gus-glasses {
+    margin: 0 auto 15px auto !important;
+  }
+
+  footer p, footer .copyright {
+    text-align: center !important;
+    margin: 5px 0 !important;
+  }
+}
+
+/* Additional fixes for meth theme */
+@media (max-width: 768px) {
+  body.meth-theme footer {
+    padding: 20px 10px !important;
+  }
+
+  body.meth-theme footer p,
+  body.meth-theme footer .copyright {
+    color: #58d68d !important;
+  }
+}
+/* For mobile view in Breaking Bad theme */
+@media (max-width: 768px) {
+  body.meth-theme .nav ul.active li a {
+    display: inline-block !important;
+    width: auto !important;
+    padding: 10px 15px !important;
+  }
+
+  body.meth-theme .nav ul.active li {
+    display: block;
+    text-align: left;
+    margin: 0;
+  }
+}
+/* Fix for hamburger menu appearing above cart in mobile view */
+@media (max-width: 768px) {
+  /* Give cart elements higher z-index than anything else */
+  .cart-sidebar,
+  .cart-sidebar.open,
+  .cart-overlay.open {
+    z-index: 1010 !important;
+  }
+
+  /* Ensure hamburger stays below cart */
+  body.meth-theme .hamburger,
+  .hamburger,
+  .meth-vial {
+    z-index: 1000 !important;
+  }
+
+  /* Hide hamburger when cart is open - multiple selectors for better coverage */
+  body.cart-open .hamburger,
+  .cart-overlay.open ~ * .hamburger,
+  .cart-sidebar.open ~ * .hamburger,
+  html:has(.cart-sidebar.open) .hamburger {
+    visibility: hidden !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+  }
+}
+/* Remove cart overlay completely */
+.cart-overlay,
+.cart-overlay.open {
+  opacity: 0 !important;
+  visibility: hidden !important;
+  display: none !important;
+  background: transparent !important;
+}
+
+/* Ensure cart remains visible and functional */
+.cart-sidebar,
+.cart-sidebar.open {
+  z-index: 1020 !important;
+  box-shadow: -2px 0 10px rgba(0,0,0,0.2) !important; /* Optional: add shadow for depth */
+}
+/* Modern confirmation animation */
+.confirmation-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(5px);
+  z-index: 2000;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.confirmation-overlay.active {
+  opacity: 1;
+}
+
+.confirmation-box {
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  padding: 30px;
+  max-width: 350px;
+  width: 90%;
+  text-align: center;
+  transform: translateY(20px);
+  transition: transform 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.confirmation-overlay.active .confirmation-box {
+  transform: translateY(0);
+}
+
+.confirmation-icon {
+  position: relative;
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 20px;
+}
+
+.confirmation-icon::before {
+  content: '';
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  background: #f0f7ff;
+  border-radius: 50%;
+  transform: scale(0);
+  animation: circle-appear 0.5s forwards;
+}
+
+.confirmation-icon svg {
+  position: relative;
+  z-index: 1;
+  width: 40px;
+  height: 40px;
+  stroke: #4CAF50;
+  stroke-width: 3;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.confirmation-icon svg path {
+  stroke-dasharray: 100;
+  stroke-dashoffset: 100;
+  animation: draw-check 0.6s 0.2s forwards cubic-bezier(0.4, 0.0, 0.2, 1);
+}
+
+.confirmation-box h3 {
+  font-size: 22px;
+  margin: 0 0 10px;
+  opacity: 0;
+  transform: translateY(10px);
+  animation: fade-in 0.4s 0.6s forwards;
+}
+
+.confirmation-box p {
+  margin: 0 0 15px;
+  opacity: 0;
+  transform: translateY(10px);
+  animation: fade-in 0.4s 0.7s forwards;
+}
+
+.confirmation-box #close-confirmation {
+  background: #4CAF50;
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 16px;
+  cursor: pointer;
+  transform: translateY(10px);
+  opacity: 0;
+  animation: fade-in 0.4s 0.8s forwards;
+  transition: all 0.3s;
+  box-shadow: 0 4px 10px rgba(76, 175, 80, 0.2);
+}
+
+.confirmation-box #close-confirmation:hover {
+  background: #3d9140;
+  box-shadow: 0 6px 12px rgba(76, 175, 80, 0.25);
+}
+
+@keyframes circle-appear {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  40% {
+    transform: scale(1.2);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes draw-check {
+  0% {
+    stroke-dashoffset: 100;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes fade-in {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Add Breaking Bad theme support */
+body.meth-theme .confirmation-box {
+  background: #0d1215;
+  border: 1px solid #1d8348;
+}
+
+body.meth-theme .confirmation-icon::before {
+  background: rgba(29, 131, 72, 0.2);
+}
+
+body.meth-theme .confirmation-icon svg path {
+  stroke: #2ecc71;
+}
+
+body.meth-theme .confirmation-box h3,
+body.meth-theme .confirmation-box p {
+  color: #e0e0e0;
+}
+
+body.meth-theme .confirmation-box #close-confirmation {
+  background: #1d8348;
+  box-shadow: 0 4px 10px rgba(29, 131, 72, 0.4);
+}
+
+body.meth-theme .confirmation-box #close-confirmation:hover {
+  background: #16a085;
+}
+/* Hide cart badge when empty */
+.cart-badge:empty,
+.cart-badge[data-count="0"] {
+  display: none !important;
+}
+
+/* Show cart badge when there are items */
+.cart-badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  min-width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background-color: #ff3b30;
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 0 4px;
+  box-sizing: border-box;
+  transform: scale(0);
+  transition: transform 0.2s ease-out;
+}
+
+/* Badge animation when visible */
+.cart-badge[data-count]:not([data-count="0"]) {
+  transform: scale(1);
+}
+
+.gus-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(5px);
+  z-index: 2000;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.gus-overlay.active {
+  opacity: 1;
+}
+
+.gus-modal {
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  padding: 30px;
+  max-width: 350px;
+  width: 90%;
+  text-align: center;
+  transform: translateY(20px);
+  transition: transform 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.gus-overlay.active .gus-modal {
+  transform: translateY(0);
+}
+
+.gus-portrait {
+  width: 120px;
+  height: 120px;
+  margin: 0 auto 20px;
+  transform: scale(0);
+  animation: portrait-appear 0.6s forwards cubic-bezier(0.2, 1.2, 0.3, 1);
+}
+
+@keyframes portrait-appear {
+  0% { transform: scale(0); }
+  70% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+.gus-modal h3 {
+  font-size: 22px;
+  margin: 0 0 10px;
+  opacity: 0;
+  transform: translateY(10px);
+  animation: fade-in 0.4s 0.4s forwards;
+}
+
+.gus-modal p {
+  margin: 0 0 20px;
+  opacity: 0;
+  transform: translateY(10px);
+  animation: fade-in 0.4s 0.5s forwards;
+}
+
+.close-gus-button {
+  background: #ffc72c;
+  color: #5a3800;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 16px;
+  cursor: pointer;
+  transform: translateY(10px);
+  opacity: 0;
+  animation: fade-in 0.4s 0.6s forwards;
+  transition: all 0.3s;
+  box-shadow: 0 4px 10px rgba(255, 199, 44, 0.2);
+}
+
+.close-gus-button:hover {
+  background: #ffb700;
+  box-shadow: 0 6px 12px rgba(255, 199, 44, 0.25);
+}
+
+/* Breaking Bad theme support */
+body.meth-theme .gus-modal {
+  background: #0d1215;
+  border: 1px solid #1d8348;
+}
+
+body.meth-theme .gus-modal h3,
+body.meth-theme .gus-modal p {
+  color: #e0e0e0;
+}
+
+body.meth-theme .close-gus-button {
+  background: #1d8348;
+  color: white;
+  box-shadow: 0 4px 10px rgba(29, 131, 72, 0.4);
+}
+
+body.meth-theme .close-gus-button:hover {
+  background: #16a085;
+}
+
+body.meth-theme .gus-portrait svg ellipse:first-child {
+  fill: #e0c0a0;
+}
+.gus-portrait img {
+  max-width: 100%;
+  border-radius: 5px;
+  animation: portrait-appear 0.6s forwards cubic-bezier(0.2, 1.2, 0.3, 1);
+}
+
+/* Ensure the animation still works properly */
+.gus-portrait {
+  width: 120px;
+  margin: 0 auto 20px;
+  transform: scale(0);
+}
+

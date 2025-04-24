@@ -1,0 +1,2084 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="pollos.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Raleway:wght@200;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
+    <title>Los Pollos Hermanos</title>
+  </head>
+  <body>
+    <div class="nav">
+      <button class="hamburger">
+        <!-- BUN TOP -->
+        <div class="bun-top">
+          <div class="seeds"></div>
+        </div>
+        <!-- PATTY -->
+        <div class="patty"></div>
+        <!-- LETTUCE (because why not) -->
+        <div class="lettuce"></div>
+        <!-- BUN BOTTOM -->
+        <div class="bun-bottom"></div>
+        <!-- CHEESE (melty) -->
+        <div class="cheese"></div>
+      </button>
+      <a href="#"
+        ><img class="logo" src="logo.png" alt="logo-picture"
+      /></a>
+      <div>
+        <ul>
+          <li><a class="links" href="#header"><span>About</span></a></li>
+          <li><a class="links" href="#sec2"><span>Dishes</span></a></li>
+          <li><a class="links" href="#tes"><span>Testimonials</span></a></li>
+          <li><a class="links contacts" href="#con"><span>Contact</span></a></li>
+        </ul>
+        <div class="cart-icon">
+          <span class="cart-count">0</span>
+          <svg viewBox="0 0 24 24" width="24" height="24">
+            <path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/>
+          </svg>
+        </div>
+
+        <!-- Cart sidebar -->
+        <div class="cart-sidebar">
+          <div class="cart-header">
+            <h3>Your Order</h3>
+            <button class="close-cart">×</button>
+          </div>
+          <div class="cart-items"></div>
+          <div class="cart-footer">
+            <div class="cart-total">Total: $<span>0</span></div>
+            <button class="checkout-btn">Checkout</button>
+          </div>
+        </div>
+        <div class="cart-overlay"></div>
+      </div>
+    </div>
+    <div class="container">
+      <header id="header">
+        <div class="text">
+          <p class="hero">
+            Los Pollos Hermanos, where something delicious is always cooking!
+          </p>
+          <p class="desc">
+            It's the best ingredients. The spiciest spices. All prepared with
+            loving care! And always delivered with a friendly smile. That's the
+            Los Pollos Hermanos promise.
+          </p>
+          <button><a class="butts" href="#">Order now!</a></button>
+        </div>
+        <img class="gus" src="lsp3.jpg" alt="picture-of-gustavo-fring" />
+      </header>
+      <section id="sec2">
+        <br />
+        <p class="dishes">Our Top Dishes.</p>
+        <div class="top">
+          <div class="cards">
+            <img
+              class="card"
+              src="pollos-tenders-menu.png"
+              alt="pollos-tenders"
+            />
+            <div class="info">
+              <p class="price">Pollos Chicken Tenders</p>
+              <p>$18</p>
+              <button class="add-to-cart" data-id="tenders" data-name="Pollos Chicken Tenders" data-price="18">Add to Cart</button>
+            </div>
+          </div>
+          <div class="cards">
+            <img
+              class="card"
+              src="abq-sandwich-menu.png"
+              alt="pollos-burger"
+            />
+            <div class="info">
+              <p class="price">ABQ Sandwich</p>
+              <p>$36</p>
+              <button class="add-to-cart" data-id="sandwiches" data-name="ABQ Sandwich" data-price="36">Add to Cart</button>
+            </div>
+          </div>
+          <div class="cards">
+            <img
+              class="card"
+              src="Fring-Fries-menu.png"
+              alt="fring-fries"
+            />
+            <div class="info">
+              <p class="price">Fring Fries</p>
+              <p>$9</p>
+              <button class="add-to-cart" data-id="fries" data-name="Fring Fries" data-price="9">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+      </section>
+      <div class="testimony" id="tes">
+        <br />
+        <p class="rev">
+          "Loved the food and Hospitality! Especially the owner Mr. Gus. He kind
+          of gives the vibes of a drug-lord but is such a sweet person in
+          reality."
+        </p>
+        <strong class="name">-gharib, Customer</strong>
+      </div>
+
+      <div class="contact" id="con">
+        <div class="box">
+          <div class="para">
+            <p>Call us now, We will send you food and love!</p>
+          </div>
+          <button class="butt"><a class="butts" href="">Click here</a></button>
+        </div>
+      </div>
+      <footer>
+        <div class="notebook-content">
+          <div id="gales-notebook" class="hidden">
+            <div class="notebook-cover">
+              <h3>Gale's Lab Notes</h3>
+              <button class="close-notebook">×</button>
+            </div>
+            <div class="notebook-content">
+              <img src="gale.webp" alt="Gale's Chemistry Formulas">
+              <p>"The stoichiometry is impeccable. 99.1% purity achievable via reductive amination..."</p>
+            </div>
+            <h4>Methylamine Synthesis</h4>
+            <pre>
+    CH₃Cl + NH₃ → CH₃NH₂ + HCl
+    Yield: 92% @ 150°C
+  </pre>
+            <h4>Crystallization Notes</h4>
+            <pre>
+    - Use aluminum amalgam
+    - Maintain pH 7.2-7.4
+    - Slow evaporation yields larger crystals
+  </pre>
+          </div>
+          </div>
+        <div class="footer-content">
+          <div class="footer-logo">
+            <img src="logo.png" alt="Los Pollos Hermanos">
+            <p>It's the best ingredients. The spiciest spices.</p>
+          </div>
+
+
+          <div class="footer-nav">
+            <h4>Menu</h4>
+            <ul>
+              <li><a href="#" data-element="Ch" data-atomic-number="35">Chicken</a></li>
+              <li><a href="#" data-element="Si" data-atomic-number="14">Sides</a></li>
+              <li><a href="#" data-element="Dr" data-atomic-number="99">Drinks</a></li>
+              <li><a href="#" data-element="Fm" data-atomic-number="100">Family Meals</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-newsletter">
+            <h4>Join Our Family</h4>
+            <div class="newsletter-form">
+              <input type="email" placeholder="Your email">
+              <button>Join</button>
+            </div>
+            <div class="social-icons">
+              <div class="social-icon">♥</div>
+              <div class="social-icon">★</div>
+              <div class="social-icon">✓</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <p>Copyright &#169; gharib 2025 - Los Pollos Hermanos</p>
+        </div>
+
+        <div class="cook-hat">
+          <svg viewBox="0 0 100 80" xmlns="http://www.w3.org/2000/svg">
+            <path d="M25,65 L75,65 L75,75 A25,5 0 1,1 25,75 Z" fill="#fcfcfc"/>
+            <path d="M30,65 C30,50 40,30 50,30 C60,30 70,50 70,65" fill="#fcfcfc"/>
+          </svg>
+        </div>
+
+      </footer>
+    </div>
+    <div id="empty-cart-modal" class="gus-overlay">
+      <div class="gus-modal">
+        <div class="gus-portrait">
+          <img src="empty-alert.png" alt="Gus Fring" width="120" height="auto">
+        </div>
+        <h3>I cannot proceed</h3>
+        <p>Your cart appears to be empty. Please add some of our fine products before checking out.</p>
+        <button id="close-empty-cart" class="close-gus-button">Understood</button>
+      </div>
+    </div>
+    <script>
+
+      // Create a global product name mapping
+      window.productNames = {
+        original: {
+          'tenders': 'Pollos Chicken Tenders',
+          'burger': 'Pollos Burger',
+          'fries': 'Fring Fries',
+
+        },
+        themed: {
+          'tenders': 'Blue Crystal',
+          'burger': 'Methylamine',
+          'fries': 'Crystal Fulminate',
+        }
+      };
+
+      // Get current product name based on theme
+      window.getCurrentProductName = function(id) {
+        const isThemedMode = document.body.classList.contains('meth-theme');
+        return isThemedMode ?
+                window.productNames.themed[id] || window.productNames.original[id] :
+                window.productNames.original[id];
+      };
+
+      document.addEventListener('DOMContentLoaded', function() {
+        // Fix hamburger menu functionality
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('.nav ul');
+
+        if (hamburger && navMenu) {
+          hamburger.addEventListener('click', function() {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+          });
+        }
+
+        // Create global cart object
+        window.cart = {
+          items: [],
+          total: 0,
+
+          addItem(id, price) {
+            const name = window.getCurrentProductName(id);
+            const existingItem = this.items.find(item => item.id === id);
+
+            if (existingItem) {
+              existingItem.quantity++;
+            } else {
+              this.items.push({
+                id,
+                name,
+                price,
+                quantity: 1
+              });
+            }
+
+            this.updateTotal();
+            this.render();
+          },
+
+          removeItem(id) {
+            const index = this.items.findIndex(item => item.id === id);
+            if (index !== -1) {
+              this.items.splice(index, 1);
+              this.updateTotal();
+              this.render();
+            }
+          },
+
+          updateQuantity(id, quantity) {
+            const item = this.items.find(item => item.id === id);
+            if (item) {
+              item.quantity = Math.max(1, quantity);
+              this.updateTotal();
+              this.render();
+            }
+          },
+
+          updateTotal() {
+            this.total = this.items.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+          },
+
+          refreshNames() {
+            this.items.forEach(item => {
+              item.name = window.getCurrentProductName(item.id);
+            });
+            this.render();
+          },
+
+          render() {
+            const cartItems = document.querySelector('.cart-items');
+            const cartCount = document.querySelector('.cart-count');
+            const cartTotal = document.querySelector('.cart-footer .cart-total span');
+
+            cartCount.textContent = this.items.reduce((sum, item) => sum + item.quantity, 0);
+            cartItems.innerHTML = '';
+
+            this.items.forEach(item => {
+              const cartItem = document.createElement('div');
+              cartItem.className = 'cart-item';
+              cartItem.innerHTML = `
+            <div class="cart-item-details">
+              <div class="cart-item-title">${item.name}</div>
+              <div class="cart-item-price">$${item.price}</div>
+            </div>
+            <div class="cart-item-actions">
+              <button class="item-qty-btn minus" data-id="${item.id}">-</button>
+              <span class="item-qty">${item.quantity}</span>
+              <button class="item-qty-btn plus" data-id="${item.id}">+</button>
+              <button class="item-remove" data-id="${item.id}">×</button>
+            </div>
+          `;
+              cartItems.appendChild(cartItem);
+            });
+
+            cartTotal.textContent = this.total;
+
+            document.querySelectorAll('.item-qty-btn.minus').forEach(btn => {
+              btn.addEventListener('click', () => {
+                const id = btn.getAttribute('data-id');
+                const item = this.items.find(item => item.id === id);
+                if (item && item.quantity > 1) {
+                  this.updateQuantity(id, item.quantity - 1);
+                }
+              });
+            });
+
+            document.querySelectorAll('.item-qty-btn.plus').forEach(btn => {
+              btn.addEventListener('click', () => {
+                const id = btn.getAttribute('data-id');
+                const item = this.items.find(item => item.id === id);
+                if (item) {
+                  this.updateQuantity(id, item.quantity + 1);
+                }
+              });
+            });
+
+            document.querySelectorAll('.item-remove').forEach(btn => {
+              btn.addEventListener('click', () => {
+                const id = btn.getAttribute('data-id');
+                this.removeItem(id);
+              });
+            });
+          }
+        };
+
+        // Initialize cart
+        window.cart.render();
+
+        // Add to Cart buttons
+        document.querySelectorAll('.add-to-cart').forEach(btn => {
+          btn.addEventListener('click', () => {
+            const id = btn.getAttribute('data-id');
+            const price = parseFloat(btn.getAttribute('data-price'));
+
+            window.cart.addItem(id, price);
+
+            // Show feedback
+            const feedback = document.createElement('div');
+            feedback.className = 'add-feedback';
+            feedback.textContent = 'Added to cart!';
+            feedback.style.cssText = `
+          position: fixed;
+          bottom: 20px;
+          right: 20px;
+          background: ${document.body.classList.contains('meth-theme') ? '#1d8348' : '#ffc72c'};
+          color: ${document.body.classList.contains('meth-theme') ? 'white' : '#5a3800'};
+          padding: 10px 20px;
+          border-radius: 5px;
+          z-index: 1000;
+          animation: fadeOut 2s forwards;
+        `;
+            document.body.appendChild(feedback);
+
+            setTimeout(() => {
+              feedback.remove();
+            }, 2000);
+          });
+        });
+
+        // Cart toggle
+        const cartIcon = document.querySelector('.cart-icon');
+        const cartSidebar = document.querySelector('.cart-sidebar');
+        const closeCart = document.querySelector('.close-cart');
+        const cartOverlay = document.querySelector('.cart-overlay');
+
+        cartIcon.addEventListener('click', () => {
+          cartSidebar.classList.add('open');
+          cartOverlay.classList.add('open');
+        });
+
+        function closeCartSidebar() {
+          cartSidebar.classList.remove('open');
+          cartOverlay.classList.remove('open');
+        }
+
+        closeCart.addEventListener('click', closeCartSidebar);
+        cartOverlay.addEventListener('click', closeCartSidebar);
+
+        // Checkout button
+        document.querySelector('.checkout-btn').addEventListener('click', () => {
+          if (window.cart.items.length === 0) {
+            showEmptyCartWarning()
+            return;
+          }
+
+          // Show the overlay with theme-specific styling
+          const overlay = document.getElementById('purchase-confirmation');
+          const totalElement = document.getElementById('confirmation-total');
+
+          // Update total amount
+          totalElement.textContent = window.cart.total;
+
+          // Apply theme styling if needed
+          if (document.body.classList.contains('meth-theme')) {
+            overlay.classList.add('meth-theme');
+          } else {
+            overlay.classList.remove('meth-theme');
+          }
+
+          // Display with animation
+          overlay.style.display = 'flex';
+          setTimeout(() => overlay.classList.add('active'), 10);
+
+          // Add confetti effect
+          createConfetti();
+
+          // Clear cart
+          window.cart.items = [];
+          window.cart.updateTotal();
+          window.cart.render();
+          closeCartSidebar();
+        });
+
+// Close confirmation when button is clicked
+        document.getElementById('close-confirmation').addEventListener('click', () => {
+          const overlay = document.getElementById('purchase-confirmation');
+          overlay.classList.remove('active');
+          setTimeout(() => overlay.style.display = 'none', 300);
+        });
+
+// Confetti effect function
+        function createConfetti() {
+          const confettiContainer = document.createElement('div');
+          confettiContainer.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:10001;';
+          document.body.appendChild(confettiContainer);
+
+          const colors = document.body.classList.contains('meth-theme')
+                  ? ['#1d8348', '#2ecc71', '#58d68d', '#a9dfbf', '#eafaf1']
+                  : ['#ffc72c', '#ffb700', '#ffa500', '#ff8c00', '#ff7600'];
+
+          for (let i = 0; i < 100; i++) {
+            const confetti = document.createElement('div');
+            confetti.style.cssText = `
+      position: absolute;
+      width: ${Math.random() * 10 + 5}px;
+      height: ${Math.random() * 5 + 5}px;
+      background-color: ${colors[Math.floor(Math.random() * colors.length)]};
+      top: -10px;
+      left: ${Math.random() * 100}vw;
+      opacity: ${Math.random() * 0.5 + 0.5};
+      animation: confetti ${Math.random() * 2 + 1}s linear forwards;
+      animation-delay: ${Math.random() * 2}s;
+    `;
+            confettiContainer.appendChild(confetti);
+          }
+
+          setTimeout(() => confettiContainer.remove(), 4000);
+        }
+
+        // Setup Easter egg sequence
+        const foodItems = document.querySelectorAll('.cards img');
+
+        if (foodItems.length >= 3) {
+          const tenders = Array.from(foodItems).find(img => img.alt === "pollos-tenders");
+          const burger = Array.from(foodItems).find(img => img.alt === "pollos-burger");
+          const fries = Array.from(foodItems).find(img => img.alt === "fring-fries");
+
+          if (tenders && burger && fries) {
+            const secretCode = ['tenders', 'burger', 'fries'];
+            let clickSequence = [];
+
+            tenders.addEventListener('click', () => processClick('tenders'));
+            burger.addEventListener('click', () => processClick('burger'));
+            fries.addEventListener('click', () => processClick('fries'));
+
+            function processClick(item) {
+              clickSequence.push(item);
+
+              // Check sequence validity
+              for (let i = 0; i < clickSequence.length; i++) {
+                if (clickSequence[i] !== secretCode[i]) {
+                  clickSequence = [];
+                  return;
+                }
+              }
+
+              // Activate if complete
+              if (clickSequence.length === secretCode.length) {
+                applyBreakingBadTheme();
+                clickSequence = [];
+              }
+            }
+          }
+        }
+
+        // Create enhanced Breaking Bad theme style
+        const bbStyle = document.createElement('style');
+        bbStyle.textContent = `
+      body.meth-theme {
+        background-color: #0a0e11;
+        color: #e0e0e0;
+      }
+
+      body.meth-theme .nav {
+        background-color: #0a0c10 !important;
+        border-bottom: 2px solid #1d8348 !important;
+      }
+
+      body.meth-theme .nav a {
+        color: #58d68d !important;
+      }
+
+      body.meth-theme header {
+        background-color: #0d1215 !important;
+        border-bottom: 1px solid #1d8348;
+      }
+
+      body.meth-theme section {
+        background-color: #0d1215 !important;
+      }
+
+      body.meth-theme .testimony {
+        background-color: #121712 !important;
+        position: relative;
+      }
+
+      body.meth-theme .testimony::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 8px;
+        background: repeating-linear-gradient(45deg, #1d8348, #1d8348 10px, #121712 10px, #121712 20px);
+      }
+
+      body.meth-theme .contact {
+        background-color: #0d1215 !important;
+      }
+
+      body.meth-theme footer {
+        background-color: #111418 !important;
+        border-top: 1px solid #1d8348;
+        color: #58d68d;
+      }
+
+      body.meth-theme .hero {
+        color: #fff !important;
+        text-shadow: 0 0 10px rgba(46,204,113,0.5);
+        border-bottom: 2px solid #1d8348;
+        padding-bottom: 10px;
+      }
+
+      body.meth-theme .desc {
+        color: #58d68d !important;
+      }
+
+      body.meth-theme .cards {
+        background-color: #121712 !important;
+        border: 1px solid #1d8348 !important;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.4), 0 0 10px rgba(46,204,113,0.2) !important;
+        animation: none !important;
+      }
+
+      body.meth-theme .cards:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 16px rgba(0,0,0,0.5), 0 0 15px rgba(46,204,113,0.3) !important;
+      }
+
+      body.meth-theme .info {
+        background-color: #121712 !important;
+      }
+
+      body.meth-theme .info p {
+        color: #58d68d !important;
+      }
+
+      body.meth-theme .info p:first-child {
+        position: relative;
+        padding-left: 38px;
+      }
+
+      body.meth-theme .info p:first-child::before {
+        content: attr(data-element);
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 30px;
+        height: 30px;
+        background-color: #1d8348;
+        border: 1px solid #2ecc71;
+        color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+      }
+
+      body.meth-theme .rev {
+        background-color: #121712 !important;
+        color: #58d68d !important;
+        border: 2px solid #1d8348 !important;
+      }
+
+      body.meth-theme .name {
+        background-color: #1d8348 !important;
+        color: #fff !important;
+        border: none !important;
+      }
+
+      body.meth-theme .box {
+        background-color: #121712 !important;
+        border: 2px solid #1d8348 !important;
+      }
+
+      body.meth-theme .para p {
+        color: #58d68d !important;
+      }
+
+      body.meth-theme button,
+      body.meth-theme .butts {
+        background-color: #1d8348 !important;
+        color: #fff !important;
+        border: none;
+      }
+
+      body.meth-theme button:hover,
+      body.meth-theme .butts:hover {
+        background-color: #2ecc71 !important;
+      }
+
+
+      body.meth-theme .meth-vial {
+        width: 35px;
+        height: 45px;
+        background: #0a0c10 !important;
+        border: 2px solid #1d8348;
+        border-radius: 5px 5px 15px 15px;
+        position: relative;
+        overflow: hidden;
+        cursor: pointer;
+      }
+
+      body.meth-theme .liquid {
+        width: 100%;
+        height: 70%;
+        background: linear-gradient(135deg, #1d8348, #2ecc71, #1d8348);
+        background-size: 200% 200%;
+        position: absolute;
+        bottom: 0;
+        animation: gradientMove 3s ease infinite;
+      }
+
+      @keyframes gradientMove {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+      }
+
+      body.meth-theme .bubbles::before,
+      body.meth-theme .bubbles::after {
+        content: '';
+        position: absolute;
+        background: rgba(255,255,255,0.8);
+        border-radius: 50%;
+      }
+
+      body.meth-theme .bubbles::before {
+        width: 6px; height: 6px;
+        left: 8px; top: 12px;
+        animation: bubble 2s infinite;
+      }
+
+      body.meth-theme .bubbles::after {
+        width: 4px; height: 4px;
+        right: 10px; top: 20px;
+        animation: bubble 1.4s infinite 0.5s;
+      }
+
+      @keyframes bubble {
+        0% { transform: translateY(0); opacity: 0; }
+        50% { opacity: 1; }
+        100% { transform: translateY(-20px); opacity: 0; }
+      }
+    `;
+        document.head.appendChild(bbStyle);
+      });
+
+      // Add event listener for secret code input
+      document.addEventListener('keydown', function(event) {
+        if (event.key === 'ArrowUp') {
+          const secretCodeInput = document.getElementById('secretCode');
+          secretCodeInput.style.opacity = '1';
+          secretCodeInput.focus();
+        }
+      });
+
+      // Remove the hidden input after a few seconds
+      setTimeout(() => {
+        const secretCodeInput = document.getElementById('secretCode');
+        if (secretCodeInput) {
+          secretCodeInput.remove();
+        }
+      }, 5000);
+
+      // Create theme switching functions
+      window.applyBreakingBadTheme = function() {
+        document.body.classList.add('meth-theme');
+
+        document.addEventListener('DOMContentLoaded', function() {
+          const footerLogo = document.querySelector('.footer-logo img');
+          if (footerLogo) {
+            // Create glasses container that wraps the SVG
+            const glassesContainer = document.createElement('div');
+            glassesContainer.className = 'gus-glasses';
+
+            // Add SVG glasses
+            glassesContainer.innerHTML = `
+      <svg viewBox="0 0 100 40" width="80" height="32">
+        <g class="glasses" fill="none" stroke="#333" stroke-width="2">
+          <!-- Left lens -->
+          <circle cx="25" cy="20" r="15"/>
+          <!-- Right lens -->
+          <circle cx="75" cy="20" r="15"/>
+          <!-- Bridge -->
+          <path d="M40 20 L60 20"/>
+          <!-- Temple arms -->
+          <path d="M10 20 L2 15"/>
+          <path d="M90 20 L98 15"/>
+          <!-- Reflection highlights -->
+          <path class="reflection" d="M20 15 A6 6 0 0 1 30 15" stroke-width="1" stroke-opacity="0.6"/>
+          <path class="reflection" d="M70 15 A6 6 0 0 1 80 15" stroke-width="1" stroke-opacity="0.6"/>
+        </g>
+      </svg>
+    `;
+
+            // Replace the image with our glasses
+            footerLogo.replaceWith(glassesContainer);
+          }
+        });
+        // Add this after the replacement code
+        document.addEventListener('click', function(e) {
+          if (e.target.closest('.gus-glasses')) {
+            const glasses = document.querySelector('.gus-glasses');
+            glasses.classList.add('flash');
+
+            // Optional: Toggle theme when clicking glasses
+            if (document.body.classList.contains('meth-theme')) {
+              window.applyNormalTheme();
+            } else {
+              window.applyBreakingBadTheme();
+            }
+
+            setTimeout(() => {
+              glasses.classList.remove('flash');
+            }, 500);
+          }
+        });
+
+        // Change logo to Heisenberg logo - ADD THIS FIRST
+        const logo = document.querySelector('.logo');
+        if (logo) {
+          console.log("Found logo element, changing to Heisenberg logo");
+          tryLoadImage(logo, [
+            'heisenberg-logo.jpeg',
+            'logo-dark.jpeg',
+            'https://i.imgur.com/VsfiSu3.png'
+          ]);
+        }
+
+// Complete replacement for the vial menu
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('.nav ul');
+        if (hamburger) {
+          // Clear any existing event listeners
+          const oldHamburger = hamburger.cloneNode(true);
+          hamburger.parentNode.replaceChild(oldHamburger, hamburger);
+
+          // Replace with vial HTML
+          oldHamburger.innerHTML = `
+    <div class="meth-vial">
+      <div class="liquid"></div>
+      <div class="bubbles"></div>
+    </div>
+  `;
+
+          // Add proper event listener with visual feedback
+          oldHamburger.addEventListener('click', function() {
+            this.classList.toggle('active');
+            navMenu.classList.toggle('active');
+          });
+
+          // Add clear styles with better specificity
+          const vialStyle = document.createElement('style');
+          vialStyle.textContent = `
+    body.meth-theme .hamburger {
+      width: 40px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: visible;
+    }
+
+    body.meth-theme .meth-vial {
+      width: 28px;
+      height: 40px;
+      background: #121712;
+      border: 2px solid #1d8348;
+      border-radius: 5px 5px 15px 15px;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.3s ease;
+    }
+
+    body.meth-theme .liquid {
+      width: 100%;
+      height: 70%;
+      background: linear-gradient(135deg, #1d8348, #2ecc71, #1d8348);
+      position: absolute;
+      bottom: 0;
+      transition: height 0.3s ease;
+    }
+
+    body.meth-theme .hamburger.active .meth-vial {
+      transform: rotate(15deg) scale(0.95);
+    }
+
+    body.meth-theme .hamburger.active .liquid {
+      height: 40%;
+    }
+  `;
+          document.head.appendChild(vialStyle);
+        }
+        // Update this section in the applyBreakingBadTheme function
+        // Replace your current applyBreakingBadTheme function with this corrected version
+
+        const burger = document.querySelector('img[alt="pollos-burger"]');
+        if (burger) {
+          tryLoadImage(burger, [
+            'lab2.svg',
+            'chemical-barrel.jpg',
+            'https://i.imgur.com/8vHxXm4.jpg'
+          ]);
+        }
+
+        const fries = document.querySelector('img[alt="fring-fries"]');
+        if (fries) {
+          tryLoadImage(fries, [
+            'lab3.webp',
+            'crystal-fulminate.jpg',
+            'https://i.imgur.com/mZ1PxdQ.jpg'
+          ]);
+        }
+        const tenders = document.querySelector('img[alt="pollos-tenders"]');
+        if (tenders){
+          tryLoadImage(tenders, [
+                  'chemical-barrel.jpg',
+                  'blue-crystal.jpg',
+                  'https://i.imgur.com/2Q0x5g1.jpg'
+          ])
+        }
+
+        // Change Gus to Heisenberg
+        const gus = document.querySelector('.gus');
+        if (gus) {
+          tryLoadImage(gus, [
+            'lab4.avif',
+            'walter-white.jpg',
+            'https://i.imgur.com/iBkLM9i.jpg'
+          ]);
+        }
+
+        // Change text content
+        const textChanges = {
+          '.hero': "Heisenberg's Lab, where something BLUE is always cooking!",
+          '.desc': "It's the purest product. The finest chemicals. All prepared with scientific precision! 99.1% pure.",
+          '.rev': "\"I am the one who knocks! The product speaks for itself. No half measures.\"",
+          '.name': "-Heisenberg, Cook",
+          '.dishes':"our top crystals"
+        };
+
+        for (const [selector, text] of Object.entries(textChanges)) {
+          const el = document.querySelector(selector);
+          if (el) el.textContent = text;
+        }
+
+        // Add periodic table elements to menu items
+        document.querySelectorAll('.info p:first-child').forEach((el, idx) => {
+          const elements = ["Br", "Me", "Cr"];
+          const newNames = ["Blue Crystal", "Methylamine", "Crystal Fulminate"];
+
+          el.setAttribute('data-element', elements[idx % elements.length]);
+          el.textContent = newNames[idx % newNames.length];
+        });
+
+        // Update cart names if cart exists
+        if (window.cart && typeof window.cart.refreshNames === 'function') {
+          window.cart.refreshNames();
+        }
+
+        // Show notification
+        const notification = document.createElement('div');
+        notification.textContent = "Say my name.";
+        notification.style.cssText = `
+      position: fixed;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #121212;
+      color: #2ecc71;
+      padding: 15px 25px;
+      font-family: monospace;
+      font-weight: bold;
+      z-index: 9999;
+      border: 2px solid #1d8348;
+      border-radius: 5px;
+      box-shadow: 0 0 20px rgba(46,204,113,0.4);
+    `;
+        document.body.appendChild(notification);
+
+        setTimeout(() => notification.remove(), 6000);
+      };
+
+
+      // Function to restore original theme
+      window.applyNormalTheme = function() {
+        document.body.classList.remove('meth-theme');
+        location.reload(); // Easiest way to restore everything
+      };
+
+      // Helper function for image loading with fallbacks
+      function tryLoadImage(imgElement, paths) {
+        if (!paths.length) return;
+
+        const path = paths[0];
+        const testImg = new Image();
+
+        testImg.onload = function() {
+          // Actually update the src attribute when image loads successfully
+          imgElement.src = path;
+          console.log("Successfully loaded image:", path);
+        };
+
+        testImg.onerror = function() {
+          console.log("Failed to load image:", path);
+          // Try next image in the array
+          tryLoadImage(imgElement, paths.slice(1));
+        };
+
+        testImg.src = path;
+      }
+      // Add this to your existing script
+      function createLoadingScreen() {
+        const loader = document.createElement('div');
+        loader.className = 'loading-screen';
+
+        const isThemedMode = document.body.classList.contains('meth-theme');
+
+        loader.innerHTML = `
+    <div class="loading-landscape">
+      <div class="desert-ground"></div>
+      <div class="rv-container">
+        <div class="rv">
+          <div class="rv-body">
+            <div class="bullet-hole bullet-hole-1"></div>
+            <div class="bullet-hole bullet-hole-2"></div>
+                <div class="bullet-hole bullet-hole-3"></div>
+
+            <div class="rv-roof"></div>
+            <div class="rv-window rv-windshield"></div>
+            <div class="rv-window rv-side-window-1"></div>
+            <div class="rv-window rv-side-window-2"></div>
+            <div class="rv-window rv-side-window-3"></div>
+            <div class="rv-door"></div>
+            <div class="rv-grill"></div>
+            <div class="rv-headlight rv-headlight-1"></div>
+            <div class="rv-headlight rv-headlight-2"></div>
+            <div class="rv-stripe"></div>
+          </div>
+          <div class="rv-wheel rv-wheel-front"></div>
+          <div class="rv-wheel rv-wheel-back"></div>
+          <div class="smoke-container"></div>
+          <div class="dust-container"></div>
+        </div>
+      </div>
+    </div>
+    <div class="loading-text">${isThemedMode ? 'Cooking on the road...' : 'Taking a road trip...'}</div>
+  `;
+
+        document.body.appendChild(loader);
+
+        // Generate smoke dynamically
+        const smokeContainer = loader.querySelector('.smoke-container');
+        for (let i = 0; i < 6; i++) {
+          const smoke = document.createElement('div');
+          smoke.className = 'rv-smoke';
+          smoke.style.animationDelay = `${Math.random() * 2}s`;
+          smokeContainer.appendChild(smoke);
+        }
+
+        // Generate dust particles
+        const dustContainer = loader.querySelector('.dust-container');
+        for (let i = 0; i < 12; i++) {
+          const dust = document.createElement('div');
+          dust.className = 'dust-particle';
+          dust.style.left = `${Math.random() * 100}%`;
+          dust.style.animationDelay = `${Math.random() * 3}s`;
+          dustContainer.appendChild(dust);
+        }
+
+        const style = document.createElement('style');
+        style.textContent = `
+    .loading-screen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: ${isThemedMode ?
+                'linear-gradient(to bottom, #1a237e 0%, #0a0e11 70%)' :
+                'linear-gradient(to bottom, #87CEEB 0%, #f9f9c5 70%)'};
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      transition: opacity 0.5s;
+    }
+
+    .loading-landscape {
+      position: relative;
+      width: 100%;
+      height: 200px;
+      margin-bottom: 40px;
+      overflow: hidden;
+    }
+
+    .desert-ground {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      height: 40%;
+      background: ${isThemedMode ? '#2c2c1e' : '#e2c081'};
+      border-top: ${isThemedMode ? '2px solid #3e3e2d' : '2px solid #d1a05a'};
+    }
+
+    .rv-container {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      animation: drive 8s linear infinite;
+    }
+
+    @keyframes drive {
+      0% { transform: translateX(-150px); }
+      50% { transform: translateX(calc(50% - 100px)); }
+      100% { transform: translateX(calc(100% + 150px)); }
+    }
+
+    .rv {
+      position: absolute;
+      bottom: 22%;
+      left: 0;
+      width: 200px;
+      height: 90px;
+      animation: bounce 0.5s infinite ease-in-out alternate;
+    }
+
+    @keyframes bounce {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(2px); }
+    }
+
+    .rv-body {
+      position: absolute;
+      bottom: 0;
+      width: 200px;
+      height: 70px;
+      background: ${isThemedMode ? '#d1d1d1' : '#F5F5F5'};
+      border-radius: 8px 25px 0 0;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    }
+
+    .rv-roof {
+      position: absolute;
+      top: -10px;
+      left: 40px;
+      width: 110px;
+      height: 10px;
+      background: ${isThemedMode ? '#b8b8b8' : '#dddddd'};
+      border-radius: 3px 3px 0 0;
+    }
+
+    .rv-windshield {
+      position: absolute;
+      top: 5px;
+      left: 170px;
+      width: 20px;
+      height: 25px;
+      background: ${isThemedMode ? '#98c9e3' : '#add8e6'};
+      border-radius: 2px 8px 0 0;
+      border: 2px solid #888;
+    }
+
+    .rv-side-window-1 {
+      position: absolute;
+      top: 15px;
+      left: 140px;
+      width: 20px;
+      height: 18px;
+      background: ${isThemedMode ? '#98c9e3' : '#add8e6'};
+      border: 2px solid #888;
+    }
+
+    .rv-side-window-2 {
+      position: absolute;
+      top: 15px;
+      left: 110px;
+      width: 20px;
+      height: 18px;
+      background: ${isThemedMode ? '#98c9e3' : '#add8e6'};
+      border: 2px solid #888;
+    }
+
+    .rv-side-window-3 {
+      position: absolute;
+      top: 15px;
+      left: 80px;
+      width: 20px;
+      height: 18px;
+      background: ${isThemedMode ? '#98c9e3' : '#add8e6'};
+      border: 2px solid #888;
+    }
+
+    .rv-door {
+      position: absolute;
+      top: 20px;
+      left: 50px;
+      width: 20px;
+      height: 40px;
+      background: ${isThemedMode ? '#9e9e9e' : '#cccccc'};
+      border: 2px solid #888;
+    }
+
+    .rv-grill {
+      position: absolute;
+      bottom: 15px;
+      left: 185px;
+      width: 15px;
+      height: 10px;
+      background: #444;
+      border-radius: 3px;
+    }
+
+    .rv-headlight {
+      position: absolute;
+      bottom: 25px;
+      width: 8px;
+      height: 8px;
+      background: ${isThemedMode ? '#ffeb3b' : '#ffffa0'};
+      border-radius: 50%;
+      box-shadow: 0 0 10px ${isThemedMode ? '#ffeb3b' : '#ffffa0'};
+      animation: flicker 0.5s infinite alternate;
+    }
+
+    .rv-headlight-1 {
+      left: 195px;
+    }
+
+    .rv-headlight-2 {
+      left: 195px;
+      bottom: 40px;
+    }
+
+    @keyframes flicker {
+      0% { opacity: 0.7; }
+      100% { opacity: 1; }
+    }
+
+    .rv-stripe {
+      position: absolute;
+      top: 45px;
+      left: 10px;
+      width: 180px;
+      height: 5px;
+      background: ${isThemedMode ? '#2ecc71' : '#e66000'};
+      border-radius: 5px;
+    }
+
+    .rv-wheel {
+      position: absolute;
+      bottom: -18px;
+      width: 28px;
+      height: 28px;
+      background: #1a1a1a;
+      border-radius: 50%;
+      border: 4px solid #444;
+      animation: spin 1s linear infinite;
+      z-index: 2;
+    }
+
+    .rv-wheel::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 12px;
+      height: 12px;
+      background: #666;
+      border-radius: 50%;
+    }
+
+    .rv-wheel-front {
+      left: 155px;
+    }
+
+    .rv-wheel-back {
+      left: 40px;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .smoke-container {
+      position: absolute;
+      top: -15px;
+      left: 50px;
+      width: 30px;
+      height: 30px;
+    }
+
+    .rv-smoke {
+      position: absolute;
+      width: 15px;
+      height: 15px;
+      background: ${isThemedMode ? 'rgba(46, 204, 113, 0.4)' : 'rgba(200, 200, 200, 0.7)'};
+      border-radius: 50%;
+      filter: blur(5px);
+      animation: smoke 2s ease-out infinite;
+    }
+
+    @keyframes smoke {
+      0% { transform: translateY(0) scale(0.5); opacity: 0; }
+      10% { opacity: 1; }
+      100% { transform: translateY(-50px) scale(3); opacity: 0; }
+    }
+
+    .dust-container {
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 100%;
+      height: 20px;
+    }
+
+    .dust-particle {
+      position: absolute;
+      bottom: 0;
+      width: 8px;
+      height: 8px;
+      background: ${isThemedMode ? '#3d3d2d' : '#d1b78a'};
+      border-radius: 50%;
+      opacity: 0.6;
+      animation: dust 2s ease-out infinite;
+    }
+
+    @keyframes dust {
+      0% { transform: translate(0, 0) scale(0.2); opacity: 0; }
+      20% { opacity: 0.6; }
+      100% { transform: translate(-20px, -30px) scale(1); opacity: 0; }
+    }
+
+    .loading-text {
+      font-family: 'Raleway', sans-serif;
+      font-size: 24px;
+      font-weight: bold;
+      color: ${isThemedMode ? '#2ecc71' : '#5a3800'};
+      text-shadow: ${isThemedMode ? '0 0 10px rgba(46, 204, 113, 0.5)' : '0 0 8px rgba(255, 199, 44, 0.4)'};
+      letter-spacing: 1px;
+    }
+
+    .loading-text::after {
+      content: '.';
+      animation: dots 1.5s infinite;
+      display: inline-block;
+      width: 20px;
+      text-align: left;
+    }
+
+    @keyframes dots {
+      0% { content: '.'; }
+      33% { content: '..'; }
+      66% { content: '...'; }
+    }
+    @keyframes bullet-hole-appear {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.bullet-hole {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background: #000;
+  border-radius: 50%;
+  box-shadow: inset 0 0 2px rgba(0,0,0,0.8), 0 0 3px 2px rgba(255,255,255,0.5);
+  animation: bullet-hole-appear 0.6s ease-out forwards;
+  z-index: 10; /* Add higher z-index to ensure visibility */
+}
+.bullet-hole::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 3px;
+  height: 3px;
+  background: #111;
+  border-radius: 50%;
+}
+
+.bullet-hole::after {
+  content: '';
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  top: -2px;
+  left: -2px;
+  border-radius: 50%;
+  background: radial-gradient(circle, transparent 30%, rgba(0, 0, 0, 0.2) 70%);
+}
+
+.bullet-hole-1 {
+  top: 10px;
+  left: 160px;
+  animation-delay: 0.2s;
+}
+
+.bullet-hole-2 {
+  top: 40px;
+  left: 100px;
+  animation-delay: 0.4s;
+}
+
+.bullet-hole-3 {
+  top: 25px;
+  left: 40px;
+  animation-delay: 0.6s;
+
+  `
+        ;
+
+        document.head.appendChild(style);
+
+        return loader;
+      }
+
+      function hideLoadingScreen(loader) {
+        loader.style.opacity = '0';
+        setTimeout(() => loader.remove(), 500);
+      }
+
+      // Add loading screen on page load
+      document.addEventListener('DOMContentLoaded', function() {
+        const loader = createLoadingScreen();
+        setTimeout(() => hideLoadingScreen(loader), 3000);
+      });
+
+      // For theme transitions
+      window.themeTransition = function() {
+        const loader = createLoadingScreen();
+        setTimeout(() => hideLoadingScreen(loader), 2000);
+      };
+
+      // Removed the problematic line
+      // document.head.appendChild(loaderStyle);
+
+      // Call this on page load
+      document.addEventListener('DOMContentLoaded', function() {
+        addLoadingScreen();
+        // Run the rest of your existing initialization code
+      });
+      // Add this to your existing script
+      const konamiCode = [
+        'g','a','l','e'
+      ];
+      let konamiIndex = 0;
+
+      document.addEventListener('keydown', (e) => {
+        // Check if the next key in the sequence was pressed
+        if (e.key === konamiCode[konamiIndex]) {
+          konamiIndex++;
+
+          // If complete, show notebook
+          if (konamiIndex === konamiCode.length) {
+            showGalesNotebook();
+            konamiIndex = 0;
+          }
+        } else {
+          konamiIndex = 0; // Reset if wrong key
+        }
+      });
+
+      function showGalesNotebook() {
+        document.body.classList.add('notebook-open');
+        const notebook = document.getElementById('gales-notebook');
+        notebook.classList.add('visible');
+
+
+
+        // Play sound effect
+        const sound = new Audio('https://assets.mixkit.co/sfx/preview/mixkit-unlock-game-notification-253.mp3');
+        sound.volume = 0.3;
+        sound.play();
+
+        // Close button functionality
+        document.querySelector('.close-notebook').addEventListener('click', () => {
+          notebook.classList.remove('visible');
+        });
+        document.querySelector('.close-notebook').addEventListener('click', () => {
+          document.body.classList.remove('notebook-open');
+        });
+      }
+      const confirmStyle = document.createElement('style');
+      confirmStyle.textContent = `
+  .confirmation-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.8);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .confirmation-overlay.active {
+    opacity: 1;
+  }
+
+  .confirmation-box {
+    background: #fff;
+    padding: 30px;
+    border-radius: 15px;
+    text-align: center;
+    max-width: 400px;
+    width: 90%;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    transform: scale(0.7);
+    transition: transform 0.4s cubic-bezier(0.18, 1.25, 0.6, 1.25);
+  }
+
+  .confirmation-overlay.active .confirmation-box {
+    transform: scale(1);
+  }
+
+  .confirmation-icon {
+    background: #ffc72c;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto 20px;
+  }
+
+  .confirmation-icon svg {
+    fill: white;
+  }
+
+  .confirmation-box h3 {
+    margin: 0 0 15px;
+    font-size: 24px;
+  }
+
+  .confirmation-box p {
+    font-size: 18px;
+    margin: 10px 0;
+  }
+
+  #close-confirmation {
+    background: #ffc72c;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 30px;
+    font-weight: bold;
+    font-size: 16px;
+    margin-top: 20px;
+    cursor: pointer;
+    transition: transform 0.2s, background 0.2s;
+  }
+
+  #close-confirmation:hover {
+    transform: scale(1.05);
+    background: #ffb700;
+  }
+
+  /* Breaking Bad theme styling */
+  .meth-theme .confirmation-box {
+    background: #121712;
+    color: white;
+    border: 2px solid #1d8348;
+  }
+
+  .meth-theme .confirmation-icon {
+    background: #1d8348;
+  }
+
+  .meth-theme #close-confirmation {
+    background: #1d8348;
+    color: white;
+  }
+
+  .meth-theme #close-confirmation:hover {
+    background: #2ecc71;
+  }
+
+  @keyframes confetti {
+    0% { transform: translateY(0) rotate(0); opacity: 1; }
+    100% { transform: translateY(100px) rotate(720deg); opacity: 0; }
+  }
+`;
+      document.head.appendChild(confirmStyle);
+      // Fly Swatter Game implementation
+      function createFlySwatterGame() {
+        // Create game container
+        const gameContainer = document.createElement('div');
+        gameContainer.id = 'fly-game';
+        gameContainer.className = 'fly-game-container';
+
+        // Create game elements
+        gameContainer.innerHTML = `
+    <div class="fly-game-header">
+      <span class="fly-game-score">Score: <span id="fly-score">0</span></span>
+      <span class="fly-game-time">Time: <span id="fly-time">30</span>s</span>
+      <button id="close-fly-game">×</button>
+    </div>
+    <div class="fly-game-area">
+      <div id="fly" class="fly"></div>
+    </div>
+    <div class="fly-game-footer">
+      <p>"Contamination!" - Walter White</p>
+    </div>
+  `;
+
+        document.body.appendChild(gameContainer);
+
+        // Add CSS
+        const gameStyle = document.createElement('style');
+        gameStyle.textContent = `
+    .fly-game-container {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 90%;
+      max-width: 600px;
+      height: 400px;
+      background: #f0f0f0;
+      border: 3px solid #333;
+      border-radius: 10px;
+      z-index: 9999;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 0 30px rgba(0,0,0,0.5);
+    }
+
+    body.meth-theme .fly-game-container {
+      background: #121712;
+      border-color: #1d8348;
+    }
+
+    .fly-game-header {
+      padding: 10px;
+      background: #ffc72c;
+      color: #5a3800;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    body.meth-theme .fly-game-header {
+      background: #1d8348;
+      color: white;
+    }
+
+    .fly-game-area {
+      flex: 1;
+      position: relative;
+      cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" width="40" height="40"><rect x="2" y="2" width="20" height="14" rx="2" fill="%23222" stroke="%23000" stroke-width="0.5"/><path d="M4 4 H20 M4 6 H20 M4 8 H20 M4 10 H20 M4 12 H20 M4 14 H20 M6 4 V14 M10 4 V14 M14 4 V14 M18 4 V14" stroke="%23666" stroke-width="0.5" stroke-dasharray="1,1"/><rect x="7" y="16" width="4" height="22" rx="1" fill="%238B4513" stroke="%23000" stroke-width="0.5"/><rect x="7" y="28" width="4" height="10" rx="1" fill="%23444" stroke="%23000" stroke-width="0.5"/></svg>') 5 5, auto;
+    }
+
+.fly {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><g transform="translate(50 50)"><ellipse cx="0" cy="0" rx="15" ry="18" fill="%23111" stroke="%23000" stroke-width="1" /><ellipse cx="0" cy="-10" rx="8" ry="6" fill="%23222" stroke="%23000" stroke-width="0.5" /><circle cx="-5" cy="-15" r="4" fill="%23660000" /><circle cx="5" cy="-15" r="4" fill="%23660000" /><circle cx="-5" cy="-15" r="1.5" fill="%23fff" /><circle cx="5" cy="-15" r="1.5" fill="%23fff" /><ellipse cx="0" cy="5" rx="12" ry="15" fill="%23222" /><path d="M-13,-8 Q-40,-40 -40,-5 Q-40,15 -13,10 Z" fill="%23ccccdd" fill-opacity="0.6" stroke="%23000" stroke-width="0.5" /><path d="M13,-8 Q40,-40 40,-5 Q40,15 13,10 Z" fill="%23ccccdd" fill-opacity="0.6" stroke="%23000" stroke-width="0.5" /><path d="M-5,18 L-10,30" stroke="%23000" stroke-width="0.8" /><path d="M0,18 L0,30" stroke="%23000" stroke-width="0.8" /><path d="M5,18 L10,30" stroke="%23000" stroke-width="0.8" /><path d="M-12,0 L-20,12" stroke="%23000" stroke-width="0.8" /><path d="M12,0 L20,12" stroke="%23000" stroke-width="0.8" /><path d="M-12,-5 L-25,0" stroke="%23000" stroke-width="0.8" /><path d="M12,-5 L25,0" stroke="%23000" stroke-width="0.8" /></g></svg>');
+  background-size: contain;
+  background-repeat: no-repeat;
+  transition: left 0.1s, top 0.1s;
+  z-index: 1;
+  animation: fly-buzz 0.1s infinite alternate;
+}
+
+@keyframes fly-buzz {
+  0% { transform: rotate(-3deg) scale(1); }
+  33% { transform: rotate(2deg) scale(1.03); }
+  66% { transform: rotate(-2deg) scale(0.98); }
+  100% { transform: rotate(3deg) scale(1.02); }
+}
+    .fly-game-footer {
+      padding: 10px;
+      background: #eee;
+      color: #333;
+      text-align: center;
+      font-style: italic;
+    }
+
+    body.meth-theme .fly-game-footer {
+      background: #0a0e11;
+      color: #58d68d;
+    }
+
+    #close-fly-game {
+      background: none;
+      border: none;
+      font-size: 24px;
+      cursor: pointer;
+      color: inherit;
+    }
+
+    .fly-splat {
+      position: absolute;
+      width: 30px;
+      height: 30px;
+      background: rgba(255,0,0,0.6);
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      animation: splat 1s forwards;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    @keyframes splat {
+      0% { transform: scale(0.5); opacity: 1; }
+      100% { transform: scale(1.5); opacity: 0; }
+    }
+
+    .fly-game-over {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+      z-index: 2;
+    }
+
+    body.meth-theme .fly-game-over {
+      background: #121712;
+      color: #58d68d;
+      border: 1px solid #1d8348;
+    }
+
+    #restart-fly-game {
+      background: #ffc72c;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
+    body.meth-theme #restart-fly-game {
+      background: #1d8348;
+      color: white;
+    }
+  `;
+
+        document.head.appendChild(gameStyle);
+
+        // Game variables
+        let score = 0;
+        let timeLeft = 30;
+        let gameActive = true;
+        let gameInterval;
+
+        const flyElement = document.getElementById('fly');
+        const scoreElement = document.getElementById('fly-score');
+        const timeElement = document.getElementById('fly-time');
+        const gameArea = document.querySelector('.fly-game-area');
+// Regular beach flip flop cursor - taller and more curved
+        const defaultSlipperCursor = 'url(\'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50" width="40" height="40"><path d="M15,12 C15,10 20,8 25,8 C30,8 35,10 35,12 C38,15 40,20 38,30 C36,40 32,42 25,42 C18,42 14,40 12,30 C10,20 12,15 15,12 Z" fill="%23f5d6ba" stroke="%23d9a066" stroke-width="1.5"/><path d="M25,9 L25,18 M25,18 L18,30 M25,18 L32,30" stroke="%23d9a066" stroke-width="2.5" stroke-linecap="round"/><path d="M15,15 C18,16 32,16 35,15 M14,22 C18,23 32,23 36,22 M13,29 C17,30 33,30 37,29 M15,36 C19,37 31,37 35,36" stroke="%23d9a066" stroke-width="0.7"/></svg>\') 20 20, auto';
+
+// Active rotation flip flop cursor - taller and more curved
+        const activeSlipperCursor = 'url(\'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50" width="40" height="40"><g transform="rotate(45, 25, 25) scale(1.1) translate(-2, -2)"><path d="M15,12 C15,10 20,8 25,8 C30,8 35,10 35,12 C38,15 40,20 38,30 C36,40 32,42 25,42 C18,42 14,40 12,30 C10,20 12,15 15,12 Z" fill="%23f5d6ba" stroke="%23d9a066" stroke-width="1.5"/><path d="M25,9 L25,18 M25,18 L18,30 M25,18 L32,30" stroke="%23d9a066" stroke-width="2.5" stroke-linecap="round"/><path d="M15,15 C18,16 32,16 35,15 M14,22 C18,23 32,23 36,22 M13,29 C17,30 33,30 37,29 M15,36 C19,37 31,37 35,36" stroke="%23d9a066" stroke-width="0.7"/><path d="M5,5 L8,8 M8,5 L5,8" stroke="%23d9a066" stroke-width="1" opacity="0.6"/><path d="M42,5 L45,8 M45,5 L42,8" stroke="%23d9a066" stroke-width="1" opacity="0.6"/><path d="M43,30 L46,33 M46,30 L43,33" stroke="%23d9a066" stroke-width="1" opacity="0.6"/></g></svg>\') 20 20, auto';
+
+// Breaking Bad theme flip flop cursor - taller and more curved
+        const methSlipperCursor = 'url(\'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50" width="40" height="40"><path d="M15,12 C15,10 20,8 25,8 C30,8 35,10 35,12 C38,15 40,20 38,30 C36,40 32,42 25,42 C18,42 14,40 12,30 C10,20 12,15 15,12 Z" fill="%232ecc71" stroke="%231d8348" stroke-width="1.5"/><path d="M25,9 L25,18 M25,18 L18,30 M25,18 L32,30" stroke="%231d8348" stroke-width="2.5" stroke-linecap="round"/><path d="M15,15 C18,16 32,16 35,15 M14,22 C18,23 32,23 36,22 M13,29 C17,30 33,30 37,29 M15,36 C19,37 31,37 35,36" stroke="%231d8348" stroke-width="0.7"/></svg>\') 20 20, auto';
+
+// Breaking Bad theme active flip flop cursor - taller and more curved
+        const activeMethSlipperCursor = 'url(\'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50" width="40" height="40"><g transform="rotate(45, 25, 25) scale(1.1) translate(-2, -2)"><path d="M15,12 C15,10 20,8 25,8 C30,8 35,10 35,12 C38,15 40,20 38,30 C36,40 32,42 25,42 C18,42 14,40 12,30 C10,20 12,15 15,12 Z" fill="%232ecc71" stroke="%231d8348" stroke-width="1.5"/><path d="M25,9 L25,18 M25,18 L18,30 M25,18 L32,30" stroke="%231d8348" stroke-width="2.5" stroke-linecap="round"/><path d="M15,15 C18,16 32,16 35,15 M14,22 C18,23 32,23 36,22 M13,29 C17,30 33,30 37,29 M15,36 C19,37 31,37 35,36" stroke="%231d8348" stroke-width="0.7"/><path d="M5,5 L8,8 M8,5 L5,8" stroke="%231d8348" stroke-width="1" opacity="0.6"/><path d="M42,5 L45,8 M45,5 L42,8" stroke="%231d8348" stroke-width="1" opacity="0.6"/><path d="M43,30 L46,33 M46,30 L43,33" stroke="%231d8348" stroke-width="1" opacity="0.6"/></g></svg>\') 20 20, auto';
+// Set appropriate cursor based on theme
+        if (document.body.classList.contains('meth-theme')) {
+          gameArea.style.cursor = methSlipperCursor;
+        } else {
+          gameArea.style.cursor = defaultSlipperCursor;
+        }
+
+// Add event listeners for cursor change on mouse actions
+        gameArea.addEventListener('mousedown', () => {
+          if (document.body.classList.contains('meth-theme')) {
+            gameArea.style.cursor = activeMethSlipperCursor;
+          } else {
+            gameArea.style.cursor = activeSlipperCursor;
+          }
+        });
+
+        gameArea.addEventListener('mouseup', () => {
+          if (document.body.classList.contains('meth-theme')) {
+            gameArea.style.cursor = methSlipperCursor;
+          } else {
+            gameArea.style.cursor = defaultSlipperCursor;
+          }
+        });
+
+
+        // Initialize fly position
+        moveFly();
+
+        // Start game timer
+        gameInterval = setInterval(() => {
+          timeLeft--;
+          timeElement.textContent = timeLeft;
+
+          if (timeLeft <= 0) {
+            endGame();
+          }
+        }, 1000);
+
+        // Handle fly click/swat
+        flyElement.addEventListener('click', function(e) {
+          if (!gameActive) return;
+
+          // Increase score
+          score++;
+          scoreElement.textContent = score;
+
+          // Create splat effect
+          const splat = document.createElement('div');
+          splat.className = 'fly-splat';
+          splat.style.left = (e.clientX - gameArea.getBoundingClientRect().left - 15) + 'px';
+          splat.style.top = (e.clientY - gameArea.getBoundingClientRect().top - 15) + 'px';
+          gameArea.appendChild(splat);
+
+          // Play sound
+          const splatSound = new Audio('https://assets.mixkit.co/sfx/preview/mixkit-quick-jump-arcade-game-239.mp3');
+          splatSound.volume = 0.3;
+          splatSound.play();
+
+          // Move fly to new position
+          setTimeout(moveFly, 500);
+
+          // Remove splat after animation
+          setTimeout(() => {
+            if (splat && splat.parentNode) {
+              splat.parentNode.removeChild(splat);
+            }
+          }, 1000);
+
+          // Hide fly temporarily
+          flyElement.style.display = 'none';
+          setTimeout(() => {
+            if (gameActive) {
+              flyElement.style.display = 'block';
+            }
+          }, 500);
+        });
+
+        // Function to move fly to random position
+        function moveFly() {
+          if (!gameActive) return;
+
+          const areaWidth = gameArea.clientWidth - 30;
+          const areaHeight = gameArea.clientHeight - 30;
+
+          const newX = Math.floor(Math.random() * areaWidth);
+          const newY = Math.floor(Math.random() * areaHeight);
+
+          flyElement.style.left = newX + 'px';
+          flyElement.style.top = newY + 'px';
+        }
+
+        // End game function
+        function endGame() {
+          gameActive = false;
+          clearInterval(gameInterval);
+
+          flyElement.style.display = 'none';
+
+          // Show game over message
+          const gameOver = document.createElement('div');
+          gameOver.className = 'fly-game-over';
+          gameOver.innerHTML = `
+      <h2>Game Over!</h2>
+      <p>You caught ${score} ${score === 1 ? 'fly' : 'flies'}</p>
+      <p>${getGameOverMessage(score)}</p>
+      <button id="restart-fly-game">Play Again</button>
+    `;
+
+          gameArea.appendChild(gameOver);
+
+          // Restart game button
+          document.getElementById('restart-fly-game').addEventListener('click', function() {
+            // Remove game over message
+            gameOver.remove();
+
+            // Reset game variables
+            score = 0;
+            timeLeft = 30;
+            gameActive = true;
+
+            // Update display
+            scoreElement.textContent = score;
+            timeElement.textContent = timeLeft;
+            flyElement.style.display = 'block';
+
+            // Move fly to new position
+            moveFly();
+
+            // Restart timer
+            gameInterval = setInterval(() => {
+              timeLeft--;
+              timeElement.textContent = timeLeft;
+
+              if (timeLeft <= 0) {
+                endGame();
+              }
+            }, 1000);
+          });
+        }
+
+        function getGameOverMessage(score) {
+          if (score === 0) return "Not even one fly? It's all about the contamination!";
+          if (score < 5) return "Good effort, but contamination is still present.";
+          if (score < 10) return "Decent fly-catching skills. Gus would be... satisfied.";
+          if (score < 15) return "Impressive! Almost pure enough for Los Pollos standards.";
+          return "Perfect! 99.1% purity achieved!";
+        }
+
+        // Close game button
+        document.getElementById('close-fly-game').addEventListener('click', function() {
+          clearInterval(gameInterval);
+          gameContainer.remove();
+
+          // Show trigger again
+          document.getElementById('fly-game-trigger').style.display = 'flex';
+        });
+
+        // Occasionally move the fly even without clicks
+        setInterval(() => {
+          if (gameActive && Math.random() > 0.7) {
+            moveFly();
+          }
+        }, 2000);
+      }
+
+      // Function to add the trigger button
+      function addFlySwatterGame() {
+        // Create trigger button
+        const trigger = document.createElement('div');
+        trigger.id = 'fly-game-trigger';
+        trigger.className = 'easter-egg-trigger';
+        trigger.innerHTML = `<span class="fly-icon">🪰</span>`;
+
+        // Add styles for trigger
+        const style = document.createElement('style');
+        style.textContent = `
+    .easter-egg-trigger {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      width: 40px;
+      height: 40px;
+      background: #ffc72c;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      z-index: 100;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+      transition: all 0.3s;
+    }
+
+    .easter-egg-trigger:hover {
+      transform: scale(1.1);
+    }
+
+    body.meth-theme .easter-egg-trigger {
+      background: #1d8348;
+      color: white;
+    }
+
+    .fly-icon {
+      font-size: 20px;
+      line-height: 1;
+    }
+  `;
+
+        document.head.appendChild(style);
+        document.body.appendChild(trigger);
+
+        // Add click event to start game
+        trigger.addEventListener('click', function() {
+          createFlySwatterGame();
+          trigger.style.display = 'none';
+        });
+      }
+
+      // Call this function to add the game to your website
+      addFlySwatterGame();
+      // Replace the logo with Gus's glasses
+      document.addEventListener('DOMContentLoaded', function() {
+        const footerLogo = document.querySelector('.footer-logo img');
+        if (footerLogo) {
+          // Create glasses container that wraps the SVG
+          const glassesContainer = document.createElement('div');
+          glassesContainer.className = 'gus-glasses';
+
+          // Add SVG glasses
+          glassesContainer.innerHTML = `
+      <svg viewBox="0 0 100 40" width="80" height="32">
+        <g class="glasses" fill="none" stroke="#333" stroke-width="2">
+          <!-- Left lens -->
+          <circle cx="25" cy="20" r="15"/>
+          <!-- Right lens -->
+          <circle cx="75" cy="20" r="15"/>
+          <!-- Bridge -->
+          <path d="M40 20 L60 20"/>
+          <!-- Temple arms -->
+          <path d="M10 20 L2 15"/>
+          <path d="M90 20 L98 15"/>
+          <!-- Reflection highlights -->
+          <path class="reflection" d="M20 15 A6 6 0 0 1 30 15" stroke-width="1" stroke-opacity="0.6"/>
+          <path class="reflection" d="M70 15 A6 6 0 0 1 80 15" stroke-width="1" stroke-opacity="0.6"/>
+        </g>
+      </svg>
+    `;
+
+          // Replace the image with our glasses
+          footerLogo.replaceWith(glassesContainer);
+        }
+      });
+      // Add this after the replacement code
+      document.addEventListener('click', function(e) {
+        if (e.target.closest('.gus-glasses')) {
+          const glasses = document.querySelector('.gus-glasses');
+          glasses.classList.add('flash');
+
+          // Optional: Toggle theme when clicking glasses
+          if (document.body.classList.contains('meth-theme')) {
+            window.applyNormalTheme();
+          } else {
+            window.applyBreakingBadTheme();
+          }
+
+          setTimeout(() => {
+            glasses.classList.remove('flash');
+          }, 500);
+        }
+      });
+      function updateCartBadge() {
+        const badge = document.querySelector('.cart-badge');
+        const cartItems = getCartItems(); // Your existing function to get cart items
+
+        // Set the count as both text content and data attribute
+        const itemCount = cartItems.length;
+        badge.textContent = itemCount;
+        badge.dataset.count = itemCount;
+
+        // The CSS will automatically hide/show based on count
+      }
+      function showEmptyCartWarning() {
+        const modal = document.getElementById('empty-cart-modal');
+        modal.style.display = 'flex';
+        setTimeout(() => modal.classList.add('active'), 10);
+        document.body.style.overflow = 'hidden';
+      }
+
+      document.getElementById('close-empty-cart').addEventListener('click', function() {
+        const modal = document.getElementById('empty-cart-modal');
+        modal.classList.remove('active');
+        setTimeout(() => {
+          modal.style.display = 'none';
+          document.body.style.overflow = '';
+        }, 300);
+      });
+
+      // Replace your existing empty cart alert with this function
+      // For example, in your checkout button event listener:
+      // if (cartItems.length === 0) {
+      //   showEmptyCartWarning();
+      //   return;
+      // }
+
+
+
+
+
+
+
+
+    </script>
+    <div id="purchase-confirmation" class="confirmation-overlay">
+      <div class="confirmation-box">
+        <div class="confirmation-icon">
+          <svg viewBox="0 0 24 24" width="40" height="40">
+            <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/>
+          </svg>
+        </div>
+        <h3>Order Confirmed!</h3>
+        <p>Thank you for your purchase!</p>
+        <p>Total: $<span id="confirmation-total">0</span></p>
+        <button id="close-confirmation">Done</button>
+      </div>
+    </div>
+  </body>
+</html>
