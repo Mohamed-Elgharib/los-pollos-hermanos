@@ -980,65 +980,228 @@
       }
       // Add this to your existing script
       function createLoadingScreen() {
-        const loader = document.createElement('div');
-        loader.className = 'loading-screen';
+  const loader = document.createElement('div');
+  loader.className = 'loading-screen';
 
-        const isThemedMode = document.body.classList.contains('meth-theme');
+  const isThemedMode = document.body.classList.contains('meth-theme');
 
-        loader.innerHTML = `
+  loader.innerHTML = `
     <div class="loading-landscape">
-      <div class="desert-ground"></div>
+      <div class="mountains">
+        <div class="mountain-range"></div>
+        <div class="mountain mountain-1"></div>
+        <div class="mountain mountain-2"></div>
+        <div class="mountain mountain-3"></div>
+        <div class="mountain mountain-4"></div>
+        <div class="mountain mountain-5"></div>
+      </div>
+      <div class="desert-ground">
+        <div class="ground-texture"></div>
+        <div class="cactus cactus-1"></div>
+        <div class="cactus cactus-2"></div>
+        <div class="rock rock-1"></div>
+        <div class="rock rock-2"></div>
+        <div class="rock rock-3"></div>
+        <div class="rock rock-4"></div>
+        <div class="rock rock-5"></div>
+        <div class="tumbleweed tumbleweed-1"></div>
+        <div class="tumbleweed tumbleweed-2"></div>
+        <div class="heat-wave heat-wave-1"></div>
+        <div class="heat-wave heat-wave-2"></div>
+        <div class="sand-dune sand-dune-1"></div>
+        <div class="sand-dune sand-dune-2"></div>
+        <div class="sand-dune sand-dune-3"></div>
+      </div>
       <div class="rv-container">
+        <div class="rv-shadow"></div>
         <div class="rv">
           <div class="rv-body">
             <div class="bullet-hole bullet-hole-1"></div>
             <div class="bullet-hole bullet-hole-2"></div>
-                <div class="bullet-hole bullet-hole-3"></div>
-
-            <div class="rv-roof"></div>
-            <div class="rv-window rv-windshield"></div>
-            <div class="rv-window rv-side-window-1"></div>
-            <div class="rv-window rv-side-window-2"></div>
-            <div class="rv-window rv-side-window-3"></div>
+            <div class="bullet-hole bullet-hole-3"></div>
+            <div class="rv-roof">
+              <div class="rv-antenna"></div>
+              <div class="rv-vent"></div>
+            </div>
+            <div class="rv-window rv-windshield">
+              <div class="window-reflection"></div>
+              <div class="driver-silhouette"></div>
+            </div>
+            <div class="rv-window rv-side-window-1">
+              <div class="window-reflection"></div>
+              <div class="lab-equipment"></div>
+            </div>
+            <div class="rv-window rv-side-window-2">
+              <div class="window-reflection"></div>
+              <div class="hazmat-figure"></div>
+            </div>
+            <div class="rv-window rv-side-window-3">
+              <div class="window-reflection"></div>
+            </div>
             <div class="rv-door"></div>
             <div class="rv-grill"></div>
             <div class="rv-headlight rv-headlight-1"></div>
             <div class="rv-headlight rv-headlight-2"></div>
             <div class="rv-stripe"></div>
+            <div class="rv-license-plate">${isThemedMode ? 'THE COOK' : 'RV-2008'}</div>
           </div>
-          <div class="rv-wheel rv-wheel-front"></div>
-          <div class="rv-wheel rv-wheel-back"></div>
+          <div class="rv-wheel rv-wheel-front">
+            <div class="wheel-hub"></div>
+            <div class="wheel-dirt"></div>
+          </div>
+          <div class="rv-wheel rv-wheel-back">
+            <div class="wheel-hub"></div>
+            <div class="wheel-dirt"></div>
+          </div>
           <div class="smoke-container"></div>
           <div class="dust-container"></div>
+          <div class="exhaust-container"></div>
         </div>
       </div>
+      <div class="sky-elements">
+        <div class="sun"></div>
+        <div class="sun-rays"></div>
+        <div class="cloud cloud-1"></div>
+        <div class="cloud cloud-2"></div>
+        <div class="bird bird-1"></div>
+        <div class="bird bird-2"></div>
+        <div class="bird bird-3"></div>
+        <div class="atmosphere"></div>
+      </div>
     </div>
-    <div class="loading-text">${isThemedMode ? 'Cooking on the road...' : 'Taking a road trip...'}</div>
+    <div class="loading-text">
+      ${isThemedMode ? 'Cooking in the desert...' : 'Taking a desert trip...'}
+      <span class="loading-percentage">0%</span>
+    </div>
   `;
 
-        document.body.appendChild(loader);
+  document.body.appendChild(loader);
 
-        // Generate smoke dynamically
-        const smokeContainer = loader.querySelector('.smoke-container');
-        for (let i = 0; i < 6; i++) {
-          const smoke = document.createElement('div');
-          smoke.className = 'rv-smoke';
-          smoke.style.animationDelay = `${Math.random() * 2}s`;
-          smokeContainer.appendChild(smoke);
-        }
+  // Generate dynamic elements
+  generateDynamicElements(loader, isThemedMode);
 
-        // Generate dust particles
-        const dustContainer = loader.querySelector('.dust-container');
-        for (let i = 0; i < 12; i++) {
-          const dust = document.createElement('div');
-          dust.className = 'dust-particle';
-          dust.style.left = `${Math.random() * 100}%`;
-          dust.style.animationDelay = `${Math.random() * 3}s`;
-          dustContainer.appendChild(dust);
-        }
+  // Add style for the loading screen
+  const style = document.createElement('style');
+  style.textContent = createLoadingScreenStyles(isThemedMode);
+  document.head.appendChild(style);
 
-        const style = document.createElement('style');
-        style.textContent = `
+  // Add parallax effect on mouse move
+  setupParallaxEffect(loader);
+
+  // Initialize loading animation
+  initializeLoadingAnimation(loader);
+  
+  return loader;
+}
+
+function generateDynamicElements(loader, isThemedMode) {
+  // Generate smoke dynamically
+  const smokeContainer = loader.querySelector('.smoke-container');
+  for (let i = 0; i < 8; i++) {
+    const smoke = document.createElement('div');
+    smoke.className = 'rv-smoke';
+    smoke.style.animationDelay = `${Math.random() * 2}s`;
+    smoke.style.left = `${Math.random() * 10}px`;
+    smokeContainer.appendChild(smoke);
+  }
+
+  // Generate exhaust fumes
+  const exhaustContainer = loader.querySelector('.exhaust-container');
+  for (let i = 0; i < 12; i++) {
+    const exhaust = document.createElement('div');
+    exhaust.className = 'rv-exhaust';
+    exhaust.style.animationDelay = `${Math.random() * 3}s`;
+    exhaust.style.left = `${Math.random() * 5 - 2}px`;
+    exhaustContainer.appendChild(exhaust);
+  }
+
+  // Generate dust particles with more variation
+  const dustContainer = loader.querySelector('.dust-container');
+  for (let i = 0; i < 25; i++) {
+    const dust = document.createElement('div');
+    dust.className = 'dust-particle';
+    dust.style.left = `${Math.random() * 100}%`;
+    dust.style.animationDelay = `${Math.random() * 3}s`;
+    dust.style.animationDuration = `${2 + Math.random() * 2}s`;
+    dust.style.width = `${3 + Math.random() * 7}px`;
+    dust.style.height = `${3 + Math.random() * 7}px`;
+    dustContainer.appendChild(dust);
+  }
+
+  // Add ambient dust particles
+  const desertGround = loader.querySelector('.desert-ground');
+  for (let i = 0; i < 15; i++) {
+    const ambientDust = document.createElement('div');
+    ambientDust.className = 'ambient-dust';
+    ambientDust.style.left = `${Math.random() * 100}%`;
+    ambientDust.style.top = `${Math.random() * 100}%`;
+    ambientDust.style.animationDelay = `${Math.random() * 5}s`;
+    ambientDust.style.animationDuration = `${5 + Math.random() * 7}s`;
+    ambientDust.style.width = `${2 + Math.random() * 4}px`;
+    ambientDust.style.height = `${2 + Math.random() * 4}px`;
+    desertGround.appendChild(ambientDust);
+  }
+
+  // Heat wave effect
+  const heatWaves = loader.querySelectorAll('.heat-wave');
+  heatWaves.forEach(wave => {
+    for (let i = 0; i < 5; i++) {
+      const heatRipple = document.createElement('div');
+      heatRipple.className = 'heat-ripple';
+      heatRipple.style.animationDelay = `${Math.random() * 4}s`;
+      heatRipple.style.left = `${Math.random() * 100}%`;
+      wave.appendChild(heatRipple);
+    }
+  });
+
+  // Add bullet hole animations
+  setTimeout(() => {
+    const bulletHoles = loader.querySelectorAll('.bullet-hole');
+    bulletHoles.forEach((hole, index) => {
+      hole.classList.add('animate');
+      // Play bullet sound effect
+      const audio = new Audio();
+      audio.volume = 0.2;
+      audio.src = 'data:audio/mp3;base64,SUQzBAAAAAAAI1RTU0UAAAAPAAADTGF2ZjU4Ljc2LjEwMAAAAAAAAAAAAAAA/+M4wAAAAAAAAAAAAEluZm8AAAAPAAAAAwAAAbAAeHh4eHh4eHh4eHh4eHiVlZWVlZWVlZWVlZWVlbKysrKysrKysrKysrKyysrKysrKysrKysrKysrK////////////////AAAAAExhdmM1OC4xMwAAAAAAAAAAAAAAACQDQAAAAAAAAbByxV9GAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP/7DEAAAALlAEb9BAAJeXGp/zRgABcBQJgMHDoBwOB41/ggCAIZHQcqAgGAIBgEAQDCXl5jjgcxwOY5//Ln/5c4HA4HMc6Dg5i4CgIAgCY7lz//+XOIQBDlzHOg5iB3//KBwEO8uHAQBA7//y4cBAEAQO98DgQEGFgIBAQDEChUDgAAAAX//5cHQFBMIAQCgNheCAYCIGAKBQJP//5QPg6YnmJ////4H/wffB3/WeB/8H3/B//B/wff//B/wff4IBgIgYCwt0SBIwiECAQRBMQgEAQDCUDwQfB//wQDALAwDgMP/8ED4Pgg+CD4IQhC/4IBAEAQBAE//4IBgIgYCAYLdGoXLGoHgdhY0bEoHgebGocB5saiIHmxqHgebGocB5saiIHmxoiB5sah4IgeBHAj4IgeBHAiB4EcCIHgRwIgeBHAiIHgRwIgeBHAj4IgfB//B//B//wQ';
+      audio.play();
+    });
+  }, 800);
+}
+
+function initializeLoadingAnimation(loader) {
+  // Animate loading percentage
+  let percent = 0;
+  const percentElement = loader.querySelector('.loading-percentage');
+  const loadingInterval = setInterval(() => {
+    percent += Math.floor(Math.random() * 5) + 1;
+    if (percent > 100) percent = 100;
+    percentElement.textContent = `${percent}%`;
+    
+    if (percent === 100) {
+      clearInterval(loadingInterval);
+    }
+  }, 250);
+}
+
+function setupParallaxEffect(loader) {
+  loader.addEventListener('mousemove', (e) => {
+    const xAxis = (window.innerWidth / 2 - e.pageX) / 25;
+    const yAxis = (window.innerHeight / 2 - e.pageY) / 25;
+    
+    const mountains = loader.querySelector('.mountains');
+    const rv = loader.querySelector('.rv');
+    const desert = loader.querySelector('.desert-ground');
+    const skyElements = loader.querySelector('.sky-elements');
+    
+    mountains.style.transform = `translateX(${xAxis * 0.7}px) translateY(${yAxis * 0.7}px)`;
+    rv.style.transform = `translateX(${xAxis * -0.2}px) translateY(${yAxis * -0.2}px)`;
+    desert.style.transform = `translateX(${xAxis * 0.4}px) translateY(${yAxis * 0.4}px)`;
+    skyElements.style.transform = `translateX(${xAxis * 0.2}px) translateY(${yAxis * 0.2}px)`;
+  });
+}
+
+function createLoadingScreenStyles(isThemedMode) {
+  return `
     .loading-screen {
       position: fixed;
       top: 0;
@@ -1054,36 +1217,624 @@
       justify-content: center;
       z-index: 9999;
       transition: opacity 0.5s;
+      overflow: hidden;
     }
 
     .loading-landscape {
       position: relative;
       width: 100%;
-      height: 200px;
+      height: 240px;
       margin-bottom: 40px;
       overflow: hidden;
+      perspective: 800px;
     }
 
+    /* Mountains improvements */
+    .mountains {
+      position: absolute;
+      width: 100%;
+      height: 120px;
+      bottom: 40%;
+      z-index: 1;
+      transform-style: preserve-3d;
+    }
+
+    .mountain-range {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 80px;
+      background: ${isThemedMode ? 
+                'linear-gradient(to bottom, #131a26 0%, #1d2938 60%, #273746 100%)' : 
+                'linear-gradient(to bottom, #7d5d3b 0%, #9b7653 60%, #a8856b 100%)'};
+      clip-path: polygon(
+        0% 100%, 5% 85%, 10% 90%, 15% 80%, 20% 85%, 25% 75%, 30% 80%, 
+        35% 70%, 40% 78%, 45% 72%, 50% 80%, 55% 75%, 60% 85%, 
+        65% 75%, 70% 82%, 75% 70%, 80% 80%, 85% 65%, 90% 75%, 95% 85%, 100% 100%
+      );
+      opacity: 0.7;
+      transform: translateZ(-40px) scale(1.2);
+    }
+
+    .mountain {
+      position: absolute;
+      bottom: 0;
+      z-index: 2;
+      background-size: 200% 100%;
+      background-position: center;
+      transform-style: preserve-3d;
+    }
+
+    .mountain-1 {
+      left: 10%;
+      width: 150px;
+      height: 85px;
+      background: ${isThemedMode ? 
+                'linear-gradient(to bottom, #1d2938 0%, #273746 100%)' : 
+                'linear-gradient(to bottom, #9b7653 0%, #a8856b 100%)'};
+      clip-path: polygon(0% 100%, 10% 90%, 20% 85%, 30% 70%, 40% 80%, 50% 65%, 60% 75%, 70% 60%, 80% 80%, 90% 75%, 100% 100%);
+      transform: translateZ(-20px) scale(1.1);
+      z-index: 3;
+    }
+
+    .mountain-2 {
+      left: 30%;
+      width: 200px;
+      height: 100px;
+      background: ${isThemedMode ? 
+                'linear-gradient(to bottom, #171e2e 0%, #1f2a3d 100%)' : 
+                'linear-gradient(to bottom, #8b6b4d 0%, #96735a 100%)'};
+      clip-path: polygon(0% 100%, 10% 85%, 20% 95%, 30% 75%, 40% 90%, 50% 70%, 60% 85%, 70% 65%, 80% 75%, 90% 85%, 100% 100%);
+      transform: translateZ(-10px) scale(1.05);
+      z-index: 4;
+    }
+
+    .mountain-3 {
+      right: 25%;
+      width: 180px;
+      height: 90px;
+      background: ${isThemedMode ? 
+                'linear-gradient(to bottom, #131a26 0%, #1a2433 100%)' : 
+                'linear-gradient(to bottom, #7d5d3b 0%, #8d6d4b 100%)'};
+      clip-path: polygon(0% 100%, 10% 80%, 20% 90%, 30% 75%, 40% 85%, 50% 70%, 60% 80%, 70% 60%, 80% 70%, 90% 80%, 100% 100%);
+      transform: translateZ(-25px) scale(1.15);
+      z-index: 2;
+    }
+
+    .mountain-4 {
+      right: 5%;
+      width: 120px;
+      height: 70px;
+      background: ${isThemedMode ? 
+                'linear-gradient(to bottom, #192330 0%, #232f3d 100%)' : 
+                'linear-gradient(to bottom, #8a684a 0%, #9a7858 100%)'};
+      clip-path: polygon(0% 100%, 15% 80%, 30% 85%, 45% 70%, 60% 85%, 75% 70%, 90% 85%, 100% 100%);
+      transform: translateZ(-15px) scale(1.08);
+      z-index: 3;
+    }
+
+    .mountain-5 {
+      left: -5%;
+      width: 130px;
+      height: 75px;
+      background: ${isThemedMode ? 
+                'linear-gradient(to bottom, #1a253a 0%, #243247 100%)' : 
+                'linear-gradient(to bottom, #916c50 0%, #a17c60 100%)'};
+      clip-path: polygon(0% 100%, 15% 85%, 30% 75%, 45% 85%, 60% 70%, 75% 80%, 90% 70%, 100% 100%);
+      transform: translateZ(-30px) scale(1.18);
+      z-index: 2;
+    }
+
+    /* Improved desert ground */
     .desert-ground {
       position: absolute;
       bottom: 0;
       width: 100%;
       height: 40%;
-      background: ${isThemedMode ? '#2c2c1e' : '#e2c081'};
-      border-top: ${isThemedMode ? '2px solid #3e3e2d' : '2px solid #d1a05a'};
+      background: ${isThemedMode ? 
+                'linear-gradient(to bottom, #2c2c1e 0%, #3c3c2e 100%)' : 
+                'linear-gradient(to bottom, #e2c081 0%, #d1a05a 100%)'};
+      border-top: ${isThemedMode ? 
+                '2px solid #3e3e2d' : 
+                '2px solid #d1a05a'};
+      box-shadow: inset 0 5px 10px rgba(0,0,0,0.2);
+      z-index: 2;
+      overflow: hidden;
     }
 
+    .ground-texture {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: 
+        radial-gradient(circle at 10% 10%, transparent 0%, transparent 10%, rgba(0,0,0,0.03) 10.5%, transparent 11%),
+        radial-gradient(circle at 20% 40%, transparent 0%, transparent 7%, rgba(0,0,0,0.03) 7.5%, transparent 8%),
+        radial-gradient(circle at 50% 20%, transparent 0%, transparent 8%, rgba(0,0,0,0.03) 8.5%, transparent 9%),
+        radial-gradient(circle at 70% 30%, transparent 0%, transparent 9%, rgba(0,0,0,0.03) 9.5%, transparent 10%),
+        radial-gradient(circle at 90% 60%, transparent 0%, transparent 6%, rgba(0,0,0,0.03) 6.5%, transparent 7%);
+      background-size: 300px 300px;
+      opacity: 0.7;
+    }
+
+    /* Sand dunes */
+    .sand-dune {
+      position: absolute;
+      background: ${isThemedMode ? 
+                '#3a3a2e' : 
+                '#e5c990'};
+      border-radius: 50% 50% 0 0;
+      opacity: 0.7;
+      z-index: 3;
+    }
+
+    .sand-dune-1 {
+      left: 10%;
+      bottom: 0;
+      width: 200px;
+      height: 30px;
+      transform: scaleX(2);
+    }
+
+    .sand-dune-2 {
+      left: 40%;
+      bottom: 0;
+      width: 300px;
+      height: 40px;
+      transform: scaleX(1.5);
+    }
+
+    .sand-dune-3 {
+      right: 5%;
+      bottom: 0;
+      width: 250px;
+      height: 35px;
+      transform: scaleX(1.8);
+    }
+
+    /* Enhanced cacti */
+    .cactus {
+      position: absolute;
+      bottom: 0;
+      z-index: 4;
+    }
+
+    .cactus::before {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 10px;
+      height: 40px;
+      background: ${isThemedMode ? 
+                'linear-gradient(to right, #162a1d 0%, #1d3b2a 50%, #162a1d 100%)' : 
+                'linear-gradient(to right, #1e6b37 0%, #2e8b57 50%, #1e6b37 100%)'};
+      border-radius: 5px;
+    }
+
+    .cactus::after {
+      content: '';
+      position: absolute;
+      width: 20px;
+      height: 10px;
+      background: ${isThemedMode ? 
+                'linear-gradient(to bottom, #162a1d 0%, #1d3b2a 50%, #162a1d 100%)' : 
+                'linear-gradient(to bottom, #1e6b37 0%, #2e8b57 50%, #1e6b37 100%)'};
+      border-radius: 5px;
+    }
+
+    .cactus-1 {
+      left: 25%;
+      bottom: 0;
+    }
+
+    .cactus-1::after {
+      top: 15px;
+      left: 0;
+    }
+
+    .cactus-2 {
+      right: 20%;
+      bottom: 0;
+    }
+
+    .cactus-2::after {
+      top: 10px;
+      right: 0;
+    }
+
+    /* Improved rocks */
+    .rock {
+      position: absolute;
+      bottom: 0;
+      border-radius: 50% 40% 45% 50%;
+      z-index: 4;
+      box-shadow: 2px 2px 3px rgba(0,0,0,0.2);
+    }
+
+    .rock-1 {
+      left: 15%;
+      bottom: 5px;
+      width: 15px;
+      height: 10px;
+      background: ${isThemedMode ? 
+                'linear-gradient(to bottom, #484837 0%, #3a3a2e 100%)' : 
+                'linear-gradient(to bottom, #b39b84 0%, #a89078 100%)'};
+      transform: rotate(10deg);
+    }
+
+    .rock-2 {
+      left: 60%;
+      bottom: 2px;
+      width: 25px;
+      height: 15px;
+      background: ${isThemedMode ? 
+                'linear-gradient(to bottom, #3a3a2e 0%, #32322a 100%)' : 
+                'linear-gradient(to bottom, #a89078 0%, #9a8268 100%)'};
+      transform: rotate(-5deg);
+    }
+
+    .rock-3 {
+      right: 10%;
+      bottom: 3px;
+      width: 20px;
+      height: 12px;
+      background: ${isThemedMode ? 
+                'linear-gradient(to bottom, #42423a 0%, #3a3a32 100%)' : 
+                'linear-gradient(to bottom, #aa9280 0%, #9c8472 100%)'};
+      transform: rotate(15deg);
+    }
+
+    .rock-4 {
+      left: 35%;
+      bottom: 4px;
+      width: 12px;
+      height: 8px;
+      background: ${isThemedMode ? 
+                'linear-gradient(to bottom, #3e3e36 0%, #36362e 100%)' : 
+                'linear-gradient(to bottom, #a48e7c 0%, #96806e 100%)'};
+      transform: rotate(-8deg);
+    }
+
+    .rock-5 {
+      right: 30%;
+      bottom: 2px;
+      width: 18px;
+      height: 10px;
+      background: ${isThemedMode ? 
+                'linear-gradient(to bottom, #40403a 0%, #38382e 100%)' : 
+                'linear-gradient(to bottom, #a8937d 0%, #9a856f 100%)'};
+      transform: rotate(12deg);
+    }
+
+    /* Improved tumbleweeds */
+    .tumbleweed {
+      position: absolute;
+      bottom: 5px;
+      width: 15px;
+      height: 15px;
+      background: ${isThemedMode ? 
+                'radial-gradient(circle, #3a3a2e 30%, #32322a 100%)' : 
+                'radial-gradient(circle, #d2b48c 30%, #c5a77f 100%)'};
+      border-radius: 50%;
+      opacity: 0.8;
+      z-index: 4;
+      animation: tumble 15s linear infinite;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    }
+
+    .tumbleweed::before {
+      content: '';
+      position: absolute;
+      top: 20%;
+      left: 20%;
+      width: 60%;
+      height: 60%;
+      border: 1px solid ${isThemedMode ? '#32322a' : '#c5a77f'};
+      border-radius: 50%;
+      opacity: 0.6;
+    }
+
+    .tumbleweed-1 {
+      left: -20px;
+      animation-delay: 0s;
+    }
+
+    .tumbleweed-2 {
+      left: -20px;
+      animation-delay: 7s;
+    }
+
+    @keyframes tumble {
+      0% { 
+        left: -20px; 
+        transform: rotate(0deg);
+      }
+      100% { 
+        left: calc(100% + 20px); 
+        transform: rotate(720deg);
+      }
+    }
+
+    /* Ambient floating dust */
+    .ambient-dust {
+      position: absolute;
+      background: ${isThemedMode ? 
+                'rgba(58, 58, 46, 0.4)' : 
+                'rgba(210, 180, 140, 0.3)'};
+      border-radius: 50%;
+      opacity: 0;
+      animation: floatingDust linear infinite;
+    }
+
+    @keyframes floatingDust {
+      0% { 
+        transform: translate(0, 0);
+        opacity: 0;
+      }
+      20% { 
+        opacity: 0.3;
+      }
+      80% { 
+        opacity: 0.3;
+      }
+      100% { 
+        transform: translate(${Math.random() > 0.5 ? '30px' : '-30px'}, -30px);
+        opacity: 0;
+      }
+    }
+
+    /* Enhanced heat wave effect */
+    .heat-wave {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 20px;
+      z-index: 3;
+      opacity: 0.6;
+      overflow: hidden;
+    }
+
+    .heat-wave-1 {
+      bottom: 30px;
+    }
+
+    .heat-wave-2 {
+      bottom: 15px;
+    }
+
+    .heat-ripple {
+      position: absolute;
+      bottom: 0;
+      width: 60px;
+      height: 10px;
+      background: transparent;
+      border-radius: 50%;
+      box-shadow: 0 0 8px 3px rgba(255, 255, 255, 0.35);
+      opacity: 0;
+      animation: heatRipple 4s ease-in infinite;
+      transform-origin: center center;
+    }
+
+    @keyframes heatRipple {
+      0% { transform: translateY(0) scaleX(1); opacity: 0; }
+      20% { opacity: 0.5; }
+      100% { transform: translateY(-20px) scaleX(2.5); opacity: 0; }
+    }
+
+    /* Atmosphere overlay for depth */
+    .atmosphere {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: ${isThemedMode ? 
+                'linear-gradient(to bottom, rgba(26, 35, 126, 0) 0%, rgba(26, 35, 126, 0.2) 100%)' : 
+                'linear-gradient(to bottom, rgba(135, 206, 235, 0) 0%, rgba(135, 206, 235, 0.15) 100%)'};
+      z-index: 3;
+      pointer-events: none;
+    }
+
+    /* Enhanced sky elements */
+    .sky-elements {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 60%;
+      overflow: hidden;
+      z-index: 1;
+    }
+
+    .sun {
+      position: absolute;
+      top: 20px;
+      right: 15%;
+      width: 40px;
+      height: 40px;
+      background: ${isThemedMode ? 
+                'radial-gradient(circle, #ffcc80 10%, #ff9800 60%, #ff5722 100%)' : 
+                'radial-gradient(circle, #fff176 10%, #ffeb3b 60%, #fdd835 100%)'};
+      border-radius: 50%;
+      box-shadow: 0 0 30px ${isThemedMode ? 'rgba(255, 87, 34, 0.8)' : 'rgba(255, 235, 59, 0.8)'};
+      animation: pulsate 3s infinite ease-in-out;
+      z-index: 2;
+    }
+
+    .sun-rays {
+      position: absolute;
+      top: 20px;
+      right: 15%;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      z-index: 1;
+      background: radial-gradient(circle, rgba(255,255,255,0) 30%, ${isThemedMode ? 'rgba(255,87,34,0.2)' : 'rgba(255,235,59,0.2)'} 70%);
+      transform: scale(2.5);
+      animation: raysPulsate 4s infinite ease-in-out alternate;
+    }
+
+    @keyframes raysPulsate {
+      0% { transform: scale(2.5); opacity: 0.4; }
+      100% { transform: scale(3.5); opacity: 0.7; }
+    }
+
+    /* Enhanced clouds */
+    .cloud {
+      position: absolute;
+      background: ${isThemedMode ? 
+                'linear-gradient(to bottom, #3d4667 0%, #2d3657 100%)' : 
+                'linear-gradient(to bottom, white 0%, #f7f7f7 100%)'};
+      border-radius: 50px;
+      animation: cloudDrift linear infinite;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    }
+
+    .cloud-1 {
+      top: 30px;
+      left: 10%;
+      width: 70px;
+      height: 20px;
+      animation-duration: 60s;
+    }
+
+    .cloud-1::before,
+    .cloud-1::after {
+      content: '';
+      position: absolute;
+      background: ${isThemedMode ? 
+                'linear-gradient(to bottom, #3d4667 0%, #2d3657 100%)' : 
+                'linear-gradient(to bottom, white 0%, #f7f7f7 100%)'};
+      border-radius: 50%;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .cloud-1::before {
+      width: 30px;
+      height: 30px;
+      top: -15px;
+      left: 15px;
+    }
+
+    .cloud-1::after {
+      width: 20px;
+      height: 20px;
+      top: -10px;
+      left: 40px;
+    }
+
+    .cloud-2 {
+      top: 50px;
+      left: 60%;
+      width: 40px;
+      height: 15px;
+      animation-duration: 45s;
+    }
+
+    .cloud-2::before {
+      content: '';
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: ${isThemedMode ? 
+                'linear-gradient(to bottom, #3d4667 0%, #2d3657 100%)' : 
+                'linear-gradient(to bottom, white 0%, #f7f7f7 100%)'};
+      border-radius: 50%;
+      top: -10px;
+      left: 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    @keyframes cloudDrift {
+      from { transform: translateX(0); }
+      to { transform: translateX(calc(100vw + 100px)); }
+    }
+
+    @keyframes pulsate {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.1); opacity: 0.9; }
+    }
+
+/* Birds - Fixed with SVG */
+.bird {
+  position: absolute;
+  z-index: 2;
+  width: 20px;
+  height: 10px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 20'%3E%3Cpath d='M20,0 C15,0 10,5 5,10 C0,15 0,10 5,10 C10,10 15,5 20,0 C25,5 30,10 35,10 C40,10 40,15 35,10 C30,5 25,0 20,0 Z' fill='%23333'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-size: contain;
+  animation: flyAcross linear infinite, flapWings 0.5s infinite alternate;
+}
+
+    .bird-1 {
+      top: 30%;
+      left: -20px;
+      animation-duration: 20s, 0.5s;
+    }
+
+    .bird-2 {
+      top: 15%;
+      left: -20px;
+      animation-duration: 15s, 0.4s;
+      animation-delay: 5s, 0s;
+    }
+
+    .bird-3 {
+      top: 25%;
+      left: -20px;
+      animation-duration: 25s, 0.6s;
+      animation-delay: 10s, 0.1s;
+    }
+
+    @keyframes flyAcross {
+      0% { left: -20px; }
+      100% { left: calc(100% + 20px); }
+    }
+
+    @keyframes flapWings {
+      0% { transform: scaleY(1.2); }
+      100% { transform: scaleY(0.8); }
+    }
+
+    /* RV and shadow */
     .rv-container {
       position: absolute;
       width: 100%;
       height: 100%;
-      animation: drive 8s linear infinite;
+      animation: drive 10s linear infinite;
+      z-index: 5;
+    }
+
+    .rv-shadow {
+      position: absolute;
+      bottom: 18.5%;
+      left: 20px;
+      width: 180px;
+      height: 15px;
+      background: rgba(0,0,0,0.25);
+      border-radius: 50%;
+      filter: blur(5px);
+      transform: scaleX(1.1);
+      animation: shadowMove 0.5s infinite alternate ease-in-out;
+    }
+
+    @keyframes shadowMove {
+      0% { transform: scaleX(1.1) scaleY(0.9); opacity: 0.25; }
+      100% { transform: scaleX(1.2) scaleY(1); opacity: 0.3; }
     }
 
     @keyframes drive {
-      0% { transform: translateX(-150px); }
+      0% { transform: translateX(-240px); }
+      10% { transform: translateX(-180px); }
       50% { transform: translateX(calc(50% - 100px)); }
-      100% { transform: translateX(calc(100% + 150px)); }
+      90% { transform: translateX(calc(100% + 80px)); }
+      100% { transform: translateX(calc(100% + 240px)); }
     }
 
     .rv {
@@ -1092,12 +1843,20 @@
       left: 0;
       width: 200px;
       height: 90px;
-      animation: bounce 0.5s infinite ease-in-out alternate;
+      animation: bounce 0.5s infinite ease-in-out alternate, 
+                shake 0.2s infinite ease-in-out;
+      transform-origin: center bottom;
     }
 
     @keyframes bounce {
-      0% { transform: translateY(0); }
-      100% { transform: translateY(2px); }
+      0% { transform: translateY(0) rotate(0deg); }
+      100% { transform: translateY(2px) rotate(0.5deg); }
+    }
+
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      25% { transform: translateX(-0.5px); }
+      75% { transform: translateX(0.5px); }
     }
 
     .rv-body {
@@ -1105,9 +1864,12 @@
       bottom: 0;
       width: 200px;
       height: 70px;
-      background: ${isThemedMode ? '#d1d1d1' : '#F5F5F5'};
+      background: ${isThemedMode ? 
+                'linear-gradient(to bottom, #d9d9d9 0%, #d1d1d1 70%, #c9c9c9 100%)' : 
+                'linear-gradient(to bottom, #ffffff 0%, #F5F5F5 70%, #ebebeb 100%)'};
       border-radius: 8px 25px 0 0;
       box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+      overflow: visible;
     }
 
     .rv-roof {
@@ -1116,49 +1878,143 @@
       left: 40px;
       width: 110px;
       height: 10px;
-      background: ${isThemedMode ? '#b8b8b8' : '#dddddd'};
+      background: ${isThemedMode ? 
+                'linear-gradient(to bottom, #c0c0c0 0%, #b8b8b8 100%)' : 
+                'linear-gradient(to bottom, #e9e9e9 0%, #dddddd 100%)'};
+      border-radius: 3px 3px 0 0;
+      box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
+    }
+
+    .rv-antenna {
+      position: absolute;
+      top: -15px;
+      left: 90px;
+      width: 2px;
+      height: 15px;
+      background: #888;
+      animation: antennaWobble 0.5s infinite alternate;
+      transform-origin: bottom center;
+    }
+
+    @keyframes antennaWobble {
+      0% { transform: rotate(-2deg); }
+      100% { transform: rotate(2deg); }
+    }
+
+    .rv-vent {
+      position: absolute;
+      top: -5px;
+      left: 60px;
+      width: 15px;
+      height: 4px;
+      background: #666;
+      border-radius: 2px;
+    }
+
+    .rv-window {
+      position: absolute;
+      background: ${isThemedMode ? 
+                'linear-gradient(to bottom, rgba(152, 201, 227, 0.8) 0%, rgba(132, 181, 207, 0.8) 100%)' : 
+                'linear-gradient(to bottom, rgba(173, 216, 230, 0.8) 0%, rgba(153, 196, 210, 0.8) 100%)'};
+      border: 2px solid #888;
+      box-shadow: inset 0 0 10px rgba(255,255,255,0.5);
+      overflow: hidden;
+    }
+
+    .window-reflection {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0) 40%);
+      animation: reflectionShimmer 3s infinite ease-in-out alternate;
+    }
+
+    @keyframes reflectionShimmer {
+      0% { opacity: 0.4; transform: translateX(-5px) translateY(-5px); }
+      100% { opacity: 0.6; transform: translateX(5px) translateY(5px); }
+    }
+
+    .driver-silhouette {
+      position: absolute;
+      top: 5px;
+      left: 5px;
+      width: 8px;
+      height: 12px;
+      background: ${isThemedMode ? '#2c2c2c' : '#444'};
       border-radius: 3px 3px 0 0;
     }
 
-    .rv-windshield {
+    .lab-equipment {
       position: absolute;
+      bottom: 2px;
+      left: 2px;
+      width: 16px;
+      height: 10px;
+      opacity: ${isThemedMode ? 0.9 : 0.5};
+    }
+
+    .lab-equipment::before {
+      content: '';
+      position: absolute;
+      width: 6px;
+      height: 10px;
+      background: ${isThemedMode ? '#2ecc71' : '#ccc'};
+      border-radius: 3px;
+      left: 5px;
+    }
+
+    .lab-equipment::after {
+      content: '';
+      position: absolute;
+      width: 4px;
+      height: 7px;
+      background: ${isThemedMode ? '#e67e22' : '#999'};
+      border-radius: 2px;
+      right: 3px;
+      bottom: 0;
+    }
+
+    .hazmat-figure {
+      position: absolute;
+      width: 10px;
+      height: 12px;
+      background: ${isThemedMode ? '#ffeb3b' : 'transparent'};
+      border-radius: 4px;
+      top: 3px;
+      left: 6px;
+      opacity: ${isThemedMode ? 0.8 : 0};
+    }
+
+    .rv-windshield {
       top: 5px;
       left: 170px;
       width: 20px;
       height: 25px;
-      background: ${isThemedMode ? '#98c9e3' : '#add8e6'};
       border-radius: 2px 8px 0 0;
-      border: 2px solid #888;
+      transform: perspective(100px) rotateY(-20deg);
     }
 
     .rv-side-window-1 {
-      position: absolute;
       top: 15px;
       left: 140px;
       width: 20px;
       height: 18px;
-      background: ${isThemedMode ? '#98c9e3' : '#add8e6'};
-      border: 2px solid #888;
     }
 
     .rv-side-window-2 {
-      position: absolute;
       top: 15px;
       left: 110px;
       width: 20px;
       height: 18px;
-      background: ${isThemedMode ? '#98c9e3' : '#add8e6'};
-      border: 2px solid #888;
     }
 
     .rv-side-window-3 {
-      position: absolute;
       top: 15px;
       left: 80px;
       width: 20px;
       height: 18px;
-      background: ${isThemedMode ? '#98c9e3' : '#add8e6'};
-      border: 2px solid #888;
     }
 
     .rv-door {
@@ -1167,8 +2023,22 @@
       left: 50px;
       width: 20px;
       height: 40px;
-      background: ${isThemedMode ? '#9e9e9e' : '#cccccc'};
+      background: ${isThemedMode ? 
+                'linear-gradient(to right, #a8a8a8 0%, #9e9e9e 100%)' : 
+                'linear-gradient(to right, #d6d6d6 0%, #cccccc 100%)'};
       border: 2px solid #888;
+      box-shadow: inset 2px 0 5px rgba(0,0,0,0.1);
+    }
+
+    .rv-door::before {
+      content: '';
+      position: absolute;
+      top: 15px;
+      left: 5px;
+      width: 6px;
+      height: 3px;
+      background: #555;
+      border-radius: 1px;
     }
 
     .rv-grill {
@@ -1181,6 +2051,17 @@
       border-radius: 3px;
     }
 
+    .rv-grill::before {
+      content: '';
+      position: absolute;
+      top: 2px;
+      left: 2px;
+      width: 11px;
+      height: 6px;
+      border-radius: 1px;
+      background: linear-gradient(to right, #333 40%, #555 40%, #555 60%, #333 60%);
+    }
+
     .rv-headlight {
       position: absolute;
       bottom: 25px;
@@ -1188,7 +2069,7 @@
       height: 8px;
       background: ${isThemedMode ? '#ffeb3b' : '#ffffa0'};
       border-radius: 50%;
-      box-shadow: 0 0 10px ${isThemedMode ? '#ffeb3b' : '#ffffa0'};
+      box-shadow: 0 0 15px ${isThemedMode ? 'rgba(255, 235, 59, 0.9)' : 'rgba(255, 255, 160, 0.9)'};
       animation: flicker 0.5s infinite alternate;
     }
 
@@ -1202,8 +2083,8 @@
     }
 
     @keyframes flicker {
-      0% { opacity: 0.7; }
-      100% { opacity: 1; }
+      0% { opacity: 0.7; box-shadow: 0 0 10px ${isThemedMode ? 'rgba(255, 235, 59, 0.7)' : 'rgba(255, 255, 160, 0.7)'}; }
+      100% { opacity: 1; box-shadow: 0 0 20px ${isThemedMode ? 'rgba(255, 235, 59, 0.9)' : 'rgba(255, 255, 160, 0.9)'}; }
     }
 
     .rv-stripe {
@@ -1212,8 +2093,30 @@
       left: 10px;
       width: 180px;
       height: 5px;
-      background: ${isThemedMode ? '#2ecc71' : '#e66000'};
+      background: ${isThemedMode ? 
+                'linear-gradient(to right, #27ae60 0%, #2ecc71 50%, #27ae60 100%)' : 
+                'linear-gradient(to right, #d35400 0%, #e66000 50%, #d35400 100%)'};
       border-radius: 5px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+    }
+
+    .rv-license-plate {
+      position: absolute;
+      bottom: 12px;
+      left: 170px;
+      width: 25px;
+      height: 12px;
+      background: ${isThemedMode ? '#dcdcdc' : '#fff'};
+      border: 1px solid #888;
+      border-radius: 2px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 4px;
+      font-weight: bold;
+      font-family: monospace;
+      color: ${isThemedMode ? '#222' : '#333'};
+      text-align: center;
     }
 
     .rv-wheel {
@@ -1226,6 +2129,46 @@
       border: 4px solid #444;
       animation: spin 1s linear infinite;
       z-index: 2;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.5);
+      overflow: hidden;
+    }
+
+    .wheel-hub {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 12px;
+      height: 12px;
+      background: radial-gradient(circle, #777 0%, #555 100%);
+      border-radius: 50%;
+      z-index: 1;
+    }
+
+    .wheel-hub::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 4px;
+      height: 4px;
+      background: #333;
+      border-radius: 50%;
+    }
+
+    .wheel-dirt {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      background: 
+        radial-gradient(circle at 30% 30%, rgba(139, 69, 19, 0.3), transparent 50%),
+        radial-gradient(circle at 70% 60%, rgba(139, 69, 19, 0.2), transparent 50%);
+      animation: spin 2s linear infinite reverse;
+      opacity: 0.7;
     }
 
     .rv-wheel::before {
@@ -1234,10 +2177,11 @@
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      width: 12px;
-      height: 12px;
-      background: #666;
+      width: 24px;
+      height: 24px;
+      border: 2px dashed #888;
       border-radius: 50%;
+      opacity: 0.5;
     }
 
     .rv-wheel-front {
@@ -1259,22 +2203,55 @@
       left: 50px;
       width: 30px;
       height: 30px;
+      z-index: -1;
     }
 
     .rv-smoke {
       position: absolute;
       width: 15px;
       height: 15px;
-      background: ${isThemedMode ? 'rgba(46, 204, 113, 0.4)' : 'rgba(200, 200, 200, 0.7)'};
+      background: ${isThemedMode ? 
+                'rgba(46, 204, 113, 0.5)' : 
+                'rgba(200, 200, 200, 0.7)'};
       border-radius: 50%;
       filter: blur(5px);
-      animation: smoke 2s ease-out infinite;
+      animation: smoke 2.5s ease-out infinite;
+      transform-origin: center bottom;
     }
 
     @keyframes smoke {
-      0% { transform: translateY(0) scale(0.5); opacity: 0; }
+      0% { transform: translateY(0) scale(0.5) rotate(0deg); opacity: 0; }
       10% { opacity: 1; }
-      100% { transform: translateY(-50px) scale(3); opacity: 0; }
+      50% { transform: translateY(-25px) scale(2) rotate(45deg); }
+      100% { transform: translateY(-50px) scale(3) rotate(90deg); opacity: 0; }
+    }
+
+    .exhaust-container {
+      position: absolute;
+      bottom: 10px;
+      left: 10px;
+      width: 15px;
+      height: 15px;
+      z-index: 1;
+      transform: rotate(-10deg);
+    }
+
+    .rv-exhaust {
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      background: ${isThemedMode ? 
+                'rgba(52, 73, 94, 0.6)' : 
+                'rgba(100, 100, 100, 0.6)'};
+      border-radius: 50%;
+      filter: blur(2px);
+      animation: exhaust 2s ease-out infinite;
+    }
+
+    @keyframes exhaust {
+      0% { transform: translateX(0) scale(0.3); opacity: 0; }
+      20% { opacity: 0.7; }
+      100% { transform: translateX(-20px) scale(1.5); opacity: 0; }
     }
 
     .dust-container {
@@ -1282,24 +2259,27 @@
       bottom: -5px;
       left: 0;
       width: 100%;
-      height: 20px;
+      height: 30px;
+      z-index: 1;
     }
 
     .dust-particle {
       position: absolute;
       bottom: 0;
-      width: 8px;
-      height: 8px;
-      background: ${isThemedMode ? '#3d3d2d' : '#d1b78a'};
+      width: 6px;
+      height: 6px;
+      background: ${isThemedMode ? 
+                '#3d3d2d' : 
+                '#d1b78a'};
       border-radius: 50%;
       opacity: 0.6;
-      animation: dust 2s ease-out infinite;
+      animation: dust 2.5s ease-out infinite;
     }
 
     @keyframes dust {
       0% { transform: translate(0, 0) scale(0.2); opacity: 0; }
-      20% { opacity: 0.6; }
-      100% { transform: translate(-20px, -30px) scale(1); opacity: 0; }
+      20% { opacity: 0.7; }
+      100% { transform: translate(-30px, -40px) scale(1.5); opacity: 0; }
     }
 
     .loading-text {
@@ -1307,121 +2287,123 @@
       font-size: 24px;
       font-weight: bold;
       color: ${isThemedMode ? '#2ecc71' : '#5a3800'};
-      text-shadow: ${isThemedMode ? '0 0 10px rgba(46, 204, 113, 0.5)' : '0 0 8px rgba(255, 199, 44, 0.4)'};
-      letter-spacing: 1px;
+      text-shadow: ${isThemedMode ? 
+                '0 0 10px rgba(46, 204, 113, 0.5)' : 
+                '0 0 8px rgba(255, 199, 44, 0.4)'};
+      letter-spacing: 2px;
+      animation: textPulse 2s infinite;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
     }
 
-    .loading-text::after {
-      content: '.';
-      animation: dots 1.5s infinite;
-      display: inline-block;
+    .loading-percentage {
+      font-size: 18px;
+      opacity: 0.9;
+    }
+
+    @keyframes textPulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.8; transform: scale(1.05); }
+    }
+
+    .bullet-hole {
+      position: absolute;
+      width: 12px;
+      height: 12px;
+      background: radial-gradient(circle, #000 30%, transparent 70%);
+      border-radius: 50%;
+      opacity: 0;
+      transform: scale(0);
+      z-index: 10;
+    }
+
+    .bullet-hole::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 4px;
+      height: 4px;
+      background: #111;
+      border-radius: 50%;
+    }
+
+    .bullet-hole::after {
+      content: '';
+      position: absolute;
       width: 20px;
-      text-align: left;
+      height: 20px;
+      top: -4px;
+      left: -4px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(0,0,0,0.3) 0%, transparent 70%);
     }
 
-    @keyframes dots {
-      0% { content: '.'; }
-      33% { content: '..'; }
-      66% { content: '...'; }
+    .bullet-hole-1 {
+      top: 12px;
+      left: 160px;
     }
-    @keyframes bullet-hole-appear {
-  0% {
-    transform: scale(0);
-    opacity: 0;
-  }
-  50% {
-    transform: scale(1.2);
-    opacity: 1;
-  }
-  100% {
-    transform: scale(1);
-    opacity: 1;
-  }
-}
 
-.bullet-hole {
-  position: absolute;
-  width: 10px;
-  height: 10px;
-  background: #000;
-  border-radius: 50%;
-  box-shadow: inset 0 0 2px rgba(0,0,0,0.8), 0 0 3px 2px rgba(255,255,255,0.5);
-  animation: bullet-hole-appear 0.6s ease-out forwards;
-  z-index: 10; /* Add higher z-index to ensure visibility */
-}
-.bullet-hole::before {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 3px;
-  height: 3px;
-  background: #111;
-  border-radius: 50%;
-}
+    .bullet-hole-2 {
+      top: 35px;
+      left: 100px;
+    }
 
-.bullet-hole::after {
-  content: '';
-  position: absolute;
-  width: 12px;
-  height: 12px;
-  top: -2px;
-  left: -2px;
-  border-radius: 50%;
-  background: radial-gradient(circle, transparent 30%, rgba(0, 0, 0, 0.2) 70%);
-}
+    .bullet-hole-3 {
+      top: 25px;
+      left: 40px;
+    }
 
-.bullet-hole-1 {
-  top: 10px;
-  left: 160px;
-  animation-delay: 0.2s;
-}
+    .bullet-hole.animate {
+      animation: bulletHole 0.5s forwards cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
 
-.bullet-hole-2 {
-  top: 40px;
-  left: 100px;
-  animation-delay: 0.4s;
-}
-
-.bullet-hole-3 {
-  top: 25px;
-  left: 40px;
-  animation-delay: 0.6s;
-
-  `
-        ;
-
-        document.head.appendChild(style);
-
-        return loader;
+    @keyframes bulletHole {
+      0% {
+        transform: scale(0);
+        opacity: 0;
       }
-
-      function hideLoadingScreen(loader) {
-        loader.style.opacity = '0';
-        setTimeout(() => loader.remove(), 500);
+      30% {
+        transform: scale(1.5);
+        opacity: 1;
       }
+      100% {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
 
-      // Add loading screen on page load
-      document.addEventListener('DOMContentLoaded', function() {
-        const loader = createLoadingScreen();
-        setTimeout(() => hideLoadingScreen(loader), 3000);
-      });
+    /* Spider cracks from the bullets */
+    .bullet-hole.animate::before {
+      animation: bulletCrack 0.3s forwards 0.1s;
+    }
 
-      // For theme transitions
-      window.themeTransition = function() {
-        const loader = createLoadingScreen();
-        setTimeout(() => hideLoadingScreen(loader), 2000);
-      };
+    @keyframes bulletCrack {
+      0% { box-shadow: none; }
+      100% { 
+        box-shadow: 
+          2px 2px 0 1px rgba(0,0,0,0.5),
+          -2px -2px 0 1px rgba(0,0,0,0.5),
+          2px -2px 0 1px rgba(0,0,0,0.5),
+          -2px 2px 0 1px rgba(0,0,0,0.5);
+      }
+    }
+  `;
+}
 
-      // Removed the problematic line
-      // document.head.appendChild(loaderStyle);
+function hideLoadingScreen(loader) {
+  loader.style.opacity = '0';
+  setTimeout(() => loader.remove(), 500);
+}
 
-      // Call this on page load
-      document.addEventListener('DOMContentLoaded', function() {
-        addLoadingScreen();
-        // Run the rest of your existing initialization code
-      });
+// Add loading screen on page load
+document.addEventListener('DOMContentLoaded', function() {
+  const loader = createLoadingScreen();
+  setTimeout(() => hideLoadingScreen(loader), 3000);
+});
       // Add this to your existing script
       const konamiCode = [
         'g','a','l','e'
